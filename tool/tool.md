@@ -31,6 +31,7 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [easyicon](https://www.easyicon.net/)： 一个图标搜索 🔍 下载 ⏬ 网
 -   [cssicon](http://cssicon.space/#/)： 一个 css 实现图标样式
 -   [iconfont](https://www.iconfont.cn/) ：阿里巴巴矢量图标库
+-   [寻图标](https://icon.52112.com/) :最多样化的图标库
 
 ### 占位图
 
