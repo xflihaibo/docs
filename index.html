@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>幸福拾荒者</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+</head>
+<body>
+   <nav>
+    
+    <a href="#/standard/">开发规范</a>
+    <a href="#/web/">前端汇总</a>
+    <a href="#/tool/">工具集合</a>
+    <a href="#/javascript/">js知识</a>
+    <a href="#/advance/">进阶知识</a>
+    <a href="#/about/">关于我们</a>
+    <a href="https://github.com/Silence520/doc">GitHub</a>
+  </nav>
+  <div data-app id="app">⏰  加载中...</div>
+  <div id="gitalk-container"></div>
+ </body>
+
+ <script>
+  var gitalkConfig={
+      language:"zh-CN",
+      clientID: '22',
+      clientSecret: '12',
+      repo: '幸福拾荒者',
+      owner: '幸福拾荒者',
+      admin: ['GitHub 幸福拾荒者 only these guys can initialize github issues'],
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    }
+    window.$docsify = {
+        el: '#app',
+        themeColor:'#39BAE8',
+        name: '幸福拾荒者',
+        logo: './img/xfshz.PNG',
+        maxLevel: 3,//配置最大支持渲染的标题层级
+        onlyCover: true, // 主页仅加载封面，不能滚动到其他页
+        loadSidebar: true,
+        subMaxLevel:2, //自定义侧边栏同时也可以开启目录功能
+        mergeNavbar: true, // Navbar将在较小的屏幕上与侧边栏合并
+        nameLink: '/',
+        repo: 'https://github.com/Silence520/doc', // 右上角小部件
+        coverpage: true,//封面图
+        auto2top:true, //切换页面后是否自动跳转到页面顶部 
+        formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}', //变量显示文档更新日期
+        notFoundPage: 'README.md',
+        search: {
+          // 支持本地化
+          placeholder: '  🔍  搜索试试',
+          // 支持本地化
+          noData:  '抱歉！找不到对应的结果',
+          // 搜索标题的最大程级, 1 - 6
+         //   depth: 2
+         },
+        pagination: {
+            previousText: '上一节',
+            nextText: '下一节',
+            crossChapter: true
+          },
+         plugins: [
+            function(hook, vm) {
+              hook.beforeEach(function (html) {
+                return html+ '\n'+ '⏰ 更新于： {docsify-updated} '+'\n\n <div id="gitalk-container"></div>'
+              });
+            hook.doneEach(function() {
+              var label, domObj, main, divEle, gitalk;
+              label = vm.route.path.split("/").pop();
+              domObj = Docsify.dom;
+              main = domObj.getNode("#main");
+              Array.apply(
+                null,
+                document.querySelectorAll("div.gitalk-container")
+              ).forEach(function(ele) {
+                ele.remove();
+              });
+              divEle = domObj.create("div");
+              divEle.id = "gitalk-container-" + label;
+              divEle.className = "gitalk-container";
+              divEle.style = "width: " + main.clientWidth + "px; margin: 0 auto 20px;";
+              domObj.appendTo(domObj.find(".content"), divEle);
+              gitalk = new Gitalk(
+                Object.assign(gitalkConfig, { id: !label ? "home" : label })
+              );
+              gitalk.render("gitalk-container-" + label);
+            });
+          }
+      ]
+    }
+
+
+  </script> 
+  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
+  <!-- 复制代码  -->
+  <script src="https://unpkg.com/docsify-copy-code"></script>
+  <!-- 上一位 下一位 -->
+  <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <!-- CSS、JavaScript 和 HTML  高亮 -->
+  <script src="https://unpkg.com/prismjs/components/prism-bash.js"></script>
+  <!-- 默认是提供 emoji 解析的 -->
+ <script src="https://unpkg.com/docsify/lib/plugins/emoji.js"></script>
+  <!-- 搜索  -->
+  <script src="https://unpkg.com/docsify/lib/plugins/search.js"></script>
+  <!-- gittalk -->
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+ <!-- fundebug-->
+  <script src="https://js.fundebug.cn/fundebug.1.9.0.min.js"
+  apikey="e3e8c0b70c645d426c772c4804e8075f0e12393a3dd5a91e237071e23d822e0c"></script>
+ <script type='text/javascript'>
+!function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
+  gio('init','a67d1846dc1b5a80', {});
+gio('send');
+</script>
+
+
+
+</html>
