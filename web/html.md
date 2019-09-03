@@ -1,5 +1,13 @@
 # HTML
 
+<div align="center">
+  <img src="./web/img/html.jpeg" width="150" alt="logo" align="center">
+</div>
+
+property 和 attribute 的区别
+attribute 是 “死” 的 , 是你写在 HTML 上的属性
+property 是 “ 活 “ 的 , 是 dom 解析后获得的
+
 ## 简介
 
 html 4 分为 松散 和严格模式
@@ -26,17 +34,18 @@ html 5 是为适应移动端开发而生
 
 !> 是为了保证用户信息的安全，防止恶意的网站窃取数据。
 
-#### 跨域
+## 跨域
 
-img ,
-script,
-link,
-jsonp ,
-iframe,
-postMessage,
-webSocket、
-http-proxy,
-nginx,
+同一协议，同一域名，同一端口号。当其中一个不满足时，我们的请求即会发生跨域问题
+
+## 跨域的方式
+
+1.  img ,script,link,iframe
+2.  jsonp ,
+3.  postMessage,
+4.  webSocket、
+5.  http-proxy,
+6.  nginx,
 
 ```javascript
     A page
@@ -49,7 +58,11 @@ nginx,
     }
 ```
 
-location.Hash、
+### jsonp 原理
+
+jsonp 能达到跨域这种效果，无非是动态创建 script 标签的达到跨域
+
+### location.Hash、
 
 ```javascript
     c.html
@@ -75,13 +88,14 @@ location.Hash、
     </script>
 ```
 
-cors、
+### cors、
 
 ```javascript
 setHeader('Access_Control_Allow-Origin', 'http://localhost:3000');
 ```
 
-document.domain
+### document.domain
+
 //根域名相同
 
 ```javascript
@@ -103,7 +117,7 @@ b.html; b.bb.com
     </script>
 ```
 
-window.name
+### window.name
 
 ```javascript
     c.html
@@ -202,26 +216,21 @@ image-set() ：高倍图
 > -   html{ box-sizing:border-box}
 > -   _,\_:after,_:brfore{ box-sizing:inherit}
 
-css 双飞翼布局
-
-```javascript
-```
-
-#### css 分层理论
-
-> -   SMACSS
-> -   ACSS
-
-### cssnext
-
-> cssnext 把 新 CSS 规范转换成兼容性更强的 CSS，
-
 ### iframe
 
-#####优点 1.程序调入静态页面比较方便; 2.页面和程序分离; #####缺点：
-1.iframe 有不好之处：样式/脚本需要额外链入，会增加请求。另外用 js 防盗链只防得了小偷，防不了大盗。
-2.iframe 好在能够把原先的网页全部原封不动显示下来,但是如果用在首页,是搜索引擎最讨厌的.那么你的网站即使做的在好,也排不到好的名次! 如果是动态网页，用 include 还好点！但是必须要去除他的<html><head><title><body>标签！ 3.框架结构有时会让人感到迷惑，特别是在多个框架中都出现上下、左右滚动条的时候。这些滚动条除了
-会挤占已经特别有限的页面空间外，还会分散访问者的留心力。访问者遇到这种站点往往会立刻转身离开
-。他们会想，既然你的主页如此混乱，那么站点的其他部分也许更不值得阅读。 4.链接导航疑问。运用框架结构时，你必须保证正确配置所有的导航链接，如不然，会给访问者带来很大
-的麻烦。比如被链接的页面出现在导航框架内，这种情况下访问者便被陷住了，因为此时他没有其他地点
-可去。 5.调用外部页面,需要额外调用 css,给页面带来额外的请求次数;
+##### 优点
+
+1.  程序调入静态页面比较方便;
+2.  页面和程序分离;
+
+##### 缺点
+
+1.  iframe 有不好之处：样式/脚本需要额外链入，会增加请求。另外用 js 防盗链只防得了小偷，防不了大盗。
+2.  iframe 好在能够把原先的网页全部原封不动显示下来,但是如果用在首页,是搜索引擎最讨厌的.那么你的网站即使做的在好,也排不到好的名次! 如果是动态网页，用 include 还好点！但是必须要去除他的 html,head,title,body 标签！
+3.  框架结构有时会让人感到迷惑，特别是在多个框架中都出现上下、左右滚动条的时候。这些滚动条除了
+    会挤占已经特别有限的页面空间外，还会分散访问者的留心力。访问者遇到这种站点往往会立刻转身离开
+    。他们会想，既然你的主页如此混乱，那么站点的其他部分也许更不值得阅读。
+4.  链接导航疑问。运用框架结构时，你必须保证正确配置所有的导航链接，如不然，会给访问者带来很大
+    的麻烦。比如被链接的页面出现在导航框架内，这种情况下访问者便被陷住了，因为此时他没有其他地点
+    可去。
+5.  调用外部页面,需要额外调用 css,给页面带来额外的请求次数;

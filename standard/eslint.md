@@ -1,42 +1,52 @@
-# eslint
+# ESlint
 
-ESLint 由 JavaScript 红宝书 作者 Nicholas C. Zakas 编写， 2013 年发布第一个版本。 NCZ 的初衷不是重复造一个轮子，而是在实际需求得不到 JSHint 团队响应 的情况下做出的选择：以可扩展、每条规则独立、不内置编码风格为理念编写一个 lint 工具。
+<div align="center">
+  <img src="./standard/img/eslint.png" width="300" alt="logo" align="center">
+</div>
 
-[](https://cn.eslint.org/)
+[ESLint](https://eslint.org/) 由 JavaScript 红宝书 作者 Nicholas C. Zakas 编写， 2013 年发布第一个版本。 NCZ 的初衷不是重复造一个轮子，而是在实际需求得不到 JSHint 团队响应 的情况下做出的选择：以可扩展、每条规则独立、不内置编码风格为理念编写一个 lint 工具。
 
-EsLint 提供以下支持：
+## EsLint 提供以下支持：
 
-ES6
-AngularJS
-JSX
-Style 检查
-自定义错误和提示
-EsLint 提供以下几种校验：
+1.  ES6
+2.  AngularJS
+3.  JSX
+4.  Style 检查
+5.  自定义错误和提示
 
-语法错误校验
-不重要或丢失的标点符号，如分号
-没法运行到的代码块（使用过 WebStorm 的童鞋应该了解）
-未被使用的参数提醒
-漏掉的结束符，如}
-确保样式的统一规则，如 sass 或者 less
-检查变量的命名
+## EsLint 提供以下几种校验：
 
-安装
+1.  语法错误校验
+2.  不重要或丢失的标点符号，如分号
+3.  没法运行到的代码块（使用过 WebStorm 的童鞋应该了解）
+4.  未被使用的参数提醒
+5.  漏掉的结束符，如}
+6.  确保样式的统一规则，如 sass 或者 less
+7.  检查变量的命名
 
-```code
+## 优势
+
+Eslint 对于每一个开发者而言都是非常值得使用的，这样会强制你写出高质量且整洁的代码，所以建议无论大家是前端开发者、weex 开发者、还是小程序开发者都建议大家讲 Eslint 集成进入，来提高项目的质量。 ##安装
+
+## 安装
+
+```bash
 npm install -g eslint
 ```
 
-初始化
+#### 初始化
+
 如果你的项目还没有配置文件（.eslintrc）的话，可以通过指定--init 参数来生成一个新的配置文件：
 
-```code
+```bash
 eslint --init
 ```
 
 运行 eslint --init 后，会在当前目录下生成一个.eslintrc 文件，你可以在这个文件中配置一些规则。
 
-```code
+### 配置示例参数
+
+```json
 'rules': {
 ///////////////
 // 可能的错误 //
@@ -513,5 +523,3 @@ eslint --init
 "yield-star-spacing": 2
 }
 ```
-
-### Eslint 对于每一个开发者而言都是非常值得使用的，这样会强制你写出高质量且整洁的代码，所以建议无论大家是前端开发者、weex 开发者、还是小程序开发者都建议大家讲 Eslint 集成进入，来提高项目的质量。

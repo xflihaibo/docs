@@ -1,6 +1,28 @@
 # jsdoc
 
-### 安装
+JSDoc 是一个根据 javascript 文件中注释信息，生成 JavaScript 应用程序或库、模块的 API 文档 的工具。你可以使用他记录如：命名空间，类，方法，方法参数等。类似 JavaDoc 和 PHPDoc。现在很多编辑器或 IDE 中还可以通过 JSDoc 直接或使用插件生成智能提示。从而使开发者很容易了解整个类和其中的属性和方法，并且快速知道如何使用，从而提高开发效率，降低维护成本。
+
+## 写法
+
+```js
+/**
+ * [求两个数的和]
+ * @Author  xingfu
+ * @since   2019-08-27T15:06:34+0800
+ * @version                          1.0
+ * @param   {number}                 a   [参数a]
+ * @param   {number}                 b   [参数b]
+ */
+function add(a, b) {
+    return a + b;
+}
+```
+
+## 生成的文档
+
+![jsdoc](./img/jsdoc.png)
+
+## 安装
 
 ```bash
 $ npm install jsdoc --save-dev.  //下载依赖包
@@ -14,11 +36,7 @@ $ npm install docdash  --save-dev //ui
     "tags": {
         "allowUnknownTags": false
     },
-    "source": {
-        "include": "src/",
-        "includePattern": ".js$",
-        "excludePattern": "(node_modules/|docs)"
-    },
+
     "plugins": ["plugins/markdown"],
     "opts": {
         "template": "node_modules/docdash"
@@ -26,13 +44,18 @@ $ npm install docdash  --save-dev //ui
     "templates": {
         "cleverLinks": false,
         "monospaceLinks": false
+    },
+    "source": {
+        "include": "src/",
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
     }
 }
 ```
 
-在 package.json 添加命令
+?> 在 package.json 添加命令
 
-```bush
+```bash
 "test:docs": "node_modules/.bin/jsdoc -c jsdoc.json"
 ```
 
@@ -59,33 +82,35 @@ $ npm install docdash  --save-dev //ui
 19. --verbose 日志的详细信息到控制台 JSDoc 运行。默认为 false。
 20. -X, --explain 以 JSON 格式转储所有的 doclet 到控制台，然后退出。
 
-### jsdoc.json 配置参数
+## jsdoc.json 配置参数
 
-JSDoc 允许您使用无法识别的标签（tags.allowUnknownTags）;
-这两个标准 JSDoc 标签和 closure 标签被启用（tags.dictionaries）;
-只有以.js 和.jsdoc 结尾的文件将会被处理（source.includePattern）;
-任何文件以下划线开始或开始下划线的目录都将被忽略（source.excludePattern）;
-无插件加载（plugins）;
-@link 标签呈现在纯文本（templates.cleverLinks，templates.monospaceLinks）
+1.  tags.allowUnknownTags:JSDoc 允许您使用无法识别的标签;
+1.  tags.dictionaries:这两个标准 JSDoc 标签和 closure 标签被启用;
+1.  source.includePattern:只有以.js 和.jsdoc 结尾的文件将会被处理;
+1.  source.excludePattern:任何文件以下划线开始或开始下划线的目录都将被忽略;
+1.  plugins:插件加载;
 
-source.include：可选的路径数组，JSDoc 应该为它们生成文档。JSDoc 将会结合命令行上的路径和这些文件名，以形成文件组，并且扫描。如果路径是一个目录，可以使用-r 选项来递归。
-source.exclude：可选的路径数组，JSDoc 应该忽略的路径。在 JSDoc3.3.0 或更高版本，该数组可包括 source.include 路径中的子目录。
-source.includePattern：一个可选的字符串，解释为一个正则表达式。如果存在，所有文件必须匹配这个正则表达式，以通过 JSDoc 进行扫描。默认情况下此选项设置为.+.js(doc)?$，这意味着只有以.js 或者.jsdoc 结尾的文件将被扫描。
-source.excludePattern：一个可选的字符串，解释为一个正则表达式。如果存在的话，任何匹配这个正则表达式的文件将被忽略。默认设置是以下划线开头的文件（或以下划线开头的目录下的所有文件）将被忽略。
+1.  templates.cleverLinks，templates.monospaceLinks:@link 标签呈现在纯文本
+1.  templates.monospaceLinks: true，从@link 标签生成的所有链接文本将会以等宽字体渲染
+1.  templates.cleverLinks：为 true，如果“百度”是一个 URL
+1.  source.include：可选的路径数组，JSDoc 应该为它们生成文档。JSDoc 将会结合命令行上的路径和这些文件名，以形成文件组，并且扫描。如果路径是一个目录，可以使用 -r 选项来递归。
+1.  source.exclude：可选的路径数组，JSDoc 应该忽略的路径。在 JSDoc3.3.0 或更高版本，该数组可包括 source.include 路径中的子目录。
+1.  source.includePattern：一个可选的字符串，解释为一个正则表达式。如果存在，所有文件必须匹配这个正则表达式，以通过 JSDoc 进行扫描。默认情况下此选项设置为.+.js(doc)?$，这意味着只有以.js 或者.jsdoc 结尾的文件将被扫描。
+1.  source.excludePattern：一个可选的字符串，解释为一个正则表达式。如果存在的话，任何匹配这个正则表达式的文件将被忽略。默认设置是以下划线开头的文件（或以下划线开头的目录下的所有文件）将被忽略。
 
-这些选项中使用的顺序是：
+!> 对于 source 配置这些选项中使用的顺序是：
 
-以命令行上给定的路径开始，并且在 source.include 中的所有文件（记得，使用-r 命令行选项将在子目录中搜索）。
-对于在步骤 1 中找到的每个文件，如果正则表达式 source.includePattern 存在，该文件必须匹配，否则将被忽略。
-对于在步骤 2 中遗留下的每个文件，如果正则表达式 source.excludePattern 存在，任何匹配这个正则表达式的文件将被忽略。
-对于在步骤 3 中遗留下的每个文件，如果路径在 source.exclude 中，那么它将被忽略。
+1.  以命令行上给定的路径开始，并且在 source.include 中的所有文件（记得，使用 -r 命令行选项将在子目录中搜索）。
+1.  对于在步骤 1 中找到的每个文件，如果正则表达式 source.includePattern 存在，该文件必须匹配，否则将被忽略。
+1.  对于在步骤 2 中遗留下的每个文件，如果正则表达式 source.excludePattern 存在，任何匹配这个正则表达式的文件将被忽略。
+1.  对于在步骤 3 中遗留下的每个文件，如果路径在 source.exclude 中，那么它将被忽略。
 
-##### JSDoc 支持两种不同类型的标签：
+### JSDoc 支持两种不同类型的标签：
 
-块标签, 这是在一个 JSDoc 注释的最高级别。
-内联标签, 块标签文本中的标签或说明
+1.  块标签, 这是在一个 JSDoc 注释的最高级别。
+2.  内联标签, 块标签文本中的标签或说明
 
-### 常用参数
+## 常用参数
 
 1.  @example ：提供一个如何使用描述项的例子
 2.  @exports ：标识一个由 JavaScript 模块导出的成员。
@@ -129,4 +154,4 @@ source.excludePattern：一个可选的字符串，解释为一个正则表达�
 40. @default: 记录默认值。
 41. @deprecated: 说明这已不再是首选方法。
 42. @description: 描述一个标识.
-    43 @enum:描述一个相关属性的集合。
+43. @enum:描述一个相关属性的集合。

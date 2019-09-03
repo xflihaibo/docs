@@ -1,5 +1,0 @@
--   [css](web/css.md)
--   [html](web/html.md)
--   [http](web/http.md)
--   [javascript](web/javascript.md)
--   [web](web/web.md)

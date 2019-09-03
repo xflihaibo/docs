@@ -1,5 +1,9 @@
 # Sublime 编辑器常用设置
 
+<div align="center">
+  <img src="./tool/img/sublime.jpg" width="100" alt="logo" align="center">
+</div>
+
 ## 首选项设置
 
 ```json
