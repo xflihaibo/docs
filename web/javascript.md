@@ -346,16 +346,16 @@ console.log('%cI am a button', 'color: white; background-color: green; padding: 
 
 混淆:具体处理为重命名局部变量、在相同语义 的情况下压缩代码，比如去掉末尾分号(Remove Terminator Semicolons)，常量替 换(Constant Propagation)、移除代码空白(Space、Tab、Line-Feed)全局变量 不会更名如 LocalStorage。
 
-#### 常⽤用混淆技术
+<!-- #### 常⽤用混淆技术
 
 UglifyJS, JS Packer, Closure Compiler, JS Min
 
 ![node](img/biaoshi.png)
 ![node](img/luoji.png)
 ![node](img/aaencode.png)
-![node](img/jjencode.png)
+![node](img/jjencode.png) -->
 
-#### 爆破
+<!-- #### 爆破
 
 https://github.com/svent/jsdetox
 http://jsnice.org/
@@ -366,7 +366,7 @@ Number.prototype.constructor.constructor = function(a) {
   console.log(a);
   return Function.apply(null, arguments);
 };
-```
+``` -->
 
 #### 加密
 
@@ -380,5 +380,5 @@ Number.prototype.constructor.constructor = function(a) {
 
 #### 常用的加密手段
 
-base64、md5、 sha1
+常用的加密手段有：base64、md5、 sha1
 
