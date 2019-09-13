@@ -4,226 +4,62 @@
   <img src="./web/img/html.jpeg" width="150" alt="logo" align="center">
 </div>
 
-property 和 attribute 的区别
-attribute 是 “死” 的 , 是你写在 HTML 上的属性
-property 是 “ 活 “ 的 , 是 dom 解析后获得的
+## HTML5
 
-## 简介
+1.  提高可用性和改进用户的友好体验;
+2.  有几个新的标签，这将有助于开发人员定义重要的内容；
+3.  可以给站点带来更多的多媒体元素(视频和音频)；
+4.  可以很好的替代 FLASH；
+5.  语义化标签,当涉及到网站的抓取和索引的时候，对于 SEO 很友好；
+6.  将被大量应用于移动应用程序和游戏。
 
-html 4 分为 松散 和严格模式
-html 5 是为适应移动端开发而生
-低版本浏览器(Ie) 兼容 html 语义化标签的方式
+### contenteditable
 
-1.  js 创建 document.createElement('nav') css {display:block}
-2.  插件 html5shiv.min.js
-3.  终极解决
-
-#### 解决 IE9 以下版本浏览器对 HTML5 新增标签不识别，并导致 CSS 不起作用的问题。
+可编辑标签类似 input
 
 ```html
-<!--[if let IE 9]>
-<script src='./ html5shiv.min.js'></script>
-<![endif]-->
+<p contenteditable="true">这是一个可编辑的段落。</p>
 ```
 
-## 同源策略
+## canvas
 
--   协议相同
--   域名相同
--   端口相同
+HTML5 canvas 标签用于绘制图像（通过脚本，通常是 JavaScript）。不过，canvas 元素本身并没有绘制能力（它仅仅是图形的容器） - 您必须使用脚本来完成实际的绘图任务。
+getContext() 方法可返回一个对象，该对象提供了用于在画布上绘图的方法和属性。
 
-!> 是为了保证用户信息的安全，防止恶意的网站窃取数据。
+## Audio/Video
 
-## 跨域
+HTML5 视频和音频
 
-同一协议，同一域名，同一端口号。当其中一个不满足时，我们的请求即会发生跨域问题
+### src 与 href 的区别
 
-## 跨域的方式
+1.  href 是指向网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接，用于超链接。
+2.  src 是指向外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置；在请求 src 资源时会将其指向的资源下载并应用到文档内，例如 js 脚本，img 图片和 frame 等元素。当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将 js 脚本放在底部而不是头部。
 
-1.  img ,script,link,iframe
-2.  jsonp ,
-3.  postMessage,
-4.  webSocket、
-5.  http-proxy,
-6.  nginx,
+## 本地存储
 
-```javascript
-    A page
-    let frame=document.getElementById('frame');
-    frame.contentWindow.postMessage('hahha',"http://localhost:3000")
-    B page
-    window.onmessage=functiopn(e){
-    consoel.log(e.data)
-    e.source.postMessage('hehehh',e.origin)
-    }
-```
+cookie 非常小，它的大小限制为 4KB 左右。它的主要用途有保存登录信息，这通常就是通过在 Cookie 中存入一段辨别用户身份的数据来实现的
 
-### jsonp 原理
+localStorag、sessionStorage： HTML5 提供了两种在客户端存储数据的新方法
 
-jsonp 能达到跨域这种效果，无非是动态创建 script 标签的达到跨域
+|      特性      |                                       Cookie                                        |                          localStorage                           | sessionStorage                                                  |
+| :------------: | :---------------------------------------------------------------------------------: | :-------------------------------------------------------------: | --------------------------------------------------------------- |
+|  数据的生命期  | 一般由服务器生成，可设置失效时间。如果在浏览器端生成 Cookie，默认是关闭浏览器后失效 |                  除非被手动清除，否则永久保存                   | 仅在当前会话下有效，关闭页面或浏览器后则被清除                  |
+|  存放数据大小  |                                       4K 左右                                       |                           一般为 5MB                            | 一般为 5MB                                                      |
+| 与服务器端通信 |        每次都会携带在 HTTP 头中，如果使用 cookie 保存过多数据会带来性能问题         |       仅在客户端（即浏览器）中保存，不参与和服务器的通信        | 仅在客户端（即浏览器）中保存，不参与和服务器的通信              |
+|     易用性     |                    需要程序员自己封装，源生的 Cookie 接口不友好                     | 原生接口可以接受，亦可再次封装来对 Object 和 Array 有更好的支持 | 原生接口可以接受，亦可再次封装来对 Object 和 Array 有更好的支持 |
+|      用途      |                                用于标识用户身份信息                                 |              用于浏览器端数据处理，或者页面间通信               | 用于浏览器端数据处理，或者页面间通信                            |
+|     安全性     |                 低（设置 https 时，客户端无法直接读取，安全性较好）                 |                               低                                | 高                                                              |
 
-### location.Hash、
+## SEO
 
-```javascript
-    c.html
-    <script>
-        console.log(location.hash)
-        let iframe=docuemnt.createElement('iframe');
-        ifrime.src="http://localhost:3000/b.html#hhehehe"
-        document.body.appendChild('iframe')
-    </script>
-    b.html
-     <script>
-        window.parent.parent.location.hash=location.hash
-     </script>
+SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移
 
-    A.html
-    <iframe src="http://localhost:4000/c.html#hqhqh" id="iframe"></iframe>
-    <script>
-    let iframe =docuemnt.getElementById('iframe');
-    window.onhashchange=function(){
-        console.log.log(location.hash)
-    }
-
-    </script>
-```
-
-### cors、
-
-```javascript
-setHeader('Access_Control_Allow-Origin', 'http://localhost:3000');
-```
-
-### document.domain
-
-//根域名相同
-
-```javascript
-a.html; //a.bb.com
-
-    <script>
-    document.domain=bb.com
-        var a=109;
-    </script>
-b.html; b.bb.com
-<
-    <iframe src="http://a.bb.com/a.html" id="iframe" onload="load()"></iframe>
-    <script>
-    document.domain=bb.com
-    function load(){
-           let iframe =docuemnt.getElementById('iframe');
-          iframe.contentWindow.a;
-    }
-    </script>
-```
-
-### window.name
-
-```javascript
-    c.html
-    <script>
-        window.name="666";
-    </script>
-    A.html
-    <iframe src="http://localhost:4000/c.html" id="iframe" onload="load()"></iframe>
-    <script>
-    function load(){
-        let first =true;
-           let iframe =docuemnt.getElementById('iframe');
-        if(first){
-
-             iframe.src='http:http://localhost:3000/b.html';
-             first =false;
-            }else{
-                console.log(iframe.contentWindow.name)
-            }
-    }
-    </script>
-```
-
-### 重排 重绘
-
-> -   重绘不一定重排, 重排一定引起重绘
-
-### 那些能引起重排
-
-宽高大小变化 显示隐藏
-
-> -   width
-> -   height
-> -   padding
-> -   margin
-> -   display
-> -   border-width
-> -   border
-> -   min-height
-> -   top
-> -   bottom
-> -   left
-> -   right
-> -   position
-> -   float
-> -   clear
-> -   text-align
-> -   overflow-y
-> -   font-weight
-> -   overflow
-> -   font-family
-> -   line-height
-> -   vertival-align
-> -   white-space
-> -   font-size
-
-### 触发重绘的属性
-
-> -   color
-> -   border-style
-> -   border-radius
-> -   visibility
-> -   text-decoration
-> -   background
-> -   background-image
-> -   background-position
-> -   background-repeat
-> -   background-size
-> -   outline-color
-> -   outline
-> -   outline-style
-> -   outline-width
-> -   box-shadow
-
-### 优化
-
-> -   分离读写操作
-> -   样式集中改变
-> -   元素批量修改
-> -   开启 3D 优化
-
-font-variant-caps: small-caps;
-font-variant-numeric: lining-nums;
-image-set() ：高倍图
-
-### 移动端布局
-
-> -   css grid layout flex
-
-### css 格式化：
-
-> -   reset.css normalize.css neat.css(推荐)
-> -   移动端：
-> -   flex
-> -   neat.css
-> -   html{ box-sizing:border-box}
-> -   _,\_:after,_:brfore{ box-sizing:inherit}
-
-### iframe
-
-##### 优点
+## iframe
 
 1.  程序调入静态页面比较方便;
 2.  页面和程序分离;
 
-##### 缺点
+### 缺点
 
 1.  iframe 有不好之处：样式/脚本需要额外链入，会增加请求。另外用 js 防盗链只防得了小偷，防不了大盗。
 2.  iframe 好在能够把原先的网页全部原封不动显示下来,但是如果用在首页,是搜索引擎最讨厌的.那么你的网站即使做的在好,也排不到好的名次! 如果是动态网页，用 include 还好点！但是必须要去除他的 html,head,title,body 标签！

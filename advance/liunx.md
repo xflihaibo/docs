@@ -1,4 +1,96 @@
-# liunx
+# linux
+
+<div align="center">
+  <img src="./advance/img/liunx.jpg" width="150" alt="logo" align="center">
+</div>
+
+Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统的内核由林纳斯·托瓦兹在 1991 年 10 月 5 日首次发布，在加上用户空间的应用程序之后，成为 Linux 操作系统
+
+## liunx 常用命令
+
+1.  netstat -ntpl 查看进程
+1.  ss –an –p | grep 8080
+1.  lsof -i:80
+1.  cat /etc/passwd 查看用户列表
+1.  kill -9 pid 强制杀死进程
+1.  killall nginx 杀死 nginx 所有的进程
+1.  nginx –t 查看是否生效
+1.  nginx -s reload: 重新启动
+1.  ssh 启动 sudo service ssh start
+1.  tar -cvf vitest.zip vitest 压缩
+1.  tar -xvf vitest.zip 解压缩
+1.  systemctl start firewalld 开启防火墙
+1.  systemctl stop firewalld 关闭防火墙
+1.  systemctl status firewalld 查看防火墙状态
+1.  firewall-cmd –list-all 查看所有的信息
+1.  Chmod 600 ubuntu02_key 修改私钥权限
+1.  ps -ef | grep nginx 查看 nginx 的进程
+1.  sudo passwd 设置 root 用户密码
+1.  su root 切换用户
+1.  /etc/profile //环境变量配置文件
+1.  ssh root@192.168.50.14 -P 8090
+1.  复制文件：scp width.html roottest@192.168.50.141:home/newtest
+1.  复制目录：scp -r filename roottest@192.168.50.141:home/newtest
+1.  ssh roottest@192.168.50.141
+1.  service jenkins restart 启动 jenkins 进程
+1.  service nginx restar 启动 nginx 进程
+1.  yum uninstall nginx 卸载
+1.  curl 127.0.0.1; 访问网络
+1.  Exit：退出
+1.  hostname hb 更改主机用户名
+1.  where is nginx 查找文件位置
+1.  which nginx (别名)查找文件位置
+1.  find /etc -name init.d 查找文件
+1.  find /etc -name init.\* (多个)查找文件
+1.  find /etc -name init.? （一个）查找文件
+1.  find /etc -iname init.T 忽略大小写
+1.  find /etc -atime 5 //文件访问时间
+1.  find /etc -ctime 5 //改变文件属性
+1.  find /etc -mtime 5 //修改时间
+1.  find /etc -size -100k //文件小于 100k 的
+1.  find /etc -size +100k //文件大于 100k 的
+1.  find /etc -size 100k //文件等于 100k 的
+1.  main ls 查看帮助
+
+### 配置免密登录
+
+-   注如果 scp ssh 失败：
+-   sudo ps -e |grep ssh“–>回车–>有 sshd,说明 ssh 服务已经启动，如果没有启动，输入”sudo service ssh start“–>回车–>ssh 服务就会启动 如果没有下载 apt-get install openssh-server 并且
+
+*   ssh-keygen –t rsa –C ‘name’ -f 'wenjianming_key’
+    > -   -t 选择加密算法
+    > -   -C 名字
+    > -   -f 生成密钥名字
+    > -   rsa 加密方式
+    > -   wenjianming_key.pub >> authorized_keys //把公钥追加 authorized_keys
+    > -   > 覆盖
+    > -   > > 追加
+    > -   Exit：退出
+*   ssh 登录：ssh -i pri-key root@192.168.50.134
+
+### 拷贝公钥
+
+```shell
+ssh-copy-id <ip地址>
+```
+
+```bash
+    known_hosts: 存放其他服务器生成的指纹
+    config 配置
+            Host evil-cloud
+            User root
+            Host yideng
+            HostName 192.168.50.142
+            port 22
+            IdentityFile ~/.ssh/new
+            IdentitiesOnly yes
+            Protocol 2
+            Compression yes
+            ServerAliveInterval 60
+            ServerAliveCountMax 20
+            LogLevel INFO
+    ssh yideng  可直接登录
+```
 
 ## 文件夹作用
 
@@ -33,25 +125,28 @@ chmod 755 trial
 chown user1 trial 给文件赋予所有者的 fuzhi
 chgrp user1 trial
 
-> 权限试用者
->
-> 1.  u:所有者
-> 2.  g:所有组
-> 3.  o:其他人
+权限试用者
 
-     权限
+1.  u:所有者
+2.  g:所有组
+3.  o:其他人
 
-> 4.  r:读 4。（cat more head tail）
-> 5.  w:写 2. echo vi
-> 6.  x:执行 1
->
-> useradd user1
-> pasword user1
+    权限
+
+r:读 4。（cat more head tail）
+
+5.  w:写 2. echo vi
+6.  x:执行 1
+
+<!-- > useradd user1
+> pasword user1 -->
 
 ## shell 命令
 
-/bin/bash -x first_shell.sh //执行 shell 文件 调试错误
-/bin/bnsh -n first_shell.sh //执行 shell 文件 调试错误
+![](./img/shell.png)
+
+1.  /bin/bash -x first_shell.sh //执行 shell 文件 调试错误
+2.  /bin/bnsh -n first_shell.sh //执行 shell 文件 调试错误
 
 ### shell 编程常见的系统变量解析
 
@@ -200,92 +295,4 @@ funWithReturn(){
 }
 funWithReturn
 echo "输入的两个数字之和为 $? !"
-```
-
-## LIUNX 预备知识
-
-### liunx 命令
-
-> -   netstat -ntpl 查看进程
-> -   ss –an –p | grep 8080
-> -   lsof -i:80
-> -   cat /etc/passwd 查看用户列表
-> -   kill -9 pid 强制杀死进程
-> -   killall nginx 杀死 nginx 所有的进程
-> -   nginx –t 查看是否生效
-> -   nginx -s reload: 重新启动
-> -   ssh 启动 sudo service ssh start
-> -   tar -cvf vitest.zip vitest 压缩
-> -   tar -xvf vitest.zip 解压缩
-> -   systemctl start firewalld 开启防火墙
-> -   systemctl stop firewalld 关闭防火墙
-> -   systemctl status firewalld 查看防火墙状态
-> -   firewall-cmd –list-all 查看所有的信息
-> -   Chmod 600 ubuntu02_key 修改私钥权限
-> -   ps -ef | grep nginx 查看 nginx 的进程
-> -   sudo passwd 设置 root 用户密码
-> -   su root 切换用户
-> -   /etc/profile //环境变量配置文件
-> -   ssh root@192.168.50.14 -P 8090
-> -   复制文件：scp width.html roottest@192.168.50.141:home/newtest
-> -   复制目录：scp -r filename roottest@192.168.50.141:home/newtest
-> -   ssh roottest@192.168.50.141
-> -   service jenkins restart 启动 jenkins 进程
-> -   service nginx restar 启动 nginx 进程
-> -   yum uninstall nginx 卸载
-> -   curl 127.0.0.1; 访问网络
-> -   Exit：退出
-> -   hostname hb 更改主机用户名
-> -   where is nginx 查找文件位置
-> -   which nginx (别名)查找文件位置
-> -   find /etc -name init.d 查找文件
-> -   find /etc -name init.\* (多个)查找文件
-> -   find /etc -name init.? （一个）查找文件
-> -   find /etc -iname init.T 忽略大小写
-> -   find /etc -atime 5 //文件访问时间
-> -   find /etc -ctime 5 //改变文件属性
-> -   find /etc -mtime 5 //修改时间
-> -   find /etc -size -100k //文件小于 100k 的
-> -   find /etc -size +100k //文件大于 100k 的
-> -   find /etc -size 100k //文件等于 100k 的
-> -   main ls 查看帮助
-
--   注如果 scp ssh 失败：
--   sudo ps -e |grep ssh“–>回车–>有 sshd,说明 ssh 服务已经启动，如果没有启动，输入”sudo service ssh start“–>回车–>ssh 服务就会启动 如果没有下载 apt-get install openssh-server 并且
-
-### 生成密钥对
-
--   ssh-keygen –t rsa –C ‘name’ -f 'wenjianming_key’
-    > -   -t 选择加密算法
-    > -   -C 名字
-    > -   -f 生成密钥名字
-    > -   rsa 加密方式
-    > -   wenjianming_key.pub >> authorized_keys //把公钥追加 authorized_keys
-    > -   > 覆盖
-    > -   > > 追加
-    > -   Exit：退出
--   ssh 登录：ssh -i pri-key root@192.168.50.134
-
-### 拷贝公钥
-
-```shell
-ssh-copy-id <ip地址>
-```
-
-```bash
-    known_hosts: 存放其他服务器生成的指纹
-    config 配置
-            Host evil-cloud
-            User root
-            Host yideng
-            HostName 192.168.50.142
-            port 22
-            IdentityFile ~/.ssh/new
-            IdentitiesOnly yes
-            Protocol 2
-            Compression yes
-            ServerAliveInterval 60
-            ServerAliveCountMax 20
-            LogLevel INFO
-    ssh yideng  可直接登录
 ```

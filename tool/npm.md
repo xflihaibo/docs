@@ -147,7 +147,8 @@ npm root -g  //npm安装目录
 npm config 管理npm的配置路径
 npm config set registry https://registry.npm.taobao.org //设置淘宝源
 npm config get cache //npm的缓存目录
-npm config get prefix //npm的全局node包
+npm config get prefix //npm的安装全局node包地址
+npm list -g --depth 0 //npm 全局安装的包列表
 npm config edit //编辑配置文件
 npm config list //查看npm配置信息
 npm cache 管理模块的缓存
@@ -176,7 +177,7 @@ npm install [name]   //检查npm 是否存在
 如果没有 新建一个 [name] 的文件夹
 
 ```bash
-cd  [name]  
+cd  [name]
 npm init  -y
 ```
 

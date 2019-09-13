@@ -4,6 +4,8 @@
   <img src="./web/img/css.jpg" width="200" alt="logo" align="center">
 </div>
 
+层叠样式表是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，由 W3C 定义和维护。当前最新版本是 CSS2.1，为 W3C 的推荐标准。CSS3 现在已被大部分现代浏览器支持，而下一版的 CSS4 仍在开发中
+
 ## hover link active, visite 定义顺序
 
 ?> link > visite > hover > active

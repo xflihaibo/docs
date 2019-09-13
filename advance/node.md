@@ -1,12 +1,18 @@
 ## Node
 
 <div align="center">
-  <img src="./advance/img/nofe.jpg" width="300" alt="logo" align="center">
+  <img src="./advance/img/node.png" width="300" alt="logo" align="center">
 </div>
+
+Node.js 是一个能够在服务器端运行 JavaScript 的开放源代码、跨平台 JavaScript 运行环境。Node.js 由 Node.js 基金会持有和维护，并与 Linux 基金会有合作关系。Node.js 采用 Google 开发的 V8 运行代码，使用事件驱动、非阻塞和异步输入输出模型等技术来提高性能，可优化应用程序的传输量和规模。这些技术通常用于数据密集的即时应用程序。
 
 ### fs
 
-```code
+文件系统
+
+````code
+
+```javascript
 fs.readFile //读取文件夹异步读取
 fs.readFileSync(path[, options]) //同步读取
 fs.writeFile //写入文件
@@ -24,28 +30,41 @@ fs.rmdir(path, callback) //删除文件夹
 fs.rmdirSync(path, callback) //删除文件夹 同步
 fs.accessSync('a') //查找文件是否存在
 fs.ftruncate(fd[, len], callback)//截断文件
-```
-
--   文件系统
+````
 
 ### path
 
-```code
+路径
 
+```javascript
+__filename。全局值，当前文件绝对路径
+__dirname。全局值，当前文件夹绝对路径。等效于path.resolve(__filename, '..')
+path.join([...paths])。相当于把所传入的任意多的参数 按照顺序 进行命令行般的推进
+path.resolve([...paths])。以当前文件的路径为起点，返回绝对路径。可以理解为每次都是新建cd命令
+path.dirname(path)。返回指定路径所在文件夹的路径
+path.basename(path)。返回指定Path路径所在文件的名字
+path.extname(path)。获取指定字符串或者文件路径名字的后缀名，带.比如.txt
+path.isAbsolute(path) 是否是绝对路径,返回boolean值
 ```
 
--   路径
-
-### vm
+<!-- ### vm
 
 -   虚拟机 沙箱 不依赖外部环境变量
 
+ -->
+
 ### util
 
--   实用工具
+实用工具
 
 ```code
 promisify //promise
+util.inherits(constructor, superConstructor) 是一个实现对象间原型继承的函数。
+util.inspect(object,[showHidden],[depth],[colors]) 是一个将任意对象转换为字符串的方法，通常用于调试和错误输出。它至少接受一个参数 object，即要转换的对象
+util.isArray(object) 如果给定的参数 "object" 是一个数组返回true，否则返回false。
+util.isRegExp(object) 如果给定的参数 "object" 是一个正则表达式返回true，否则返回false。
+util.isDate(object) 如果给定的参数 "object" 是一个日期返回true，否则返回false
+util.isError(object) 如果给定的参数 "object" 是一个错误对象返回true，否则返回false。
 ```
 
 ### event
@@ -53,10 +72,12 @@ promisify //promise
 -   事件触发器
 
 ```code
-    on
+addListener:为指定事件添加一个监听器到监听器数组的尾部。
+    on: 为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数
     off
-    emmit
-    once
+    emmit:按监听器的顺序执行执行每个监听器，如果事件有注册监听返回 true，否则返回 false
+    once:为指定事件注册一个单次监听器，即 监听器最多只会触发一次，触发后立刻解除该监听器。
+    removeListener:移除指定事件的某个监听器，监听器必须是该事件已经注册过的监听器
     newListener
 ```
 
@@ -65,11 +86,16 @@ promisify //promise
 -   操作系统
 
 ```code
-os.cpus()
-os.homedir()
+os.tmpdir()返回操作系统的默认临时文件夹
+os.hostname() 返回操作系统的主机名。
+os.type()返回操作系统名
+os.release() 返回操作系统的发行版本。
+os.cpus()返回一个对象数组，包含所安装的每个 CPU/内核的信息：型号、速度（单位 MHz）、时间（一个包含 user、nice、sys、idle 和 irq 所使用 CPU/内核毫秒数的对象）
+os.networkInterfaces() 获得网络接口列表
+os.homedir() 方法以字符串的形式返回当前用户的主目录
 ```
 
-### crypto
+<!-- ### crypto
 
 -   加密
 
@@ -80,93 +106,138 @@ os.homedir()
 ### zlib
 
 ### stream
+ -->
 
-## node 架构 优化
+?> IO 密集型：大量的输入输出; CUP 密集型 :大量的计算；
+
+<!-- ## node 架构 优化
 
 > -   IO 密集型：大量的输入输出；
 > -   CUP 密集型 :大量的计算；
+ -->
 
-#### 异步 IO 的好处
+<!-- #### 异步 IO 的好处
 
-> -   1 前端通过异步 IO 可以消除 UI 堵塞
-> -   2IO 是昂贵的 异步 IO 是更加昂贵的
-> -   3node.js 适合 IO 密集型不适用 cup 密集型
+> -   前端通过异步 IO 可以消除 UI 堵塞
+> -   IO 是昂贵的 异步 IO 是更加昂贵的
+> -   node.js 适合 IO 密集型不适用 cup 密集型 -->
 
-#### eventLoop
+## 事件循环
 
-![node](./img/nodeimg/01.png)
-![node](./img/nodeimg/02.png)
+事件循环是 Node.js 处理非阻塞 I/O 操作的机制——尽管 JavaScript 是单线程处理的——当有可能的时候，它们会把操作转移到系统内核中去。
 
--   libuv : 管理通知；liunx 轮循通知 custom threadpool 、 windows 事件通知 IOCP
--   pm2 :塞满进程 进程守护
--   custor ：都是一样各自独立
--   fork:复制 主的一挂全都完了
-    ![node](./img/nodeimg/03.png)
--   setTimeout,setInterval 现成池不参与
--   process.nextTick()
--   高阶函数：把函数当做参数或者返回值为函数的函数
+![node](./img/nodeimg/node12.png)
+
+1. V8 引擎解析 JavaScript 脚本。
+1. 解析后的代码，调用 Node API。
+1. libuv 库负责 Node API 的执行。它将不同的任务分配给不同的线程，形成一个 Event Loop（事件循环），以异步的方式将任务的执行结果返回给 V8 引擎。
+1. V8 引擎再将结果返回给用户。
+
+### libuv
+
+Node 中的 Event Loop 和浏览器中的是完全不相同的东西。Node.js 采用 V8 作为 js 的解析引擎，而 I/O 处理方面使用了自己设计的 libuv，libuv 是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的 API，事件循环机制也是它里面的实现
+
+!> liunx 轮循通知 custom threadpool 、 windows 事件通知 IOCP
+
+![node](./img/nodeimg/node13.png)
+
+Node 事件循环分成了 6 个不同的阶段，其中每个阶段都维护着一个回调函数的队列，在不同的“阶段”（我们使用阶段来描述事件循环，它并没有任何特别之处，本质上就是不同方法的顺序调用），事件循环会处理不同类型的事件，日常开发中的绝大部分异步任务都是在这 timers、poll、check 个阶段处理
+
+1. Timers：用来处理 setTimeOut()和 setInterval()的回调。
+2. pending callbacks（I/O callbacks）：大多数的回调方法在这个阶段执行，除了 timers、close 和 setImmediate 事件的回调函数。
+3. idle，prepare：仅仅在内部使用，我们不管它。
+4. poll：轮询，不断检查有没有新的 I/O 事件，事件环可能会在这里阻塞。
+5. check：处理 setImmediate()事件的回调。
+6. close：处理一些 close 相关的事件，例如 socket.on('close',...)等。
+
+```javascript
+setTimeout(()=>{
+    console.log('timer1')
+
+    Promise.resolve().then(function() {
+        console.log('promise1')
+    })
+}, 0)
+
+setTimeout(()=>{
+    console.log('timer2')
+
+    Promise.resolve().then(function() {
+        console.log('promise2')
+    })
+}, 0)
+
+浏览器输出：
+time1
+promise1
+time2
+promise2
+Node输出：
+time1
+time2
+promise1
+promise2
+```
 
 ### 控制异步手段
 
-![node](./img/nodeimg/04.png)
-
-> -   原始 jquery 时代：deferred Q.js Wind Bigpipe bluebird（node 已经实现）
-> -   然后 es6 的时代：generator 和 yield next
-> -   然后 promise then
+> -   原始 jquery 时代：deferred, Q.js, Wind, Bigpipe, bluebird
+> -   然后 es6 的时代：generator yield next 和 promise then
 > -   然后 es7 的时代：async await
 
-#### node 内存管理
+## node 内存管理
 
-![node](./img/nodeimg/05.png)
+V8 的垃圾回收策略主要基于分代式垃圾回收机制。在自动垃圾回收的演变过裎中,人们发现没有一种垃圾回收算法能够胜任所有场景。V8 中内存分为新生代和老主代两代。新生代为存话时间较短对象,老主代中为存活时间较长的对象。
 
--   node 使用 javascript 在服务端操作大内存对象收到了一定的限制 64 位： 1.4G ;32 位：0.7G
+![node](./img/nodeimg/node14.png)
+
+?> node 使用 javascript 在服务端操作大内存对象收到了一定的限制 新生代 64 位系统是 32MB x 2 ;32 位系统是 16MB x 2 老生代 64 位系统是 1.4G ;32 位系统是 0.7G
+
+!>在 node 启动时，通过--max-new-space-size 和--max-old-space-size 可分别设置新生代和老生代的默认内存限制
 
 #### 垃圾回收 GC 包括三个主要步骤
 
-> 1.枚举根节点的引用 2.发现并标记活对象 3.垃圾内存清理
+1. 枚举根节点的引用
+2. 发现并标记活对象
+3. 垃圾内存清理
 
-#### 垃圾回收机制
+## Scavenge
 
-![node](./img/nodeimg/06.png)
-![node](./img/nodeimg/07.png)
-![node](./img/nodeimg/08.png)
+![node](./img/nodeimg/node15.png)
+
+scavenge：当分配指针达到了新生区的末尾，就会有一次清理 这个算法的大概意思是：新生区被分为两个等大的区（from 和 to），绝大多数内存的分配都会出现在 from 区（但是某些可执行的代码对象是分配在老生区的），当 from 区耗尽时，我们交换 from 和 to，然后将 from 区中活跃的对象复制到 to 区或者晋升到老生区中，其中标记的过程时深度优先搜索！
+
+新生代被回收过多次 ，发现 to 的使用空间超过 25%晋升到老生代
+
+缺点：scavenge 算法对于快速回收和紧缩内存效果很好，但是对于大片内存则消耗过大，频繁的拷贝对于 cpu 是不可承受之重，老生区包含有上百 M 的数据，对于这种区域我们采用标记-清除，标记-压缩算法
+
+## 清除算法 (Mark-Sweep) 压缩算法 (Mark-Compact)
+
+V8 老生代主要采用 Mark-Sweep 和 Mark- Compact 在使用 Scavenge 不合适。一个是对象较多需要赋值量太大，而且还是改能解决间问题。Mark-Sweep 是标记清除,标记那些死亡的对象,然后清條。但是清除过后出现内存不连续的情况,所以我们要使用 Mark- Compact,它是基于 Mark-Sweep 演变而来的,他先将活着的对象移到一边,移动完成后,直接清理边界外的内存。当 CPU 空间不足的时候会非常的高效。V8 后续还引入了延迟处理,增量处理,并计划引入行标记处理。
+
+?> 由于 Mark-Conpact 需要移动对象，所以它的执行速度不可能很快，在取舍上，V8 主要使用 Mark-Sweep，在空间不足以对从新生代中晋升过来的对象进行分配时，才使用 Mark-Compact
+
 ![node](./img/nodeimg/09.png)
 
-#### 分代回收在 V8 中分为 Scavenge mark-sweep
+## node 常见的内存泄漏
 
-> scavenge：当分配指针达到了新生区的末尾，就会有一次清理
-> 这个算法的大概意思是：新生区被分为两个等大的区（from 和 to），绝大多数内存的分配都会出现在 from 区（但是某些可执行的代码对象是分配在老生区的），当 from 区耗尽时，我们交换 from 和 to，然后将 from 区中活跃的对象复制到 to 区或者晋升到老生区中，其中标记的过程时深度优先搜索！
-> 新生代被回收过多次 ，发现 to 的使用空间超过 25%晋升到老生代（新生代内存 16mb）
-> 缺点：scavenge 算法对于快速回收和紧缩内存效果很好，但是对于大片内存则消耗过大，频繁的拷贝对于 cpu 是不可承受之重，老生区包含有上百 M 的数据，对于这种区域我们采用标记-清除，标记-压缩算法
+1.  无线增长的数组
+1.  无线设置属性和值
+1.  任何模块内的私有变量和方法均是永驻内存的
 
-###### mark-sweep mark-compact
+### 检测内存泄漏
 
-> 清理算法很简单：遍历页的位图，搜索连续的死对象释放，时间久了就会形成内存碎片
-> 紧缩算法：尝试将对象从碎片页中迁移整合在一起，来释放内存，这些对象会被迁移到另外的页上，因为也可能会重新分配一些页面。alinode 对此策略进行了优化
+(node-inspector](https://github.com/node-inspector/node-inspector)
 
--   主要为：标记清除
--   新生代：scavenge ，32 位系统新生代内存大小为 16MB，64 位系统下，新生代内存大小为 32MB。
--   新生代被回收过多次 发现 to 的使用空间超过 25%晋升到老生代
--   老生代：mark-sweep 标记 mark-compact 32 位系统老生代内存大小为 700MB，64 位系统下，老生代内存大小为 1.4GB。
--   v8 后续还延续了 延迟处理， 增量处理 计划引入并行标记处理；
+<!--
+![node](./img/nodeimg/01.png)
+![node](./img/nodeimg/02.png) -->
 
-> 由于 Mark-Conpact 需要移动对象，所以它的执行速度不可能很快，在取舍上，V8 主要使用 Mark-Sweep，在空间不足以对从新生代中晋升过来的对象进行分配时，才使用 Mark-Compact
-
-### node 常见的内存泄漏
-
-![node](./img/nodeimg/10.png)
-
-> -   1.无线增长的数组
-> -   2.无线设置属性和值
-> -   3.任何模块内的私有变量和方法均是永驻内存的 a=null
-> -   4.大循环 无 gc 机会
-
-#### 检测内存泄漏
-
-![node](./img/nodeimg/11.png)
-
--   AOP:面向对象
--   IOC：控制反转
--   DI：依赖注入
-    ab
-    -loadtest
+<!-- -
+-   pm2 :塞满进程 进程守护
+-   custor ：都是一样各自独立
+-   fork:复制 主的一挂全都完了
+    ![node](./img/nodeimg/03.png)-->
+<!-- -   setTimeout,setInterval 现成池不参与
+-   process.nextTick()
+-   高阶函数：把函数当做参数或者返回值为函数的函数 -->

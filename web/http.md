@@ -4,6 +4,8 @@
   <img src="./web/img/http.jpg" width="300" alt="logo" align="center">
 </div>
 
+超文本传输协议（英语：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议[1]。HTTP 是万维网的数据通信的基础
+
 ## 七层模型
 
 七层模型，亦称 OSI（Open System Interconnection）。参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系，一般称为 OSI 参考模型或七层模型。

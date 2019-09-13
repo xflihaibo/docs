@@ -4,6 +4,8 @@
   <img src="./advance/img/nginx.png" width="300" alt="logo" align="center">
 </div>
 
+Nginx（发音同 engine x）是异步框架的网页服务器，也可以用作反向代理、负载平衡器和 HTTP 缓存。该软件由伊戈尔·赛索耶夫创建并于 2004 年首次公开发布。2011 年成立同名公司以提供支持
+
 ## 优势
 
 1.  解决 c10k 问题（万级并发问题）
