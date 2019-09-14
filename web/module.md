@@ -6,9 +6,9 @@
 
 ### 解决的问题
 
-1. 请求过多
-1. 依赖模糊
-1. 难以维护
+1.  请求过多
+1.  依赖模糊
+1.  难以维护
 
 ## 早期模块化
 
@@ -49,7 +49,6 @@ myModule.say();
 })(window)
 
 selfModule.say()
-
 ```
 
 ## CommonJS
@@ -111,7 +110,6 @@ AMD 即 Asynchronous Module Definition，中文名是异步模块定义的意思
 AMD 推崇依赖前置（在定义模块的时候就要声明其依赖的模块）管理模块之间的依赖性，便于代码的编写和后期的维护
 
 ```javascript
-
 // 定义模块
 // say.js
 define(['jquery'] function ('$') {
@@ -185,7 +183,9 @@ ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模�
 
 特点
 
-打包加载
+按需加载（编译时加载）
+
+![](./img/module01.png)
 
 ```javascript
 //a.js

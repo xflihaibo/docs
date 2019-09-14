@@ -9,7 +9,7 @@
 1.  批处理：批处理就是对某对象进行批量的处理，通常被认为是一种简化的脚本语言
 1.  事务： 一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做 , react 的 setState 同步线程执行
 
-## react.children.map()
+<!-- ## react.children.map() -->
 
 #### setState 执行
 
@@ -46,16 +46,19 @@
 
 Fiber 是一种轻量的执行线程，同线程一样共享定址空间，线程靠系统调度，并且是抢占式多任务处理，Fiber 则是自调用，协作式多任务处理。
 
-#### Fiber Reconcile 与 Stack Reconcile 主要有两方面的不同。
+### Fiber Reconcile 与 Stack Reconcile 主要有两方面的不同。
+
+![](./img/react/fiber01.png)
 
 首先，使用协作式多任务处理任务。将原来的整个 Virtual DOM 的更新任务拆分成一个个小的任务。每次做完一个小任务之后，放弃一下自己的执行将主线程空闲出来，看看有没有其他的任务。如果有的话，就暂停本次任务，执行其他的任务，如果没有的话，就继续下一个任务。
 
-#### Fiber 整个页面更新并重渲染过程分为两个阶段。
+### Fiber 整个页面更新并重渲染过程分为两个阶段。
 
+![](./img/react/fiber02.png)
 由 reconcile 和 renderer 两个概念引出的是 phase 的概念。 Phase 指的是 Reac 组件渲染时的阶段
 
-    1.  Reconcile 阶段。此阶段中，依序遍历组件，通过 diff 算法，判断组件是否需要更新，给需要更新的组件加上 tag。遍历完之后，将所有带有 tag 的组件加到一个数组中。这个阶段的任务可以被打断。
-    1.  Commit 阶段。根据在 Reconcile 阶段生成的数组，遍历更新 DOM，这个阶段需要一次性执行完。如果是在其他的渲染环境 -- Native，硬件，就会更新对应的元素。
+1.  Reconcile 阶段。此阶段中，依序遍历组件，通过 diff 算法，判断组件是否需要更新，给需要更新的组件加上 tag。遍历完之后，将所有带有 tag 的组件加到一个数组中。这个阶段的任务可以被打断。
+1.  Commit 阶段。根据在 Reconcile 阶段生成的数组，遍历更新 DOM，这个阶段需要一次性执行完。如果是在其他的渲染环境 -- Native，硬件，就会更新对应的元素。
 
 ## flux
 
@@ -75,7 +78,8 @@ Web 应用是一个状态机，视图与状态是一一对应的。 所有的状
 > -   store.dispatch() 触发 state
 > -   store.subscribe() 注册 state 变化监听
 > -   createStore(reducer,[initialstate]) 创建
->     !> Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。你知道 State，就知道 View 是什么样，反之亦然。
+
+!> Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。你知道 State，就知道 View 是什么样，反之亦然。
 
 ![fllux](./img/react/flux.png)
 ![fllux](./img/react/flux2.png)
@@ -105,7 +109,6 @@ export {Provider, Consumer};
 parent.js
 import {Provider} from '../context.js';
 return <Provider value={value}>{this.props.children}</Provider>;
-
 
 import {Consumer} from '../context.js';
  render() {
@@ -163,17 +166,9 @@ import {Consumer} from '../context.js';
 1.  StrictMode 是用来提醒开发者用了即将被废弃的 API 的，像 componentWillMount 这些声明周期都会提醒，这次新加了两个 API 的提醒，ReactDOM.findDOMNode()，和老的 context api
 1.  static contextType 通过声明 static contextType = context，让 ClassComponent 可以订阅最近的一个 context provider，注意这里 contextType 是固定声明，换成别的名字都不行。如果 ConsumerComp 不在 Provider 的子树中，那么会使用 defaultValue
 
-## React v16.7
+### React v16.7
 
 1.  React 提供了一些内置 Hook
-
-### react-router4
-
-1.  所有组件更改为从 react-router-dom 导入
-1.  v2 import {Router,Route,hashHistory} from 'react-router';
-1.  在 react-router4 开始,所有的 router 组件均是从 react-router-dom 中导入, 所以一下的需要更改为以下代码:
-1.  v4 import {Route,BrowserRouter, Switch} from 'react-router-dom
-1.  将所有<Router>替换为<BrowserRouter>. 只能有一个子节点
 
 ### React v16.8
 
@@ -183,3 +178,11 @@ import {Consumer} from '../context.js';
 1.  useReducer
 1.  useContext 接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值
 1.  useLayoutEffect： useEffect 相同，但它会在所有的 DOM 变更之后同步调用 effect
+
+## react-router4
+
+1.  所有组件更改为从 react-router-dom 导入
+1.  v2 import {Router,Route,hashHistory} from 'react-router';
+1.  在 react-router4 开始,所有的 router 组件均是从 react-router-dom 中导入, 所以一下的需要更改为以下代码:
+1.  v4 import {Route,BrowserRouter, Switch} from 'react-router-dom
+1.  将所有<Router>替换为<BrowserRouter>. 只能有一个子节点
