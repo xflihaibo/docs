@@ -13,11 +13,11 @@
 </head>
 <body>
    <nav>  
-    <a href="#/standard/">开发规范</a>
-    <a href="#/web/">前端汇总</a>
-    <a href="#/tool/">工具集合</a>
-    <a href="#/advance/">进阶知识</a>
-    <a href="#/about/">关于我们</a>
+    <a href="/#/standard/">开发规范</a>
+    <a href="/#/web/">前端汇总</a>
+    <a href="/#/tool/">工具集合</a>
+    <a href="/#/advance/">进阶知识</a>
+    <a href="/#/about/">关于我们</a>
     <a href="https://github.com/xflihaibo/docs">GitHub</a>
   </nav>
   <div data-app id="app">⏰  加载中...</div>
@@ -45,7 +45,9 @@
         logo: './img/xfshz.PNG',
         maxLevel: 3,//配置最大支持渲染的标题层级
         onlyCover: true, // 主页仅加载封面，不能滚动到其他页
-        loadSidebar: true,
+        loadSidebar: true, //加载自定义侧边栏
+        // routerMode: 'history', //路由方式 默认hash
+        // basePath: '/',
         subMaxLevel:2, //自定义侧边栏同时也可以开启目录功能
         mergeNavbar: true, // Navbar将在较小的屏幕上与侧边栏合并
         nameLink: '/',
@@ -54,6 +56,7 @@
         auto2top:true, //切换页面后是否自动跳转到页面顶部 
         formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}', //变量显示文档更新日期
         notFoundPage: 'error.md',
+        // loadNavbar: true, //加载自定义导航栏
         search: {
           placeholder: '  🔍  搜索试试',
           noData:  '抱歉！找不到对应的结果',
@@ -76,6 +79,7 @@
               Array.apply(null,document.querySelectorAll("div.gitalk-container")).forEach(function(ele) {
                 ele.remove();
               });
+              console.log(hook,vm)
               divEle = domObj.create("div");
               divEle.id = "gitalk-container-" + label;
               divEle.className = "gitalk-container";
@@ -97,14 +101,14 @@
   <script src="https://unpkg.com/docsify-copy-code"></script>
   <!-- 上一位 下一位 -->
   <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-    <!-- CSS、JavaScript 和 HTML  高亮 -->
+  <!-- CSS、JavaScript 和 HTML  高亮 -->
   <script src="https://unpkg.com/prismjs/components/prism-bash.js"></script>
   <!-- 默认是提供 emoji 解析的 -->
  <script src="https://unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <!-- 搜索  -->
   <script src="https://unpkg.com/docsify/lib/plugins/search.js"></script>
   <!-- gittalk -->
-  <!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+  <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 <!-- https://unpkg.com/gitalk@latest/dist/gitalk.min.js -->
  <!-- fundebug-->
   <!-- <script src="https://js.fundebug.cn/fundebug.1.9.0.min.js"
@@ -112,7 +116,7 @@
  <script type='text/javascript'>
 !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
   gio('init','a67d1846dc1b5a80', {});
-gio('send');
+gio('send');https://github.com/l-hammer/You-need-to-know-css/blob/master/README.md
 </script> -->
 
 

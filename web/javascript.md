@@ -342,7 +342,7 @@ console.log('%cI am a button', 'color: white; background-color: green; padding: 
 
 ## 安全
 
-#### 混淆
+### 混淆
 
 混淆:具体处理为重命名局部变量、在相同语义 的情况下压缩代码，比如去掉末尾分号(Remove Terminator Semicolons)，常量替 换(Constant Propagation)、移除代码空白(Space、Tab、Line-Feed)全局变量 不会更名如 LocalStorage。
 
@@ -368,17 +368,14 @@ Number.prototype.constructor.constructor = function(a) {
 };
 ``` -->
 
-#### 加密
+### 加密
 
 1.  加密重要的目的是出于对商业利益的保护。由于作品太容易被复制窜 改，容易会失去渠道先机
 1.  加密的目标:减少加密的成本增加破解的成本，需注意 加密后的文件不易过大、没有人工介入不能破解、限制在其他域名部署、不容易被 调试跟踪。
 
-#### 加密算法
+### 加密算法
 
 1.  不基于 key 的算法就是消息双⽅方都通过⼀一定的 加密和解密算法来进⾏行行通信，这种算法缺点很 明显如果加密算法被破解了了就泄露露了
 1.  key 是⼀一个什什么东⻄西呢?随便便你，可以是⼀一个随机产⽣生 的数字，或者⼀一个单词，只要你⽤用的算法认为你选来 做 key 的东⻄西合法就⾏行行。所以基于 key 的加密算法⼜又分 为 两类:对称加密和不不对称加密
 
-#### 常用的加密手段
-
-常用的加密手段有：base64、md5、 sha1
-
+常用的加密手段有：base64、md5、 sha1 ， [obfuscator](https://obfuscator.io/)
