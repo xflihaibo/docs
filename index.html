@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <title>幸福拾荒者</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="一个前端知识总结分享平台，共同成长共同进步！">
+  <meta name="Keywords" content="css,html,node,javascript, web, es6,es7,es8,es9,es10,object,ECMAScript,nginx,chrome,jset,前端规范,eslint,jsdoc">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="shortcut icon" href="./img/fu.ico" type="image/x-icon">
   <link rel="stylesheet" href="./index.css" />
   <link rel="stylesheet" href="https://unpkg.com/docsify/lib/themes/vue.css">
-    <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+   <link rel="icon" href="static/favicon.ico">
 </head>
 <body>
    <nav>  
@@ -24,10 +26,10 @@
   <div id="gitalk-container"></div>
  </body>
 
- <script>
+ <!-- <script>
   var gitalkConfig={
       clientID: 'fdbef63de3920ed662aa',
-      clientSecret: '033144a801ca6ad713eed191b6b5be0938b3be65',
+      clientSecret: '8c1b8b2499424595d96e5a583269c9f3c027fb0f',
       language:"zh-CN",
       repo: "docs",
       owner: 'xflihaibo',
@@ -38,64 +40,11 @@
       admin: ['xflihaibo'],
       distractionFreeMode: false ,// Facebook-like distraction free mode
     }
-    window.$docsify = {
-        el: '#app',
-        themeColor:'#39BAE8',
-        name: '幸福拾荒者',
-        logo: './img/xfshz.PNG',
-        maxLevel: 3,//配置最大支持渲染的标题层级
-        onlyCover: true, // 主页仅加载封面，不能滚动到其他页
-        loadSidebar: true, //加载自定义侧边栏
-        // routerMode: 'history', //路由方式 默认hash
-        // basePath: '/',
-        subMaxLevel:2, //自定义侧边栏同时也可以开启目录功能
-        mergeNavbar: true, // Navbar将在较小的屏幕上与侧边栏合并
-        nameLink: '/',
-        repo: 'https://github.com/xflihaibo/docs', // 右上角小部件
-        coverpage: true,//封面图
-        auto2top:true, //切换页面后是否自动跳转到页面顶部 
-        formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}', //变量显示文档更新日期
-        notFoundPage: 'error.md',
-        // loadNavbar: true, //加载自定义导航栏
-        search: {
-          placeholder: '  🔍  搜索试试',
-          noData:  '抱歉！找不到对应的结果',
-         },
-        pagination: {
-            previousText: '上一节',
-            nextText: '下一节',
-            crossChapter: true
-          },
-         plugins: [
-            function(hook, vm) {
-              hook.beforeEach(function (html) {
-                return html+ '\n'+ '⏰ 更新于： {docsify-updated} ';
-              });
-            hook.doneEach(function() {
-              var label, domObj, main, divEle, gitalk;
-              label = vm.route.path.split("/").pop();
-              domObj = Docsify.dom;
-              main = domObj.getNode("#main");
-              Array.apply(null,document.querySelectorAll("div.gitalk-container")).forEach(function(ele) {
-                ele.remove();
-              });
-              console.log(hook,vm)
-              divEle = domObj.create("div");
-              divEle.id = "gitalk-container-" + label;
-              divEle.className = "gitalk-container";
-              divEle.style = "width: " + main.clientWidth + "px; margin: 0 auto 20px;";
-              domObj.appendTo(domObj.find(".content"), divEle);
-              gitalk = new Gitalk(
-                Object.assign(gitalkConfig, { id: !label ? "home" : label })
-              );
-              gitalk.render("gitalk-container-" + label);
-            });
-          }
-      ]
-    }
+  
 
 
-  </script> 
+  </script>  -->
+  <script src="./lib/index.js"></script>
   <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
   <!-- 复制代码  -->
   <script src="https://unpkg.com/docsify-copy-code"></script>
