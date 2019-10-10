@@ -50,6 +50,40 @@ localStorag、sessionStorage： HTML5 提供了两种在客户端存储数据的
 |      用途      |                                用于标识用户身份信息                                 |              用于浏览器端数据处理，或者页面间通信               | 用于浏览器端数据处理，或者页面间通信                            |
 |     安全性     |                 低（设置 https 时，客户端无法直接读取，安全性较好）                 |                               低                                | 高                                                              |
 
+## EventSource
+
+EventSource 接口用于接收服务器发送的事件(长链接)。它通过 HTTP 连接到一个服务器，以 text/event-stream 格式接收事件, 不关闭连接。
+
+![](./img/eventsource.png)
+
+-   语法：Arr.concat(arr1,arr2,……,arrn)
+
+1.  EventSource.onerror：是一个 EventHandler，当发生错误时被调用，并且在此对象上派发 error 事件。
+1.  EventSource.onmessage：是一个 EventHandler，当收到一个 message 事件，即消息来自源头时被调用。
+1.  EventSource.onopen：是一个 EventHandler，当收到一个 open 事件，即连接刚打开时被调用。
+1.  EventSource.readyState 只读 ，一个 unsigned short 值，代表连接状态。可能值是 CONNECTING (0), OPEN (1), 或者 CLOSED (2)。
+1.  EventSource.url 只读 一个 DOMString，代表源头的 URL。
+1.  EventSource.close() 如果存在，则关闭连接，并且设置 readyState 属性为 CLOSED。如果连接已经被关闭，此方法不做任何事。
+
+```javascript
+//客户端
+const EventSour = new EventSource('/api/home');
+// 监听指定类型的事件（可以监听多个）
+EventSour.addEventListener('myopen', function(event) {
+    console.log('myopen', event.data);
+});
+
+//服务端
+app.get('/api/home', (ewq, res) => {
+    // 根据 EventSource 规范设置报头
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream' // 规定把报头设置为 text/event-stream
+    });
+    // 用write返回事件流，事件流仅仅是一个简单的文本数据流，每条消息以一个空行(\n)作为分割。
+    res.write('event: myopen' + '\n' + 'data:' + '消息内容' + '\n' + 'retry:' + '2000' + '\n\n');
+});
+```
+
 ## SEO
 
 SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移

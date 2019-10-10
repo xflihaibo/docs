@@ -89,6 +89,22 @@ os.homedir() 方法以字符串的形式返回当前用户的主目录
 
 ?> IO 密集型：大量的输入输出; CUP 密集型 :大量的计算；
 
+## 守护进程
+
+在开发 nodejs 应用时遇到过这样的情况，修改 node 应用中的程序文件后,必须重启 node 才能重新加载应用代码。node 加载过一次文件后就将其缓存在内存中，以后再读取这个文件是从内存中读取，导致后面再修改此文件都不会加载了。这样的设计提高了性能，但降低了开发效率。
+
+常见的进程守护工具
+
+1.  [nodemoon](https://github.com/remy/nodemon#nodemon)
+2.  [supervisor](https://github.com/petruisfan/node-supervisor/)
+3.  [forever](https://github.com/nodejitsu/forever)
+
+```shall
+npm install -g nodemon
+npm install -g supervisor
+npm install forever -g
+```
+
 ## 事件循环
 
 事件循环是 Node.js 处理非阻塞 I/O 操作的机制——尽管 JavaScript 是单线程处理的——当有可能的时候，它们会把操作转移到系统内核中去。
