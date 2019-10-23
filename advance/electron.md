@@ -263,3 +263,62 @@ github- settings->Developer settings-》Personal access tokens=〉Generate new t
 
 本地配置 git
 export GH_TOKEN=39cd1f807461123618e9d2dea2c596d514128eeb
+
+## 开发串口工具
+
+由于开发串口工具问题较多，所以先总结罗列一些开发流程之前准备的的事情
+
+第一步全局安装
+python2.7 (必须) 我的是 2.7.16 版本
+
+```shell
+npm i -g node-gyp //可以对Native模块进行重编译。
+    or
+npm i -g node-pro-gyp 可以对Native模块进行重编译。
+npm i -g production windows-build-tools  //编译本机节点模块
+```
+
+## 项目开发依赖
+
+```shell
+npm install --save-dev electron-rebuild 先下载electron-rebuild
+
+# 每次运行"npm install"时，也运行这条命令
+./node_modules/.bin/electron-rebuild
+
+# 在windows下如果上述命令遇到了问题，尝试这个：
+.\node_modules\.bin\electron-rebuild.cmd
+```
+
+## 相关问题链接
+
+1.  (参考链接)[https://blog.csdn.net/naisi2422553065/article/details/90475830]
+2.  (参考链接)[http://electronjs.org/docs/tutorial/using-native-node-modules]
+
+## 最小化托盘 window 关闭 用 window.close 事件
+
+## windows 打包引用路径有问题呢
+
+## build 文件名称问题-window 打包报错
+
+## 获取文件路径最好使用 path 拼接，否则 window 打包后报错
+
+## electron-build 在 window 打包 router 失效 配置成多页面
+
+## 推送需要设置 gh_token
+
+## electron-build 打包
+
+1.  build.productName:'名称'
+2.  react 模板需要在 build 中设置"extends": null,打包忽略 build
+
+## build files 可以做打包体积优化
+
+```json
+[
+  "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+  "!**/node_modules/_/{test,**tests**,tests,powered-test,example,examples}",
+  "!**/node_modules/_.d.ts",
+  "!**/node_modules/.bin"
+]
+```

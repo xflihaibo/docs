@@ -3,12 +3,20 @@
 修改密码
 
 ```mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+mysql -uroot -proot //链接数据库
+exit 推出
+
+show databases; 查看数据库
+use  stu 切换数据库
+show tables; 查看数据库中的表
+select database(); 查看当前数据库
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'; 修改密码
 -- 刷新
 FLUSH PRIVILEGES;
 ```
 
-创建 student 表
+### 创建 student 表
 
 ```mysql
 CREATE TABLE student
@@ -20,14 +28,14 @@ CREATE TABLE student
 )
 ```
 
-表查询
+### 表查询
 
 ```mysql
 DECS student //查询表结构
 SELECT * FROM student //查询表数据
 ```
 
-列操作
+### 列操作
 
 ```mysql
 -- 增加表里的字段
@@ -40,7 +48,7 @@ ALTER TABLE student MODIFY idcard VARCHAR(128)  NULL
 ALTER TABLE student DROP idcard
 ```
 
-添加约束
+### 添加约束
 
 ```mysql
 -- 添加主建
@@ -53,13 +61,13 @@ ALTER TABLE stu MODIFY COLUMN age INT(11) DEFAULT 20
 ALTER TABLE score ADD CONSTRAINT fk_score_stu_id FOREIGN KEY (stu_id) REFERENCES stu(id)
 ```
 
+### sql
+
 ```mysql
 INSERT INTO student (name, age, city)
 VALUES('张三', 20, '上海')
 
-
 SELECT * FROM student
-
 
 UPDATE student SET age=40, city='北京' WHERE id=1
 
@@ -75,13 +83,9 @@ DELETE FROM student WHERE id=2
 -- 重置标示种子 不写备份 没有日志
 TRUNCATE TABLE student
 
-
-
-
 -- 查询
 
 -- 查询 北京同学信息
-
 SELECT id,name
 FROM student
 WHERE city='北京'
@@ -117,7 +121,7 @@ SELECT * FROM score WHERE grade BETWEEN 70 AND  100
 
 
 
--- 表查询城市
+-- 表查询出现的城市
 
 SELECT DISTINCT city
 FROM student
@@ -128,12 +132,15 @@ SELECT 'a'+'b' -- 0
 SELECT CONCAT('a','b') -- ab
 
 
+_:单个字符
+%:1个或多个
+
 SELECT  *
 FROM student
 WHERE name LIKE '李%'
 -- WHERE name LIKE '%李%' 李—
 
--- 链接
+-- 合并
 SELECT  CONCAT(name,city)
 FROM student
 
@@ -235,31 +242,52 @@ HAVING 分组后的过滤条件
 ORDER BY 列名 排序
 LIMIT 偏移量 条数
 
-
+-- 统计课程的最高分 并排序
 SELECT course_id ,MAX(grade)
 FROM score
 GROUP BY course_id
 ORDER BY MAX(grade) ASC
 
+-- 统计省份学生大于1的身份
+SELECT province ,COUNT(*)
+FROM student
+GROUP BY province
+HAVING COUNT(*)>1
+
+-- 子查询
+-- 查询年龄大于平均年龄
 SELECT *
 FROM student
 WHERE age>(SELECT AVG(age)FROM student)
 
-//不在范围内
+-- 其中一个
+SELECT *
+FROM student
+WHERE age> ANY (SELECT age FROM student WHERE province='北京')
+
+-- 所有
+SELECT *
+FROM student
+WHERE age> ALL (SELECT age FROM student WHERE province='北京')
+
+
+-- 不在范围内
 SELECT *
 FROM student
 WHERE id NOT IN (SELECT student_id FROM score)
 
+
 SELECT *
 FROM student
-WHERE EXISTS  (SELECT * FROM score WHERE score.student_id = student.id )
+WHERE NOT EXISTS  (SELECT * FROM score WHERE score.student_id = student.id )
 
--- 表链接
+
+-- 表链接 多表联查
 -- 内链接
-SELECT * FROM student INSERT JOIN score ON student.id=score.stu_id
+SELECT * FROM student INSERT JOIN score ON student.id=score.student_id
 -- 左外链接
 SELECT * FROM student LEFT JOIN score ON student.id=score.stu_id
--- 左外链接
+-- 右外链接
 SELECT * FROM student RIGHT JOIN score ON student.id=score.stu_id
 -- 外链接
 SELECT * FROM student OUTER JOIN score ON student.id=score.stu_id
@@ -275,12 +303,32 @@ SELECT c1.id COUNT(*) FROM cate c1 INSERT JOIN cate c2 on c1.id=c2.parent.id
 WHERE c1.parent_id
 GROUP BY  c1.id
 
--- 删除重复数据 删除
+-- 查询父子关联数量
+select c1.id ,COUNT(*) FROM cate c1 INNER JOIN cate c2 on c1.id=c2.parent_id
+WHERE c1.parent_id=0
+GROUP BY c1.id
+
+-- 查询父子关联信息
+select c1.id ,c1.name,c2.name AS parentName FROM cate c1 INNER JOIN cate c2 on c1.parent_id=c2.id
+
+
+-- 查询重复数据  过滤掉
 SELECT * FROM cate c1 LEFT JOIN
 (SELECT id,name FROM cate GROUP BY name HAVING COUNT(*)>1)c2
 ON c1.name =c2.name
 WHERE c1.id != c2.id
 
+SELECT * FROM cate c1 WHERE c1.name IN
+(SELECT name FROM cate GROUP BY name HAVING COUNT(*)>1)
+AND c1.id NOT IN
+(SELECT MIX(id) FROM cate GROUP BY name HAVING COUNT(*)>1)
+
+-- 删除重复数据
+DELETE  FROM cate
+WHERE  name IN
+((SELECT name FROM cate GROUP BY name HAVING COUNT(*)>1) t1)
+AND c1.id NOT IN
+((SELECT MIX(id) FROM cate GROUP BY name HAVING COUNT(*)>1) t2)
 
 -- 把 stu城市 插入 新的表里去
 INSERT INTO provice(name) SELECT DISTINCT city FROM stu
@@ -298,10 +346,10 @@ CHANGE COLUMN city city_id INT(11) NOT NULL AFTER age;
 
 ## 事务
 
-完整性 不可分割
-一致性
-事务之间相互隔离
-持久性
+1.  完整性 不可分割
+2.  一致性
+3.  事务之间相互隔离
+4.  持久性
 
 ```mysql
 -- 开启事务
@@ -314,4 +362,9 @@ UPDATE account SET balance=balance+10 WHERE id=2
 COMMIT;
 ```
 
-bluebord
+<!-- 设计数据库
+
+模型
+导出 mql
+
+bluebord q :promise -->
