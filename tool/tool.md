@@ -171,3 +171,8 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 -   [microjs](http://microjs.com/)：迷你前端开发框架和类库资源收集
 -   [javascripting](https://www.javascripting.com/) 最好的资源 javascript 库、框架和插件
+
+### github
+
+-   [github](https://help.github.com/cn/github/) ：github 官方帮助文档查询
+-   [w3cschool](https://www.w3cschool.cn/githubcn/) ：GitHub 官方帮助文档中文版

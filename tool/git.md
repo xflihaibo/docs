@@ -75,6 +75,7 @@ git branch -a  查看本地 远程分支 remotes开头的代表是远程分支
 git branch -r 查看远程分支
 git branch dev 创建dev分支
 git branch -d dev  删除本地分支
+git branch -m oldname newname 分支重命名
 git push origin --delete dev   删除远程分支
 git branch -D test 删除没有合并的分支
 git branch –m dev fix  修改分支名称

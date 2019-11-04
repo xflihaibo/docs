@@ -1,5 +1,9 @@
 # electron
 
+<div align="center">
+  <img src="./advance/img/electron/electron.jpeg" width="300" alt="logo" align="center">
+</div>
+
 Electron 是由 Github 开发,使用 JavaScript, HTML 和 CSS 构建跨平台的桌面应用
 
 ## 原理
@@ -14,6 +18,14 @@ Electron 是由 Github 开发,使用 JavaScript, HTML 和 CSS 构建跨平台的
 nodemoon --watch main.js --exec 'electrion .'
  "electron-dev": "concurrently \"npm run start-test\" \"wait-on http://192.168.102.86:3900 && electron .\"",
 ```
+
+webview 单独有一个进程渲染
+可以通过设置 nodeintraction 访问本地电脑资源
+可以把自己开发的脚本信息嵌入到网页中
+注入样式 html 代码等
+
+delog
+选择文件。保存文件 文本提示
 
 ### 主进程- Main Process
 
@@ -45,6 +57,12 @@ ipcRenderer.on('send-file', (event, path) => {
   console.log(path);
 });
 ```
+
+## 调试
+
+主进程
+
+渲染进程
 
 ## 主进程(ipcMain)与渲染进程(ipcRenderer) 模块
 
