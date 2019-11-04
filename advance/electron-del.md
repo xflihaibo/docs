@@ -8,55 +8,20 @@
 
 ## 开始
 
-```shall
-# 克隆示例项目的仓库
-$ git clone https://github.com/electron/electron-quick-start
-
-# 进入这个仓库
-$ cd electron-quick-start
-
-# 安装依赖并运行
-$ npm install && npm start
-```
-
-每次修改 mian.js 文件都需要自动重启，安装 nodemoon
+自动重启工具 nodemoon supervisor
 
 ```shall
-npm install nodemoon --save-dev
+nodemoon --watch main.js --exec 'electrion .'
+ "electron-dev": "concurrently \"npm run start-test\" \"wait-on http://192.168.102.86:3900 && electron .\"",
 ```
 
-在 package.json 中配置，然后启动"npm install start"
+webview 单独有一个进程渲染
+可以通过设置 nodeintraction 访问本地电脑资源
+可以把自己开发的脚本信息嵌入到网页中
+注入样式 html 代码等
 
-```json
-    "start": "nodemoon --watch main.js --exec 'electrion .'",
-```
-
-## 调试
-
-### 主进程调试
-
-在启动 electron 中配置 "--inspect",启动 “npm start”
-
-![electron](./img/electron/elemain01.png)
-![electron](./img/electron/elemain02.png)
-
-在 chrome 中打开“chrome://inspect/#devices” 配置
-
-![electron](./img/electron/elemain03.jpeg)
-
-<!-- ![electron](./img/electron/elemain04.png) -->
-
-![electron](./img/electron/elemain05.jpeg)
-![electron](./img/electron/elemain06.png)
-
-#### 渲染进程
-
-在 main.js 打开控制台“mainWindow.webContents.openDevTools()”
-![electron](./img/electron/eleipc03.png)
-
-渲染进程与主进程的通信调试，安装“devtron”
-![electron](./img/electron/eleipc01.png)
-![electron](./img/electron/eleipc02.png)
+delog
+选择文件。保存文件 文本提示
 
 ## 进程
 
@@ -94,25 +59,88 @@ ipcRenderer.on('send-file', (event, data) => {
 });
 ```
 
-## 常用模块
+## 调试
 
-### electron-store:本地持久化
+### 主进程调试
+
+![electron](./img/electron/elemain01.png)
+![electron](./img/electron/elemain02.png)
+![electron](./img/electron/elemain03.jpeg)
+![electron](./img/electron/elemain04.png)
+![electron](./img/electron/elemain05.jpeg)
+![electron](./img/electron/elemain06.png)
+
+#### 渲染进程
+
+![electron](./img/electron/eleipc01.png)
+![electron](./img/electron/eleipc03.png)
+![electron](./img/electron/eleipc02.png)
+
+## 主进程(ipcMain)与渲染进程(ipcRenderer) 模块
+
+shell
+screen
+clipborad :剪切
+crashReporter :崩溃报告
+nativeImage: 图片
+
+## 主进程(ipcMain)
+
+app
+BrowserWindow
+webContents：控制渲染网页
+ipcMain
+dialog
+Menu
+MenuItem
+net ：http
+protocol：
+session
+Tray：通知栏区域图标
+systemPerferences：获取偏好设置
+globalhortcut：定义快捷键
+contentTracing：收集跟踪性能瓶颈
+powerSaveBlocker:阻止系统进入睡眠模式
+powerMonitor：监听电源更改
+autoUpdater：自动更新
+
+## 渲染进程(ipcRenderer) 模块
+
+ipcRenderer
+desktopCapturer:捕获桌面声音视频
+romote：获取主进程模块
+webFrame:渲染网页
+
+## 模块
+
+devtron 开发调试工具
+electrion-is-dev ：判断开发环境生产环境
+wait-on
+
+electron-store:本地持久化
 
 ```javascript
 const Store = require('electron-store');
+
 const store = new Store();
 
-store.set('unicorn', '🐎');
-console.log(store.get('unicorn')); //🐎
+store.set('unicorn', '🦄');
+console.log(store.get('unicorn'));
+//=> '🦄'
 
+// Use dot-notation to access nested properties
 store.set('foo.bar', true);
-console.log(store.get('foo')); //=> {bar: true}
+console.log(store.get('foo'));
+//=> {bar: true}
 
 store.delete('unicorn');
-console.log(store.get('unicorn')); //=> undefined
+console.log(store.get('unicorn'));
+//=> undefined
 ```
 
-### electron-is-dev 检查当前(生产 开发)环境
+electron-updater （--save）自动更新检测
+electron-builder 打包
+electron-is-dev 检查当前(生产 开发)环境
 
 ```javascript
 const isDev = require('electron-is-dev');
@@ -124,7 +152,9 @@ if (isDev) {
 }
 ```
 
-### electron-log 日志
+[崩溃日志报告](https://electronjs.org/docs/api/crash-reporter#%E5%B4%A9%E6%BA%83%E6%97%A5%E5%BF%97%E6%8A%A5%E5%91%8A)
+
+electron-log 日志
 
 ```javascript
 const log = require('electron-log');
@@ -133,8 +163,6 @@ log.info('Hello, log');
 log.warn('Some problem appears');
 electron-log支持的日志级别有：error, warn, info, verbose, debug, silly
 ```
-
-### electron-builder 打包
 
 ```json
 "build": {
@@ -245,38 +273,82 @@ electron-log支持的日志级别有：error, warn, info, verbose, debug, silly
   }
 ```
 
-### electron-updater （--save）自动更新检测
+## 打包参数
 
-![electron](./img/electron/ele01.jpeg)
+```shell
+ --mac, -m, -o, --macos   Build for macOS,                              [array]
+  --linux, -l              Build for Linux                               [array]
+  --win, -w, --windows     Build for Windows                             [array]
+  --x64                    Build for x64 (64位安装包)                     [boolean]
+  --ia32                   Build for ia32(32位安装包)                     [boolean]
+  --armv7l                 Build for armv7l                              [boolean]
+  --arm64                  Build for arm64                               [boolean]
+  --dir                    Build unpacked dir. Useful to test.           [boolean]
+  --prepackaged, --pd      预打包应用程序的路径（以可分发的格式打包）
+  --projectDir, --project  项目目录的路径。 默认为当前工作目录。
+  --config, -c             配置文件路径。 默认为`electron-builder.yml`（或`js`，或`js5`)
+```
 
-```javascript
-//检测是否更新
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('正在检测是否需要更新...');
-});
+github- settings->Developer settings-》Personal access tokens=〉Generate new token-》 勾选 repo= Generate token
 
-//检测到新版本
-autoUpdater.on('update-available', () => {
-  console.log('update-available');
-});
+本地配置 git
+export GH_TOKEN=39cd1f807461123618e9d2dea2c596d514128eeb
 
-//当前已是最新版本
-autoUpdater.on('update-not-available', () => {
-  console.log('update-not-available');
-});
+## 开发串口工具
 
-//下载出错
-autoUpdater.on('error', err => {
-  sendStatusToWindow('error. ' + err);
-});
+由于开发串口工具问题较多，所以先总结罗列一些开发流程之前准备的的事情
 
-//下载进度
-autoUpdater.on('download-progress', data => {
-  console.log('download-progress');
-});
+第一步全局安装
+python2.7 (必须) 我的是 2.7.16 版本
 
-//下载完毕
-autoUpdater.on('update-downloaded', () => {
-  console.log('update-downloaded');
-});
+```shell
+npm i -g node-gyp //可以对Native模块进行重编译。
+    or
+npm i -g node-pro-gyp 可以对Native模块进行重编译。
+npm i -g production windows-build-tools  //编译本机节点模块
+```
+
+## 项目开发依赖
+
+```shell
+npm install --save-dev electron-rebuild 先下载electron-rebuild
+
+# 每次运行"npm install"时，也运行这条命令
+./node_modules/.bin/electron-rebuild
+
+# 在windows下如果上述命令遇到了问题，尝试这个：
+.\node_modules\.bin\electron-rebuild.cmd
+```
+
+## 相关问题链接
+
+1.  (参考链接)[https://blog.csdn.net/naisi2422553065/article/details/90475830]
+2.  (参考链接)[http://electronjs.org/docs/tutorial/using-native-node-modules]
+
+## 最小化托盘 window 关闭 用 window.close 事件
+
+## windows 打包引用路径有问题呢
+
+## build 文件名称问题-window 打包报错
+
+## 获取文件路径最好使用 path 拼接，否则 window 打包后报错
+
+## electron-build 在 window 打包 router 失效 配置成多页面
+
+## 推送需要设置 gh_token
+
+## electron-build 打包
+
+1.  build.productName:'名称'
+2.  react 模板需要在 build 中设置"extends": null,打包忽略 build
+
+## build files 可以做打包体积优化
+
+```json
+[
+  "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+  "!**/node_modules/_/{test,**tests**,tests,powered-test,example,examples}",
+  "!**/node_modules/_.d.ts",
+  "!**/node_modules/.bin"
+]
 ```
