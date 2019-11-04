@@ -79,7 +79,11 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 ### 动画库
 
-[popmotion](https://popmotion.io/) 小巧，灵活的 JavaScript 运动 🏊‍♀️ 引擎
+-   [popmotion](https://popmotion.io/) 小巧，灵活的 JavaScript 运动 🏊‍♀️ 引擎
+-   [animate](https://daneden.github.io/animate.css/) animate.css 是来自 dropbox 的工程师 Daniel Eden 开发的一款 CSS3 的动画效果小类库
+-   [Hover.css](http://ianlunn.github.io/Hover/) Hover.css 是一套使用 CSS3 动画实现的 Hover 特效集锦
+-   [bouncejs](http://bouncejs.com/) Bounce.js 是一个用来生成不错的 CSS3 驱动关键帧动画的工具
+-   [Effeckt](https://h5bp.org/Effeckt.css/) 针对不同 UI 的 CSS3 动画和过渡效果集，包含了丰富的 CSS3 动画和过渡效果
 
 ### js
 
