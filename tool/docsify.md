@@ -1,7 +1,7 @@
 # docsify
 
 <div align="center">
-  <img src="https://docsify.js.org/_media/icon.svg" width="200" alt="logo" align="center">
+  <img src="https://docsify.js.org/_media/icon.svg" width="100" alt="logo" align="center">
 </div>
 
 一个神奇的文档网站生成工具
