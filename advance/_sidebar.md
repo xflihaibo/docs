@@ -9,5 +9,6 @@
 -   [Ab 压测](advance/ab.md)
 -   [Nginx](advance/nginx.md)
 -   [Linux](advance/liunx.md)
+-   [Ssh](advance/ssh.md)
 -   [crontab 定时任务](advance/crontab.md)
 -   [Vim](advance/vim.md)
