@@ -15,7 +15,7 @@
     "spell_check": false,
     "tab_size": 4, //tab 4个空格
     "theme": "Adaptive.sublime-theme",
-    "translate_tabs_to_spaces": true //空格代替tab缩近
+    "translate_tabs_to_spaces": true, //空格代替tab缩近
     "dpi_scale": 1.0 //文件名称中文乱码问题
 }
 ```
@@ -213,6 +213,8 @@ emmet 通过一套简单的语法让你快速生成大量的 HTML 代码
 JsPrettier 代码的风格进行自动格式化处理
 ['配置文档'](https://prettier.io/docs/en/options.html)
 ['参考文档'](https://realroyhsu.github.io/2018/09/02/Sublime3%20React%E3%80%81JSX%20%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96--[Prettier]/)
+
+!> 需全局安装 prettier;
 
 ```json
 {
