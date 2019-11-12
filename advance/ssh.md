@@ -85,9 +85,9 @@ scp [参数] [原路径] [目标路径]
 
 **注意**
 
-1 .ssh 目录的权限必须是 700；
-2 .ssh/authorized_keys 文件权限必须是 600；
-`
+> -   .ssh 目录的权限必须是 700；
+> -   .ssh/authorized_keys 文件权限必须是 600；
+>     `
 
 ```shell
 chmod 700 -R .ssh
