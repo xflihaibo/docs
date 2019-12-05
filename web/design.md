@@ -21,6 +21,49 @@
 -   保持子类的开放性和灵活性
 -   面向接口编程
 
+## 面向切面编程
+
+AOP(面向切面编程)的主要作用是把一些跟核心业务逻辑模块无关的功能抽离出来，这些跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。把这些功能抽离出来之后， 再通过“动态织入”的方式掺入业务逻辑模块中
+
+### 优点
+
+1. 可以保持业务逻辑模块的纯净和高内聚性。
+2. 可以很方便地复用日志统计等功能模块。
+
+```javascript
+Function.prototype.before = function(beforefn) {
+    var _self = this; //保存原函数引用
+    return function() {
+        //返回包含了原函数和新函数的"代理函数"
+        beforefn.apply(this, arguments); //执行新函数，修正this
+        return _self.apply(this, arguments); //执行原函数
+    };
+};
+
+Function.prototype.after = function(afterfn) {
+    var _self = this;
+    return function() {
+        var ret = _self.apply(this, arguments);
+        afterfn.apply(this, arguments);
+        return ret;
+    };
+};
+
+var func = function() {
+    console.log('2');
+};
+
+func = func
+    .before(function() {
+        console.log('1');
+    })
+    .after(function() {
+        console.log('3');
+    });
+
+func();
+```
+
 ## 设计模式
 
 设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。
