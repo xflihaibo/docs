@@ -103,6 +103,7 @@ git revert -m merge 前的版本号 撤销合并当前 merge
 git remote –v 查看项目
 git remote add home git@github.com:Silence520/homework02.git 添加项目别名
 $ ssh-keygen -t rsa -C 'xxx@qq.com' 配置密钥对 公钥在 git 上配置
+
 ```
 
 ![](./img/git03.png)

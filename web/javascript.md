@@ -241,6 +241,8 @@ const debounce = (fn, delay) => {
 
 ## Promise
 
+[Promise](https://promisesaplus.com/) An open standard for sound, interoperable JavaScript promises
+
 #### 三种状态:
 
 1.  pending：进行中

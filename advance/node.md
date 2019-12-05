@@ -179,7 +179,7 @@ V8 的垃圾回收策略主要基于分代式垃圾回收机制。在自动垃�
 
 ![node](./img/nodeimg/node14.png)
 
-?> node 使用 javascript 在服务端操作大内存对象收到了一定的限制 新生代 64 位系统是 32MB x 2 ;32 位系统是 16MB x 2 老生代 64 位系统是 1.4G ;32 位系统是 0.7G
+?> node 使用 javascript 在服务端操作大内存对象收到了一定的限制 新生代 64 位系统是 From、To 各占 16MB， 16MB x 2 ;32 位系统是 From、To 各占 8MB，8MB x 2 老生代 64 位系统是 1.4G ;32 位系统是 0.7G
 
 !>在 node 启动时，通过--max-new-space-size 和--max-old-space-size 可分别设置新生代和老生代的默认内存限制
 
@@ -206,6 +206,14 @@ V8 老生代主要采用 Mark-Sweep 和 Mark- Compact 在使用 Scavenge 不合�
 ?> 由于 Mark-Conpact 需要移动对象，所以它的执行速度不可能很快，在取舍上，V8 主要使用 Mark-Sweep，在空间不足以对从新生代中晋升过来的对象进行分配时，才使用 Mark-Compact
 
 ![node](./img/nodeimg/09.png)
+
+## 算法对比
+
+|   回收算法   | Mark-Sweep | Mark-Compact |      Scavenge      |
+| :----------: | :--------: | :----------: | :----------------: |
+|     速度     |    中等    |     最慢     |        最快        |
+|   空间开销   |     少     |      少      | 双倍空间（无碎片） |
+| 是否移动对象 |     否     |      是      |         是         |
 
 ## node 常见的内存泄漏
 

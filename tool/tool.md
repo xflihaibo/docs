@@ -55,6 +55,7 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [docz](https://www.docz.site/)：用 MDX 写 React UI 组件文档
 -   [storybook](https://storybook.js.org/)： Build bulletproof UI components faster
 -   [apidocjs](http://apidocjs.com/)：apidoc 是一个轻量级的在线 REST 接口文档生成系统，可以根据其特定的规则的代码注释来生成静态网页
+-   [hexo](https://hexo.io/zh-cn/docs/)：Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页
 
 ### editor
 
@@ -119,10 +120,13 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 [numeraljs](http://numeraljs.com/) 一个用于格式化和数字金钱 💰 的 js 库
 
-<!--
 ### video
 
-[broken-links](https://www.broken-links.com/) 视频 -->
+-   [broken-links](https://www.broken-links.com/) 视频
+-   [dplayer](http://dplayer.js.org/)
+-   [plyr](https://plyr.io/)
+-   [bilibili](http://bilibili.github.io/flv.js/demo/) B 站播放器
+-   [vue-video](https://hilongjw.github.io/vue-video/) 基于 vue
 
 <!-- ### Email
 

@@ -226,6 +226,7 @@ nvm ls-remote ## //列出所以远程服务器的版本（官方node version lis
 nvm current ## //显示当前的版本
 nvm alias ## //给不同的版本号添加别名
 nvm unalias ## //删除已定义的别名
+nvm alias default ## //全局设置默认版本
 nvm reinstall-packages ## //在当前版本node环境下，重新全局安装指定版本号的npm包
 ```
 
