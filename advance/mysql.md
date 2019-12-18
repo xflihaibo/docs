@@ -56,7 +56,7 @@ ALTER TABLE student ADD PRIMARY KEY(id)
 -- 添加唯一约束
 ALTER TABLE stu ADD UNIQUE INDEX uq_student_idcard (idcard)
 -- 增加默认约束
-ALTER TABLE stu MODIFY COLUMN age INT(11) DEFAULT 20  
+ALTER TABLE stu MODIFY COLUMN age INT(11) DEFAULT 20
 -- 主外键
 ALTER TABLE score ADD CONSTRAINT fk_score_stu_id FOREIGN KEY (stu_id) REFERENCES stu(id)
 ```
@@ -93,7 +93,7 @@ ORDER BY id ASC
 
 -- 查询 别名
 
-SELECT id,name,city AS home  
+SELECT id,name,city AS home
 FROM student
 WHERE city='北京'
 ORDER BY id ASC
@@ -105,14 +105,14 @@ WHERE age IS NULL
 
 -- 默认常量列
 
-SELECT id,name,'中国' AS country  
+SELECT id,name,'中国' AS country
 FROM student
 WHERE city='北京'
 ORDER BY id ASC
 
 -- 分页
 
-SELECT id,name,city,'中国' AS country  
+SELECT id,name,city,'中国' AS country
 FROM student
 LIMIT 4,2
 
@@ -284,7 +284,7 @@ WHERE NOT EXISTS  (SELECT * FROM score WHERE score.student_id = student.id )
 
 -- 表链接 多表联查
 -- 内链接
-SELECT * FROM student INSERT JOIN score ON student.id=score.student_id
+
 -- 左外链接
 SELECT * FROM student LEFT JOIN score ON student.id=score.stu_id
 -- 右外链接

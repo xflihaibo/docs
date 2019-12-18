@@ -51,6 +51,7 @@ Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统
 1.  find /etc -size +100k //文件大于 100k 的
 1.  find /etc -size 100k //文件等于 100k 的
 1.  main ls 查看帮助
+1.  history 查看历史记录
 
 ### 配置免密登录
 
@@ -141,6 +142,14 @@ r:读 4。（cat more head tail）
 <!-- > useradd user1
 > pasword user1 -->
 
+## 源码包编译过程
+
+| 编译方法 |     命令     |       产物       |
+| :------: | :----------: | :--------------: |
+| 检测配置 | ./configure  |     Makefile     |
+|   编译   |     make     | 二进制可执行文件 |
+|   安装   | make install |  安装到指定目录  |
+
 ## shell 命令
 
 ![](./img/shell.png)
@@ -150,13 +159,13 @@ r:读 4。（cat more head tail）
 
 ### shell 编程常见的系统变量解析
 
-1.  $0   当前程序的名称
-2.  $n   当前程序的第 n 个参数,n=1,2,3,...9
-3.  $\*   当前程序的所有参数 ( 不包括程序本身 )
-4.  $#   当前程序的参数个数 ( 不包括程序本身 )
-5.  $?   命令或程序执行完后的状态，一般返回 0 表示执行成功。
-6.  $UID   当前用户的 ID
-7.  $PWD 当前所在的目录
+1.  \$0   当前程序的名称
+2.  \$n   当前程序的第 n 个参数,n=1,2,3,...9
+3.  \$\*   当前程序的所有参数 ( 不包括程序本身 )
+4.  \$#   当前程序的参数个数 ( 不包括程序本身 )
+5.  \$?   命令或程序执行完后的状态，一般返回 0 表示执行成功。
+6.  \$UID   当前用户的 ID
+7.  \$PWD 当前所在的目录
 
 ```shell
 Var="1234"
@@ -204,7 +213,7 @@ if ( ! -d $DIR ); then
 else
     echo "the $DIR is exist"
     exit
-fi  
+fi
 ```
 
 #### 创建文件
@@ -219,7 +228,7 @@ if [ ! -f $FILE ]; then
 else
     echo "the $FILE is exist"
     exit
-fi  
+fi
 ```
 
 ## 算术运算符
@@ -296,3 +305,20 @@ funWithReturn(){
 funWithReturn
 echo "输入的两个数字之和为 $? !"
 ```
+
+## shell 编程之其他环境变量
+
+### 启动时执行的文件
+
+1. /etc/profile
+2. /etc/profile.d/\*.sh
+3. ~/.bash_profile
+4. ~/.bashrc
+5. /etc/bashrc
+
+### 启动时执行的文件
+
+1. ~/.bash_history
+2. /etc/issue 本地终端配置信息
+3. /etc/issue.net 远程终端配置信息
+4. /etc/motd 终端配置信息

@@ -2,11 +2,11 @@
 
 ```html
 index.html
-    <div class="indexcontainer">
-          <div className="indexcontainerr-navlist">
-              ...
-          </div>
-   </div>
+<div class="indexcontainer">
+    <div className="indexcontainerr-navlist">
+        ...
+    </div>
+</div>
 ```
 
 ## 目录规范(参考)
@@ -60,7 +60,7 @@ index.html
         <title>Page title</title>
     </head>
     <body>
-        <img src="images/company_logo.png" alt="Company">
+        <img src="images/company_logo.png" alt="Company" />
 
         <h1 class="hello-world">Hello, world!</h1>
     </body>
@@ -241,7 +241,20 @@ do {
 
 #### 变量声明
 
-一个函数作用域中所有的变量声明尽量提到函数首部，用一个 var 声明，不允许出现两个连续的 var 声明。
+一个函数作用域中所有的变量声明尽量提到函数首部，用一个 let 声明，不允许出现两个连续的 let 声明。
+
+为了方便了解数据类型建议变量加入后缀
+
+```javascript
+let nameStr = '张三',
+    ageNum = 20,
+    genderBol = true,
+    itemInfoObj = {name: '张三', ageNum: 20},
+    itemInfoArr = [
+        {name: '张三', ageNum: 20},
+        {name: '李四', ageNum: 10}
+    ];
+```
 
 #### 函数
 

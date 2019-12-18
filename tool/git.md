@@ -61,7 +61,10 @@ git status  查看状态
 git Untracked  未被追踪
 git Modified  修改未提交
 git commit -m '修改代码'  提交到代码区
-git reset HEAD~    撤销最近一次commit
+git reset HEAD~  --   撤销最近一次commit
+git reset --hard xxxx  撤销版本
+// 注意 --hard 参数会抛弃当前工作区的修改
+// 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
 git diff <file> # 比较当前文件和暂存区文件差异 git diff
 git diff HEAD -- <文件> 工作区和暂存区的比较
 ```

@@ -151,6 +151,19 @@ zz 把当前行放到中间
 ～/.vimrc
 :set nu
 
+```shell
+set number
+" 设置行号
+syntax on
+" 高亮
+```
+
+#### 修改主题
+
+```shell
+:colortheme 空格 control+d 选择主题
+```
+
 <!--
 查询
 使用/ 或者 ? 进行向前或者反向搜索
