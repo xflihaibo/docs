@@ -14,8 +14,6 @@ Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统
 1.  cat /etc/passwd 查看用户列表
 1.  kill -9 pid 强制杀死进程
 1.  killall nginx 杀死 nginx 所有的进程
-1.  nginx –t 查看是否生效
-1.  nginx -s reload: 重新启动
 1.  ssh 启动 sudo service ssh start
 1.  tar -cvf vitest.zip vitest 压缩
 1.  tar -xvf vitest.zip 解压缩
@@ -115,6 +113,17 @@ ssh-copy-id <ip地址>
 /var：放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放的目录，/var/run:程序或服务启动后，其PID存放在该目录下。建议单独分区，设置较大的磁盘空间
 ```
 
+## 系统启动 变量文件执行过程
+
+```shell
+/etc/profile
+~/.bash_profile -> /etc/profile.d/*.sh -> /etc/profile.d/lang.sh , /etc/sysconfig/i18n
+~/.bashrc
+/etc/bashrc -> /etc/profile.d/*.sh -> /etc/profile.d/lang.sh , /etc/sysconfig/i18n
+命令提示符号
+
+```
+
 ## 权限问题
 
 ls -a 查看文件
@@ -144,11 +153,70 @@ r:读 4。（cat more head tail）
 
 ## 源码包编译过程
 
-| 编译方法 |     命令     |       产物       |
-| :------: | :----------: | :--------------: |
-| 检测配置 | ./configure  |     Makefile     |
-|   编译   |     make     | 二进制可执行文件 |
-|   安装   | make install |  安装到指定目录  |
+| 编译方法 |                 命令                 |       产物       |
+| :------: | :----------------------------------: | :--------------: |
+| 检测配置 | ./configure --prefix=/user/local/xxx |     Makefile     |
+|   编译   |                 make                 | 二进制可执行文件 |
+|   安装   |             make install             |  安装到指定目录  |
+
+!> prefix:指定文件编译地址
+
+## rpm 包
+
+```shell
+rpm -q 包名称 ：查询是否安装
+rpm -qa ：查询所有已经安装的包
+rpm -qf 系统文件名
+
+   -q query 查询
+   -a all 所有
+   -i information 软件信息
+   -p package 未按装包信息
+   -l list 列表
+   -f file 查询系统文件属于那个软件包
+   -R requires 依赖
+
+rpm -qa | grep httpd
+rpm -ivh 包全名:安装包名
+   -i install 安装
+   -v verbose 详细信息
+   -h hash 显示进度
+   --nodeps 不检测依赖性
+
+rpm -Uvh 包全名 ：升级
+    -U upgrade 升级
+
+rpm -V 校验已安装的包信息
+    验证信息的8个信息具体内容
+    s:文件大小是否改变
+    M: 文件类型或者文件权限是否改变
+    5: 文件MD5校验是否改变
+    D: 设备主从代码是否改变
+    L: 文件路径是否改变
+    U: 文件属主是否改变
+    G:文件的数组是否改变
+    T:文件修改时间是否改变
+文件类型
+    c:配置文件 config file
+    d:普通文档 documenttion
+    g:鬼文件   gost file
+    L:授权文件 license file
+    r:描述文件 readme
+rpm 包中文件提取
+rpm2cpio 包全名 |cpio -idv .文件绝对路径
+
+```
+
+## yum
+
+yum list 列出所有可安装的列表
+yum seacrh nginx 搜索关于 nginx 列表
+yum -y update nginx 升级
+yum -y remove nginx 卸载
+
+yum grouplist 列出所有可用的软件组列表
+yum groupinstall “Chinese Suport” 安装软件组
+yum groupremove “Chinese Suport” 删除软件组
 
 ## shell 命令
 

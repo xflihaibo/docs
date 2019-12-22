@@ -362,9 +362,3 @@ UPDATE account SET balance=balance+10 WHERE id=2
 COMMIT;
 ```
 
-<!-- 设计数据库
-
-模型
-导出 mql
-
-bluebord q :promise -->

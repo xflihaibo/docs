@@ -8,7 +8,7 @@
 -   [Node](advance/node.md)
 -   [Ab 压测](advance/ab.md)
 -   [Nginx](advance/nginx.md)
--   [Linux](advance/liunx.md)
+-   [Linux](advance/linux.md)
 -   [SSH](advance/ssh.md)
 -   [crontab 定时任务](advance/crontab.md)
 -   [Vim](advance/vim.md)
