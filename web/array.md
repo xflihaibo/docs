@@ -13,7 +13,7 @@ JavaScript 的 Array 对象是用于构造数组的全局对象，数组是类�
 ```javascript
 let arr = [1, 2];
 let arr2 = [123, 456, 678];
-let obj = {name: '王二', age: 123};
+let obj = { name: '王二', age: 123 };
 let initbool = false;
 let newarr = arr.concat([3, 4, 5], 7, 8, [9, 10]);
 let newarr2 = arr.concat(3, 4, 5, arr2, obj, initbool);
@@ -250,7 +250,7 @@ console.log(arr3); //-1
 -   返回值：undefined, 对原数组的操作有影响
 
 ```javascript
-let arr = [{a: 1}, {}];
+let arr = [{ a: 1 }, {}];
 arr.forEach(function(item, idx) {
     item.b = idx;
 });
@@ -289,8 +289,8 @@ console.log(Array.from([1, 2, 3], x => x + x)); //[2, 4, 6]
 [1, 2, 3].includes(2); // true
 [1, 2, 3].includes(4); // false
 [1, 2, NaN].includes(NaN); // true
-let e1 = {name: 'zs', age: '12'};
-let e2 = {name: 'ls', age: '13'};
+let e1 = { name: 'zs', age: '12' };
+let e2 = { name: 'ls', age: '13' };
 let arr1 = [e1, e2];
 let arr4 = arr1.includes(e1);
 console.log(arr4); //true
@@ -307,11 +307,14 @@ console.log(arr4); //true
 -   返回值：首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1
 
 ```javascript
-let arr = [{name: 'zs', age: '12'}, {name: 'ls', age: '13'}];
-let index = arr.indexOf({name: 'zs', age: '12'});
+let arr = [
+    { name: 'zs', age: '12' },
+    { name: 'ls', age: '13' }
+];
+let index = arr.indexOf({ name: 'zs', age: '12' });
 console.log(index); //-1
-let e1 = {name: 'zs', age: '12'};
-let e2 = {name: 'ls', age: '13'};
+let e1 = { name: 'zs', age: '12' };
+let e2 = { name: 'ls', age: '13' };
 let arr1 = [e1, e2];
 let index1 = arr1.indexOf(e2);
 console.log(index1); //1
@@ -624,7 +627,7 @@ console.log(arr3); //[2]
 
 (es6 新增)返回一个字符串表示数组中的元素。数组中的元素将使用各自的 toLocaleString 方法转成字符串，这些字符串将使用一个特定语言环境的字符串（例如一个逗号 ","）隔开。
 
--   语法：arr.map(function(currentValue,index,arr), thisValue)
+-   语法：arr.toLocaleString(function(currentValue,index,arr), thisValue)
 -   参数：
     -   locales: 可选。带有 BCP 47 语言标记的字符串或字符串数组，关于 locales 参数的形式与解释，请看 Intl 页面
     -   options: 可选。一个可配置属性的对象
@@ -632,7 +635,7 @@ console.log(arr3); //[2]
 
 ```javascript
 let arr = ['￥7', 500, 8123, 12];
-let arr1 = arr.toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+let arr1 = arr.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' });
 console.log(arr); //["￥7", 500, 8123, 12]
 console.log(arr1); //￥7,￥500,￥8,123,￥12"
 ```
@@ -647,7 +650,7 @@ console.log(arr1); //￥7,￥500,￥8,123,￥12"
 -   返回值：可把数组转换为字符串，并返回结果
 
 ```javascript
-let arr = [1, 'heoolo', false, {name: 'zs', age: 12}];
+let arr = [1, 'heoolo', false, { name: 'zs', age: 12 }];
 let arr1 = arr.toString();
 console.log(arr); //[1, 'heoolo', false, {name:'zs',age:12}];
 console.log(arr1); //1,heoolo,false,[object Object]

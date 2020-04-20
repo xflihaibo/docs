@@ -115,7 +115,21 @@ webFrame:渲染网页
 
 devtron 开发调试工具
 electrion-is-dev ：判断开发环境生产环境
+fs-extra: fs 文件操作
 wait-on
+
+electron-shared miniblink :优化打包体积
+
+node-auto-launch：开机自启动
+
+```javascript
+let NodeAutoLaunch = require('node-auto-launch');
+let electronAuto = new NodeAutoLaunch({
+  name: 'appName'
+  path:'/Applications/appname.app'
+});
+electronAuto.enabled()
+```
 
 electron-store:本地持久化
 
@@ -139,7 +153,8 @@ console.log(store.get('unicorn'));
 ```
 
 electron-updater （--save）自动更新检测
-electron-builder 打包
+electron-builder 打包 难度： 🌟🌟🌟
+electron-forge :打包 难度：🌟🌟
 electron-is-dev 检查当前(生产 开发)环境
 
 ```javascript
@@ -308,6 +323,26 @@ npm i -g node-pro-gyp 可以对Native模块进行重编译。
 npm i -g production windows-build-tools  //编译本机节点模块
 ```
 
+## node
+
+```javascript
+node.js add-on
+node-ffi  集成c++
+WinRT  蓝牙 usb 预览文件
+Applescript
+shell
+lazyLoad 懒加载
+https://developers.google.com/web/updates
+视频捕捉
+desltopCapturey
+webRtc
+
+
+
+
+
+```
+
 ## 项目开发依赖
 
 ```shell
@@ -337,6 +372,10 @@ npm install --save-dev electron-rebuild 先下载electron-rebuild
 
 ## 推送需要设置 gh_token
 
+## window 开发 打包 32 位系统 可以适配 64 位
+
+npm install --arh=ia32 --platfrom=win32 electron
+
 ## electron-build 打包
 
 1.  build.productName:'名称'
@@ -351,4 +390,14 @@ npm install --save-dev electron-rebuild 先下载electron-rebuild
   "!**/node_modules/_.d.ts",
   "!**/node_modules/.bin"
 ]
+```
+
+主监控异常上报
+
+```javascript
+process.on('uncaughtException', function() {
+  //do somethings
+});
+
+process.crash(); //模拟崩溃
 ```

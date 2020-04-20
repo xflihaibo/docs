@@ -89,6 +89,7 @@ git branch --no-merged 查看已经合并的分支
 ### 切换分支
 
 ```shell
+git checkout . //恢复stage中的文件的工作区
 git checkout -- 取消本次修改在工作区内
 git checkout dev 切换分支 dev
 git checkout -b dev 创建并切换分支 dev
@@ -103,6 +104,8 @@ git cherry-pick dev-3.0 分支的某些 commit-hash
 
 git reset --hard 【merge 前的版本号】
 git revert -m merge 前的版本号 撤销合并当前 merge
+git revert <commitd> //撤销指定的提交
+
 git remote –v 查看项目
 git remote add home git@github.com:Silence520/homework02.git 添加项目别名
 $ ssh-keygen -t rsa -C 'xxx@qq.com' 配置密钥对 公钥在 git 上配置
@@ -122,16 +125,19 @@ git log --pretty=oneline 查看log信息列表
 git log -p --online 行内变化
 git log --name-only 查看变化的文件
 git log --name-status 查看文件变化
-git blame style.less  查看文件的每行的变化信息
+git log --stat 显示每次提交的信息
+git show <commitid> 显示某次提交的内容
+git blame style.less  查看文件的什么人修改的每行的变化信息
 git log --pretty=oneline  显示所有提交记录，每条记录只显示一行
 git whatchanged file  显示某个文件的每个版本提交信息：提交日期，提交人员，版本号，提交备注（没有修改细节）
 git commit --amend 修改上次提交描述 本次提交并存到上次
+git commit  -v //提交时显示所有的diff
+git commit --amend -m 'meggahe' //使用新的commit 提交替换上次commit
 git reset --hard fdce8d 回到指定版本
 git reset HEAD a.txt 撤销暂存文件
 git reset --hard HEAD^ 回到上一版本
 git reset HEAD 取消本次修改在暂存区
 git reflog 查看提交历史log
-git commit –amend 覆盖上次提交的版本信息
 按 shift+Z+Z保存编辑并退出
 ```
 
@@ -161,6 +167,13 @@ git stash apply 恢复暂存
 git stash apply stash{0} 回复第一个
 git stash pop 恢复并且删除暂存区
 git stash drop stash{0} 删除暂存区
+```
+
+### git cherry-pick
+
+```shell
+//stash
+git cherry-pick 调减需合并的代码
 ```
 
 ![](./img/git02.png)

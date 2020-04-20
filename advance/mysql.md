@@ -3,17 +3,37 @@
 修改密码
 
 ```mysql
+
+# yum install mysql
+# yum install mariadb-server  //如果已安装可以省略
+# systemctl start mariadb.service //启动服务
+# systemctl enable mariadb.service //开机启动服务
+# mysql -u root -p //登录mysql
+
 mysql -uroot -proot //链接数据库
 exit 推出
+select Host,User,Password from mysql.user; 查询用户
 
-show databases; 查看数据库
+show datausebases; 查看数据库
 use  stu 切换数据库
 show tables; 查看数据库中的表
 select database(); 查看当前数据库
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'; 修改密码
--- 刷新
+update user set password=password("123456")where user='root'; // 修改密码
+set password for root@localhost = password('123456'); 设置密码
+
+//mysql数据库中的user的表中没有权限
+select Host, User,Password from user;
+update user set Host='%' where User='root';
+flush privileges;
+
+-- 刷新lasrt
 FLUSH PRIVILEGES;
+mysql -uroot -p123456 ：登陆数据
+1.在Linux，先进入/etc，修改my.cnf,任意一行加上"skip-grant-tables"。
+2.重启MySQL：systemctl restart mariadb
+mysqladmin -uroot -p密码 password 新密码
 ```
 
 ### 创建 student 表
@@ -362,3 +382,17 @@ UPDATE account SET balance=balance+10 WHERE id=2
 COMMIT;
 ```
 
+#### 脏读
+
+脏读 就是一个事务读到另一个事务没有提交的数据。事务 A 修改了一个数据，但未提交，事务 B 读到了事务 A 未提交的更新结果，事务 B 读到的就是脏数据。
+
+隔离级别 有四种，分别是：读未提交、读已提交、可重复读、序列化。
+
+1. 读未提交： Read Uncommitted，顾名思义，就是一个事务可以读取另一个未提交事务的数据。最低级别，它存在 4 个常见问题（脏读、不可重复读、幻读、丢失更新）。
+2. 读已提交： Read Committed，顾名思义，就是一个事务要等另一个事务提交后才能读取数据。 它解决了脏读问题，存在 3 个常见问题（不可重复读、幻读、丢失更新）。
+3. 可重复读： Repeatable Read，就是在开始读取数据（事务开启）时，不再允许修改操作 。它解决了脏读和不可重复读，还存在 2 个常见问题（幻读、丢失更新）。
+4. 序列化： Serializable，序列化，或串行化。就是将每个事务按一定的顺序去执行，它将隔离问题全部解决，但是这种事务隔离级别效率低下，比较耗数据库性能，一般不使用。
+
+#### 幻读
+
+幻读：指的是一个事务在前后两次查询同一个范围的时候，后一次查询看到了前一次查询没有看到 的数据行

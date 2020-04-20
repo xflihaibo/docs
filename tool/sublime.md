@@ -260,11 +260,11 @@ less 文件语法高亮插件
 
 通过  Preferences -> Key Bindings - User 打开 sublime 的快捷键配置文件，把下面内容复制到这个设置文件里保存。
 
-```json
+```jsonÂ
 {
     "keys": ["alt+m"],
     "command": "markdown_preview",
-    "args": {"target": "browser", "parser": "markdown"}
+    "args": { "target": "browser", "parser": "markdown" }
 }
 ```
 

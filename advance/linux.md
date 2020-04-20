@@ -9,7 +9,9 @@ Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统
 ## liunx 常用命令
 
 1.  netstat -ntpl 查看进程
+1.  netstat -atunlp
 1.  ss –an –p | grep 8080
+1.  ps -ef | grep jenkins
 1.  lsof -i:80
 1.  cat /etc/passwd 查看用户列表
 1.  kill -9 pid 强制杀死进程
@@ -50,6 +52,10 @@ Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统
 1.  find /etc -size 100k //文件等于 100k 的
 1.  main ls 查看帮助
 1.  history 查看历史记录
+1.  top 产看系统信息
+1.  free 查看内存
+1.  ip a ip 地址
+1.  telnet www.baidu.com 80 查看端口
 
 ### 配置免密登录
 
@@ -71,6 +77,7 @@ Linux：是一种自由和开放源码的类 UNIX 操作系统。该操作系统
 
 ```shell
 ssh-copy-id <ip地址>
+ssh-copy-id -i .ssh/id_rsa.pub  用户名字@192.168.x.xxx
 ```
 
 ```bash
@@ -135,18 +142,229 @@ chmod 755 trial
 chown user1 trial 给文件赋予所有者的 fuzhi
 chgrp user1 trial
 
-权限试用者
+#### 权限试用者
 
 1.  u:所有者
 2.  g:所有组
 3.  o:其他人
 
-    权限
+#### 权限
 
 r:读 4。（cat more head tail）
 
 5.  w:写 2. echo vi
 6.  x:执行 1
+
+### 执行命令
+
+```shall
+ls :罗列文件列表
+    -a :显示所有文件，包括隐藏文件
+    -l :显示详细信息
+    -d :查看目录属性
+    -h :人性化显示文件大小
+    -i :显示incode
+
+mkdir 创建文件
+    -p: 递归创建文件
+
+cd  切换目录
+    cd ~  :进入当前用户的家目录
+    cd .. :进入上一次目录
+    cd -  :进入上次目录
+cp 切换目录
+     -r :复制目录
+     -p :连带文件属性
+     -d :如果源文件是连接文件 则复制链接属性
+     -a :相当于 -pdr
+mv
+```
+
+#### 查询命令
+
+```shall
+locate 在后台数据库中按文件名搜索，搜索速度更快
+    /var/lib/mlocate 存储文件名与数据库数据
+    updatedb :更新创建的文件名存入数据库中
+    /etc/updatedb.conf: 配置文件
+        PRUNE_BIND_MOUNTS='yes' 开启搜索限制
+        PRUNEFS=    搜索时，不搜索的文件系统
+        PRUNENAMES=      搜索时，不搜索的文件类型
+        PRINEPATHS=     搜索时，不搜索的文件路径
+
+```
+
+#### 搜索
+
+```shall
+which
+whereis 查询命令的配置文件
+    -b :查找可执行的文件
+    -m :只查找帮助文件
+
+whoami
+whatis ls
+whatis cd 确定是否是shell内部命令
+
+
+find /root -iname install.log 不区分大小写
+find /root -name "*[cd]"
+find /root -nouser 没有所有者文件， sys proc 没有属于正常。外来文件
+find /var/log  -mtime +10 10天前
+find /var/log  -mtime -10 10天内
+find . -size 25k 查找文件大小是25K的文件
+find . -size +25K 查找文件大小是大于25K的文件
+find /etc -size +20k -a size -50k 查找etc/ 目录下 大于20k并且小于50k 的文件
+find /etc -size +20k -a size -50k -exec ls lh {}\; 查找etc/ 目录下 大于20k并且小于50k 的文件,并显示详细信息
+
+grep  在文件当中匹配符合条件的字符串
+    -i 忽略大小写
+    -v 排除指定字符串
+```
+
+#### 帮助命令
+
+```shall
+man 帮助命令
+man ls ls帮助信息
+man  -f  相当 whatis
+man  -k   相当 apropos
+    man 的级别
+    1: 查看命令帮助
+    2: 查看可被内核调用的函数的帮助
+    3: 查看函数和函数库的帮助
+    4: 查看特殊文件的帮助
+    5: 查看配置文件的帮助
+    6: 查看游戏的帮助
+    7: 查看其他杂项的帮助
+    8: 查看系统管理员可用命令的帮助
+    9: 查看和内核相关文件的帮助
+
+
+
+apropos ls 含有ls关键字的帮助信息
+ls --help 查看ls帮助信息
+help cd 获取内部命令
+
+info 帮助信息
+    -回车 进入子帮助页面
+    -u :进入上层页面
+    -n :进入下一个帮助小节
+    -p : 进入上一个帮助小节
+    -q : 退出
+```
+
+#### 压缩
+
+```shall
+    .zip 格式压缩
+    zip  压缩文件名 源文件
+    zip -r 压缩文件名 源目录
+    uzip  解压文件名
+    .gz 格式压缩
+    gzip 源文件
+    gzip -c 源文件 压缩文件
+    gzip -r 目录
+    gzip -d 解压文件
+    gunzip 解压文件
+     .bz2 格式压缩
+    bzip2 源文件 压缩.bz2格式 不保留源文件
+    bzip2 -k 源文件 压缩之后保留源文件
+    bzip2 -d 解压文件
+    bunzip2 解压文件
+    .tar.bz2 格式
+
+    tar  -jcv -f filename.tar.bz2 被压缩的文件或目录
+    tar -jxv -f filename.tar.bz2 -C 欲解压到的目录
+
+    .tar.gz
+    tar -zcvf 压缩名 源文件 压缩
+    tar -zxvf 压缩包名称    解压
+    .tar 格式
+    tar -cvf filename.tar xxx 打包
+    tar -xvf filename.tar  解压x
+
+解压包
+tar -cvf 压缩
+tar -xvf 解压
+先打包后压缩
+
+```
+
+#### 关机
+
+```shall
+shutdown -r now
+shutdown -r 05:30 &
+shutdown -c
+halt
+init 0
+poweroff
+
+
+reboot
+init 6
+```
+
+#### 用户
+
+```shall
+w 用户名
+命令输出
+    USER:登陆的用户名
+    TTY: 登陆终端
+    FROM:ip地址登录
+    LOGIN@:登陆时间
+    IDLE:用户闲置时间
+    JCPU:指的是和改终端连接的所有占用时间
+    PCPU:当前进程所占用的时间
+    WHAT:当前正在运行的命令
+who 用户名称
+    命令输出
+    -:用户名
+    -: 登陆终端
+    -:ip登录时间
+```
+
+### 系统信息
+
+```shall
+last
+last 默认读取/var/log/wtmp 文件数据
+命令输出
+-:用户名
+-:登陆终端
+-:登陆 ip
+-:登录时间
+-:退出时间
+lastlog
+lastlog 默认读取/var/log/lastlog 文件数据
+命令输出
+-:用户名
+-:登陆终端
+-:登陆 ip
+-:最后一次登录时间
+history 历史命令
+-c:清空历史命令
+-w:把缓存中的历史命令写入历史命令保存文件 ～/.bash_history
+
+alias ls='ls --color=never' 添加别名
+alias 查看别名
+unalias 删除别名 1. 第一顺位 用绝对路径或相对路径执行的命令 2. 第二顺位 执行别名 3. 第三顺位 执行 bash 的内部命令 4. 第三顺位 按照\$PATH 环境变量定义的目录查找顺序找到的第一个命令
+
+
+输出重定向
+
+命令 >> 文件 2>&1 以追加的方式，把正确输出和错误的输出都保存到同一个文件中
+命令 &>>文件 以追加的方式，把正确输出和错误的输出都保存到同一个文件中
+命令 >>文件 1 2>>文件 2 ：把正确的追加到文件 1 中 把错误的追加到文件 2 中
+
+wc 输入重定向
+-c 统计字节数
+-w 统计单词数
+-l 统计行数
+
+```
 
 <!-- > useradd user1
 > pasword user1 -->
@@ -227,15 +445,49 @@ yum groupremove “Chinese Suport” 删除软件组
 
 ### shell 编程常见的系统变量解析
 
-1.  \$0   当前程序的名称
-2.  \$n   当前程序的第 n 个参数,n=1,2,3,...9
-3.  \$\*   当前程序的所有参数 ( 不包括程序本身 )
-4.  \$#   当前程序的参数个数 ( 不包括程序本身 )
-5.  \$?   命令或程序执行完后的状态，一般返回 0 表示执行成功。
-6.  \$UID   当前用户的 ID
-7.  \$PWD 当前所在的目录
+```shall
+1.  $0   当前程序的名称
+2.  $n   当前程序的第 n 个参数,$1-$9 代表第一到第九个参数
+3.  $_ :代表命令行中的所有参数，$_ 把所有的参数看成一个整体
+4.  $@ :这个变量也代表命令行中所有参数，不过$@把每个参数区分中
+5.  $\*   当前程序的所有参数 ( 不包括程序本身 )
+6.  $#   当前程序的参数个数 ( 不包括程序本身 )
+7.  $?   命令或程序执行完后的状态，一般返回 0 表示执行成功。
+8.  $$ 当前进程号
+9.  $! 后台运行的进程号 pid
+10.  $UID   当前用户的 ID
+11.  $PWD 当前所在的目录
+
+12. ‘’：单引号 在单引号中所有的特殊符号，如"\$" 和 "`" 都没有特殊含义 "": 双引号 在双引号中特殊符号都没有特殊含义 但是 "\$" 和 "`"和“\”例外 拥有 “调用变量的值”，“引用命令”，“转义符”的特殊含义
+13.  ``: 反引号 在反引号扩起来的内容是系统命令，在 Bash 中会优先执行它，和$()作用一样，不过推荐用 $(),
+14.  $(): 和反引号一样，用来引用系统命令
+15.  #: 在shell脚本中，#开头的行代表注释
+16.  $: 用于调用变量的值，如需要调用 name 的值时，需要用$name的方式
+17.  \ : 转义符号 跟在\之后的特殊符号将失去特殊含义，变为普通自负 \$ 将输出 $ 符号 ，而不做变量引用
+
+
+8.  \a 输出警告
+9.  \b 退格键 向左侧删除
+10. \n 换行符
+11. \r 回车键
+12. \t tap 键
+13. \v 垂直制表符
+14. \0nnn 八进制
+15. \xhh 十六进制
+
+```
 
 ```shell
+
+echo -e "\e[1;31m hello world \e[0m"
+echo -e "\e[1;32m hello world \e[0m"
+echo -e "\e[1;33m hello world \e[0m"
+echo -e "\e[1;34m hello world \e[0m"
+echo -e "\e[1;35m hello world \e[0m"
+echo -e "\e[1;36m hello world \e[0m"
+echo -e "\e[1;37m hello world \e[0m"
+echo -e "\e[1;30m hello world \e[0m"
+
 Var="1234"
 readonly Var //使用 readonly 命令可以将变量定义为只读变量
 unset Var  //使用 unset 命令可以删除变量
@@ -256,6 +508,7 @@ lengthn=${#array_name[n]}// 取得数组单个元素的长度
 2.  多行注释
 
 ```shell
+
 :<<EOF
 注释内容...
 EOF
@@ -265,15 +518,44 @@ EOF
 '
 ```
 
-#### 创建目录
+### 脚本执行
 
 ```shell
+方式一
+
+chmod 755 hello.sh
+./hello.sh
+
+方式二
+bash hello.sh
+```
+
+### 设置环境变量
+
+```shall
+export HD='hello Docker'
+
+echo $PATH  查看系统环境变量
+PATH = "$PATH":/root/sh 增加 PATH 变量的值
+ps1 环境变量
+
+locale 当前语言
+-LANG 定义系统主语系变量
+-LC_ALL 罗列支持的语言
+echo \$LANG 当前语言
+locale -a | more 罗列支持的语言
+cat /etc/sysconfig/i18n
+```
+
+#### 创建目录
+
+```shall
 #!/bin/bash
 DIR=$1
 echo -e '\033 [32m-------------------\033[0m'
 
 
-
+:
 
 if ( ! -d $DIR ); then
     mkdir -p $DIR
@@ -386,7 +668,5 @@ echo "输入的两个数字之和为 $? !"
 
 ### 启动时执行的文件
 
-1. ~/.bash_history
-2. /etc/issue 本地终端配置信息
-3. /etc/issue.net 远程终端配置信息
-4. /etc/motd 终端配置信息
+ls
+y

@@ -170,7 +170,7 @@ SPDY 是 Google 开发的基于 TCP 的应用层协议，用以最小化网络�
 dns-prefetch 链接关系类型用于指示将用于获取所需资源的源，并且用户代理应该尽可能早地解析，可以提高网页的载入速度。
 
 ```html
-<link rel="dns-prefetch" href="//hm.baidu.com">
+<link rel="dns-prefetch" href="//hm.baidu.com" />
 ```
 
 <!--
@@ -193,3 +193,23 @@ nginx 请求资源合并
 
 > navigator.sendBeacon('a.html')
  -->
+
+### http3.0 （QUIC）
+
+QUIC 协议从 TCP 切换到 UDP
+
+### http3.0 优势
+
+1. 大大缩短建立链接时间 减少 TCP 三次握手及 TLS 握手时间
+2. 改进拥塞时间
+3. 无线头阻塞的多路复用
+4. 前向纠错
+5. 链接迁移
+
+### TCP 和 UDOP 区别
+
+1. TCP 是面向连接的，UDP 是面向无连接的
+2. UDP 程序结构较简单
+3. TCP 是面向字节流的，UDP 是基于数据报的
+4. TCP 保证数据正确性，UDP 可能丢包
+5. TCP 保证数据顺序，UDP 不保证

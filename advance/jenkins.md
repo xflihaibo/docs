@@ -6,6 +6,8 @@
 -   git 基本命令
 -   nginx
 -   jenkins
+-   [jenkins 清华大学镜像源](https://mirrors.tuna.tsinghua.edu.cn/jenkins/)
+-   [jenkins 清华大学插件镜像源](https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json)
 
 ##### 工具
 
@@ -228,6 +230,20 @@ rm -rf test.tar.gz
 
 ### 主从模式
 
+master -Slave
+
+配置 Slave 然后设置项目编译节点
+
+### 角色和用户管理
+
+Role-based Authorization Strategy 插件
+
+### 下载插件加速
+
+mirrors
+update-center
+nvm wrapper ：和本地运行 npm script 一样，我们要想在 jenkins 里面执行 npm 命令，先要在 jenkins 里面配置 node 的环境，可以通过配置环境变量的方式引入 node，也可以通过安装插件的方式，这里使用了插件的方式，安装一下 nvm wrapper 这个插件
+
 ### 邮件通知
 
 Email Extension Plugin 插件
@@ -235,8 +251,36 @@ Email Extension Plugin 插件
 ### 参数化构建
 
 Extended Choice Parameter 插件
-Git Parameter 插件
+Git Parameter git 参数化构建插件
 
-### 角色和用户管理
+<tbale>
+<tr> <th colspan="5"> Overall(全局) </th> <th colspan="6"> Slave(节点) </th> <th colspan="8">  Job(任务  </th> <th colspan="4">  View(视图)   </th></tr>
 
-Role-based Authorization Strategy 插件
+<tr><td>  Administer   </td><td>    Read     </td><td> RunScripts </td><td> UploadPlugins </td><td> ConfigureUpdateCenter </td><td> Create </td><td> Update </td><td> View </td><td> Delete </td><td> ManageDomains </td><td> Configure </td><td> Delete </td><td> Create </td><td> Disconnect </td><td> Connect Build </td><td> Create </td><td> Delete </td><td> Configure </td><td> Read </td><td> Discover </td><td> Build </td><td> Workspace </td><td> Cancel </td><td> Create </td><td> Delete </td><td> Configure </td><td> Read </td><tr>
+
+<tr><td> 管理员(最大)  </td><td>    阅读     </td><td>  运行脚本  </td><td>升级插件</td><td> 配置升级中心 </td><td> 创建 </td><td> 更新 </td><td> 查看 </td><td> 删除 </td><td> 管理域 </td><td> 配置 </td><td> 删除 </td><td> 创建 </td><td> 断开连接 </td><td> 连接 </td><td> 构建 </td><td> 创建 </td><td> 删除 </td><td> 配置 </td><td> 阅读 </td><td> 重定向 </td><td> 构建 </td><td> 查看工作区 </td><td> 取消构建 </td><td> 创建 </td><td> 删除 </td><td> 配置 </td><td> 阅读 </td></tr>
+
+</tabel>
+
+插件名称
+Folders： (https://plugins.jenkins.io/cloudbees-folder),这个插件支持用户使用目录管理项目，目录支持嵌套，并且支持目录中创建视图
+OWASP Markup Formatter ： OWASP 标记格式化程序插件,使用 OWASP Java HTML Sanitizer ，可以在项目描述等中输入安全的 HTML 标记
+Build Timeout ： 构建超时,此插件允许构建在指定的时间过后自动终止
+Credentials Binding： 证书绑定
+Timestamper ：将时间戳添加到控制台输出
+Workspace Cleanup： (https://plugins.jenkins.io/ws-cleanup),这个插件支持在构建前后 删除或者部分删除 workspace
+Ant ：向 Jenkins 添加 Apache Ant 支持
+Gradle： 这个插件允许 Jenkins 直接调用 Gradle 构建脚本
+Pipeline： 管道,一套插件可让您协调自动化
+Pipeline: GitHub Groovy Libraries ：允许从 GitHub 动态加载 Pipeline Groovy 库
+Pipeline: Stage View 查看每一步的执行结果
+GitHub Branch Source ：GitHub 组织文件夹插件
+Git： (https://plugins.jenkins.io/git),支持使用 Github、GitLab、Gerrit 等系统管理代码仓库
+Subversion： (https://plugins.jenkins.io/subversion),支持 Subversion 系统管理源代码
+SSH Slaves ：SSH 登录到一个远程服务器以执行必要的脚本
+Matrix Authorization Strategy： 矩阵授权策略插件,提供基于矩阵的安全授权策略（全局和每个项目）
+PAM Authentication ：为 Jenkins 添加 Unix 可插入身份验证模块（PAM）支持
+LDAP ：(https://plugins.jenkins.io/ldap),这个插件允许使用 LDAP 对用户进行认证，LDAP 服务器可以为 Active Directory 或者 OpenLDAP
+Email Extension： 这个插件是 Jenkins 的电子邮件发布者的替代品。它允许配置电子邮件通知的各个方面：发送电子邮件时，应该收到谁以及电子邮件说明的内容
+Mailer ：发邮件服务
+Localization: Chinese (Simplified) 本地化构建

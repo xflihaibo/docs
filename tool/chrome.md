@@ -41,7 +41,12 @@
 
 有一些 Chrome 调试工具的功能被深深的隐藏在特别的面板中，菜单中等等。并且有一些甚至隐藏在这些地方之下。这也是为什么 Command 菜单在 Chrome 的调试打开的情况下 按下 [ Ctrl]+[Shift]+[P] (or [⌘]+[Shift]+[P] on Mac)
 
-$0 是对我们当前选中的 html 节点的引用。 $1 是对上一次我们选择的节点的引用，$2 是对在那之前选择的节点的引用，等等。一直到 $4
+$0  :是对我们当前选中的 html 节点的引用。 $1 是对上一次我们选择的节点的引用，$2 是对在那之前选择的节点的引用，等等。一直到 $4
+$_  :可以获控制台最近一次的输出结果
+$() :返回满足指定 CSS 规则的第一个元素，此方法为 document.querySelector()的简化。
+
+$$
+$x() : 返回满足指定 XPath 的所有元素。
 
 ## Console
 
@@ -50,15 +55,40 @@ $0 是对我们当前选中的 html 节点的引用。 $1 是对上一次我们�
 -   console.warn("这是一个警告 👮‍♀️"); //警告
 -   console.error("这是一个错误 🙅‍♂️");//错误
 -   console.clear()//清理控制台
+-   console.dir(object)/dir(object) 命令可以列出参数 object 的所有对象属性。
 -   console.table([{name:'👮‍♀️',age:30},{name:'👨‍⚕️',age: 35}]) //方法将它以一个漂亮的表格的形式打印出来
 -   console.time("⏰ 闹钟开始");
     console.timeEnd("⏰ 闹钟结束"); //性能测试
+-   console.profile()开启一个 JavaScript CPU 分析器.结束分析器直接调用 console.profileEnd().
 -   console.log('%c 你%c 说%c 什么%c?', 'background: #000; color: #fff','color: blue','color: red; border-bottom: 1px solid red','background: blue; color: #fff; border-radius: 50%;');//打印的带有颜色
 
 <!-- ## 异步 console
 
 console.table(await navigator.getBattery())
 await navigator.storage.estimate() // 占用数 和 空闲数 -->
+
+
+## copy
+
+copy 方法在控制台里复制你想要的东西。
+
+```javascript
+
+location
+
+copy($_)
+
+```
+
+## keys(object)/values(object)
+
+获取对象键值
+
+```javascript
+const user={name:'zhangsan',age:20}
+keys(user) // [ "name","age"]
+values(user) // ["zhangsan", 20]
+```
 
 ##### 断点调试
 
@@ -70,7 +100,7 @@ await navigator.storage.estimate() // 占用数 和 空闲数 -->
 
 有时你只是想玩玩新出的 npm 包，现在不用再大费周章去建一个项目测试了，只需要在 Chrome 插件:Console Importer 的帮助之下，快速的在 console 中引入和测试一些 npm 库
 
-运行 $i('lodash') \_.VERSION
+运行 \$i('lodash') \_.VERSION
 
 只需按下 "眼睛" 符号，你就可以在那里定义任何 JavaScript 表达式。 它会不断更新，所以表达的结果将永远，存在 :-) document.querySelectorAll('h1').length
 
@@ -85,9 +115,9 @@ await navigator.storage.estimate() // 占用数 和 空闲数 -->
 ```html
 <script src="path/to/vconsole.min.js"></script>
 <script>
-  // 初始化
-  var vConsole = new VConsole();
-  console.log('Hello world');
+    // 初始化
+    var vConsole = new VConsole();
+    console.log('Hello world');
 </script>
 ```
 
@@ -99,7 +129,9 @@ await navigator.storage.estimate() // 占用数 和 空闲数 -->
 
 ```html
 <script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
-<script>eruda.init();</script>
+<script>
+    eruda.init();
+</script>
 ```
 
 ![断点调试](./img/chrome13.jpg)
@@ -144,3 +176,4 @@ Request initiator 显示了调用堆栈信息 将鼠标悬停在显示的 initia
 1.  url: 检查列出的域或网址是否位于 Bing 索引中。 若要验证 “滚来滚去，在互联网的世界里”网站是否位于索引中，请键入 url:feedbb.com。
 1.  intitle:搜索范围限定在网页标题
 1.  inurl:搜索范围限定在 url 链接中
+$$

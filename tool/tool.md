@@ -56,6 +56,7 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [storybook](https://storybook.js.org/)： Build bulletproof UI components faster
 -   [apidocjs](http://apidocjs.com/)：apidoc 是一个轻量级的在线 REST 接口文档生成系统，可以根据其特定的规则的代码注释来生成静态网页
 -   [hexo](https://hexo.io/zh-cn/docs/)：Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页
+-   [swagger](https://swagger.io/tools/)：API Tools for Individuals, Teams, and Enterprise
 
 ### editor
 
@@ -194,3 +195,14 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 -   [github](https://help.github.com/cn/github/) ：github 官方帮助文档查询
 -   [w3cschool](https://www.w3cschool.cn/githubcn/) ：GitHub 官方帮助文档中文版
+
+## 录屏
+
+-   [logrocket](https://logrocket.com/)：Stop guessing why bugs happen
+-   [rrweb](https://www.rrweb.io/)：Record and replay the web
+
+## 截图
+
+-   [html2canvas](https://html2canvas.hertzen.com/)：Screenshots with JavaScript
+-   [jscapture](https://mgechev.github.io/jscapture/?spm=a2c4e.10696291.0.0.37ec19a42dPM7G)：Capture your desktop with Vanilla JavaScript
+

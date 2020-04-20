@@ -1,4 +1,4 @@
-linuxs.md
+whilinuxs.md
 
 ```shell
 ls :罗列文件列表
@@ -105,11 +105,23 @@ info 帮助信息
     bzip2 -k 源文件 压缩之后保留源文件
     bzip2 -d 解压文件
     bunzip2 解压文件
+    .tar.bz2 格式
+
+    tar  -jcv -f filename.tar.bz2 被压缩的文件或目录
+    tar -jxv -f filename.tar.bz2 -C 欲解压到的目录
+
+    .tar.gz
+    tar -zcvf 压缩名 源文件 压缩
+    tar -zxvf 压缩包名称    解压
+    .tar 格式
+    tar -cvf filename.tar xxx 打包
+    tar -xvf filename.tar  解压x
 
 解压包
 tar -cvf 压缩
 tar -xvf 解压
 先打包后压缩
+
 
 
 
@@ -291,3 +303,14 @@ declare -a move[2]=live
 echo move
 echo move[2]
 echo move[*]
+
+###node
+
+ls -al /usr/bin/node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+wget https://nodejs.org/dist/v9.8.0/node-v9.8.0-linux-x64.tar.xz
+tar -xvf node-v9.8.0-linux-x64.tar
+cd node-v9.8.0-linux-x64
+ln -s /opt/nodejs/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node
+ln -s /opt/nodejs/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm

@@ -14,7 +14,7 @@ JavaScript（通常缩写为 JS）是一种高级的、解释型的编程语言�
 
 ## 数据类型
 
-基本类型(栈 stack) : Number、String 、Boolean、Null 和 Undefined , Symbol(es6 新增)； 基本数据类型是按值访问 由高向低分配,栈内存最大是 8MB,（超出报栈溢出）， String:是特殊的栈内存 （向高分配大小不定）,开发者分配
+基本类型(栈 stack) : Number、String 、Boolean、Null 和 Undefined , Symbol(es6 新增),BigInt(es10 新增)； 基本数据类型是按值访问 由高向低分配,栈内存最大是 8MB,（超出报栈溢出）， String:是特殊的栈内存 （向高分配大小不定）,开发者分配
 
 引用类型(堆 heap) :Object 、Array 、Function 、Data；引用类型数据在栈内存中保存的实际上是对象在堆内存中的引用地址(指针),向高分配,系统自动分配
 
@@ -71,7 +71,7 @@ function.prototype.call=function(context){
     for(i=1;i<arguments.length;i++){
     args.push('arguments['+i+']');
 }
-let newFn=eval('context.fn('+args+']')
+let newFn=eval('context.fn('+args+')')
 delete context.fn;
 return newFn;
 }

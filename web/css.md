@@ -35,9 +35,9 @@
 #### 触发 BFC 的条件
 
 -   根元素，即 html
--   float 的值不为 none（默认）
--   overflow 的值不为 visible（默认）
--   display 的值为 inline-block、table-cell、table-caption
+-   float 的值不为 none
+-   overflow 的值不为 visible（
+-   display 的值为 inline-block、table-cell、table-caption, grid
 -   position 的值为 absolute 或 fixed
 
 ### BFC 解决的相关问题
@@ -54,6 +54,58 @@
 🤔 这里提到 margin，就不得不提一下 margin 的这一特性——垂直重叠。如 p 标签 的垂直 margin 是 16px，那么两个 p 标签之间纵向的距离是多少？按常理来说应该是 16 + 16 = 32px，但是答案仍然是 16px。
 
 !> 因为垂直的 margin 是会重叠的，如果两者不一样大的话，大的会把小的“吃掉"
+
+## flex
+
+### centent 容器
+
+flex-direction:决定主轴方向，项目排列的方向 row, row-reverse,column,column-reverse
+flex-warp:项目排列是否换行 nowarp, warp, warp-reverse
+
+justify-content:定义容器在主轴的对齐方式 flex-start, flex-end,center,space-between,span-around
+align-items:项目在 y 轴的对齐方式（单行） flex-start, flex-end,center, baseline,stretch
+align-content:项目在 y 轴的对齐方式（多行） flex-start, flex-end,center, baseline,stretch
+
+### item 子元素
+
+order ：项目排列顺序，数值越小越靠前
+flex： 定义缩放比例
+align-item：单个项目在 y 轴对齐方式 flex-start, flex-end,center, baseline,stretch
+
+## grid 布局
+
+### centent 容器
+
+1. grid-template-colums： 行大小（px, 百分比，auto， fr）
+2. grid-template-rows: 列大小
+3. grid-template-areas:网络区域
+
+#### 内容对齐方式：
+
+1. justify-itmes :start , end , center , stretch;
+2. align-itmes :start , end , center , stretch;
+3. place-items: justify-itmes ,align-itmes 缩写
+
+#### 容器对齐方式：
+
+1. justify-itmes:start , end , center , stretch, space-between , space-around , space-evenly;
+
+#### 间隙
+
+1. grid-column-gap：
+2. grid-row-gap：
+3. grid-gap
+
+### itme 子元素
+
+#### 子元素区域
+
+grid-area:'map'
+
+#### 子元素对齐方式
+
+align-self:start , end , center , stretch;
+justify-self:start , end , center , stretch;
 
 ## css 分层理论
 
