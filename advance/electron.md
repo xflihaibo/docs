@@ -226,7 +226,7 @@ electron-log支持的日志级别有：error, warn, info, verbose, debug, silly
       ],
       "icon": "hardware/build/icon.ico", //图标路径
       "artifactName": "${productName}-Web-Setup-${version}.${ext}",
-      "publisherName": "taimei Labs, Inc."
+      "publisherName": "xxxx.Labs, Inc."
     },
     "nsis": {
       "perMachine": false,//是否开启安装时权限限制（此电脑或当前用户）
