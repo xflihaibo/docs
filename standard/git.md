@@ -1,5 +1,10 @@
 # git 提交规范
 
+```shel
+npm install cz-customizable commitizen -g //全局安装
+echo '{ "path": "cz-customizable" }' > ~/.czrc //写入代码
+```
+
 ```shell
 npm install cz-customizable commitizen --save-dev
 ```

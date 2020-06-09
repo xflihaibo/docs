@@ -17,6 +17,7 @@
     "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true, //空格代替tab缩近
     "dpi_scale": 1.0 //文件名称中文乱码问题
+     "expand_tabs_on_save": true // //设置保存时自动转换
 }
 ```
 
@@ -316,3 +317,19 @@ less 文件语法高亮插件
 ### React ES6 snippets
 
 -   同 sublime-react 一样，作为 react 语法提示，但是 sublime-react-es6 支持 es6 语法。
+
+## sidebartools
+
+-   菜单栏右键扩展
+
+## sidebarenhancements
+
+-   菜单栏右键扩展
+
+## AdvancedNewFile
+
+-   快速创建文件
+
+## local history
+
+本地文件版本记录

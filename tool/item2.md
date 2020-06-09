@@ -6,7 +6,7 @@
 brew cask install iterm2
 ```
 
-### mac 常用命令
+### iTerm2 常用命令
 
 ```shall
 command + t 新建tab

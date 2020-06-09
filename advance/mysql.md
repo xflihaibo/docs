@@ -81,6 +81,8 @@ ALTER TABLE stu MODIFY COLUMN age INT(11) DEFAULT 20
 ALTER TABLE score ADD CONSTRAINT fk_score_stu_id FOREIGN KEY (stu_id) REFERENCES stu(id)
 ```
 
+!> mysql 外建删除的 3 种姿态，1.删除父表，子表记录删除，2.子表关联字段变 null，3.先清空子表关联数据，才能删除父表。
+
 ### sql
 
 ```mysql

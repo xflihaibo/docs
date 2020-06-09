@@ -201,8 +201,20 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [logrocket](https://logrocket.com/)：Stop guessing why bugs happen
 -   [rrweb](https://www.rrweb.io/)：Record and replay the web
 
+## web 端视频在线截取
+
+-   [flowplayer](https://flowplayer.com)：The Performance First Online Video Platform
+
 ## 截图
 
 -   [html2canvas](https://html2canvas.hertzen.com/)：Screenshots with JavaScript
 -   [jscapture](https://mgechev.github.io/jscapture/?spm=a2c4e.10696291.0.0.37ec19a42dPM7G)：Capture your desktop with Vanilla JavaScript
 
+## 在线制作绘图
+
+-   [凡科快图](https://kt.fkw.com/sheji.html#/m/create): 极简图片编辑工具
+-   [canva](https://www.canva.cn/): 精彩设计，随时随地。
+
+##
+
+-[shields](https://shields.io/category/license) 用来可以生成 在 Markdown 文档中的徽章
