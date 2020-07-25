@@ -278,6 +278,7 @@ less 文件语法高亮插件
 ```json
 {
     "keys": ["ctrl+shift+t"],
+    "terminal": "iTerm2-v3.sh", //设置item2 打开
     "command": "open_terminal_project_folder",
     "args": {
         "parameters": ["-T", "Working in directory %CWD%"]

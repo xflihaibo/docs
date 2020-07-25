@@ -93,3 +93,102 @@ module.exports = {
 ```shell
 git cz
 ```
+
+## cz-emoji-chinese 插件
+
+[cz-emoji-chinese](https://github.com/tw93/cz-emoji-chinese)
+
+```shell
+❯ git cz
+? 选择提交的更改类型: (Use arrow keys or type to search)
+❯ fix      🐛  修复 Bug
+  style    🎨  改进代码的结构/格式
+  feature  ✨  引入新特性
+  prune    🔥  移除代码/文件
+  ui       💄  更新UI和样式文件
+  docs     📝  写文档
+  init     🎉  初始化提交
+```
+
+### 全局安装
+
+```shell
+sudo npm install  cz-emoji-chinese --global //全局安装
+
+# Method 1: set as default adapter for your projects
+echo '{ "path": "cz-emoji-chinese" }' > ~/.czrc
+
+# Method 2: If you want minimalist mode, you can set it like this
+echo '{ "path": "cz-emoji-chinese", "config": { "cz-emoji-chinese": { "skipQuestions": [ "issues", "scope","body" ] } } }' > ~/.czrc
+```
+
+### 局部安装
+
+```shell
+npm install --save-dev  cz-emoji-chinese
+```
+
+#### 配置
+
+```json
+//package.json
+"config": {
+        "commitizen": {
+            "path": "./node_modules/cz-emoji-chinese"
+        },
+        "cz-emoji-chinese": {
+            "skipQuestions": [
+                "issues",
+                "scope",
+                "body"
+            ]
+             "types": [
+                    {
+          "name": "feat \t\t🌟  A new feature",
+          "value": ":star2:"
+        },
+        {
+          "name": "fix \t\t🐞  A bug fix",
+          "value": ":beetle:"
+        },
+        {
+          "name": "test \t\t🚓  Testing improved with new or fixed tests",
+          "value": ":police_car:"
+        },
+        {
+          "name": "chore \t🔩  Doesn't modify src or test files",
+          "value": ":nut_and_bolt:"
+        },
+        {
+          "name": "style \t✏️  Doesn't affect the meaning of the code (white-space, semi-colons, etc)",
+          "value": ":pencil2:"
+        },
+        {
+          "name": "docs \t\t📚  Documentation change",
+          "value": ":books:"
+        },
+        {
+          "name": "refactor \t🎨  Neither fixes a bug nor adds a feature",
+          "value": ":art:"
+        },
+        {
+          "name": "perf \t\t💰  Improves performance with this change",
+          "value": ":moneybag:"
+        },
+        {
+          "name": "build \t🚀  Build system config or external dependencies ($compile)",
+          "value": ":rocket:"
+        },
+        {
+          "name": "ci \t\t🚥  CI config files and scripts ($arch)",
+          "value": ":traffic_light:"
+        },
+        {
+          "name": "revert \t💊  Reverts a previous commit",
+          "value": ":pill:"
+        }
+      ]
+        }
+    }
+
+```
