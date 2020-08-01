@@ -6,7 +6,13 @@
 
 ### 网站主题
 
-[colordrop](https://colordrop.io/) :在线颜色组合调试工具
+-   [colordrop](https://colordrop.io/) :在线颜色组合调试工具
+-   [zhongguose](http://zhongguose.com/#yuhong) :中科院色谱的中国传统色
+-   [coolors](https://coolors.co/) :在线快速配色生成工具
+-   [materialpalette](https://www.materialpalette.com/blue/purple) :material design palette
+-   [picular](https://picular.co/) :
+-   [webgradients](https://webgradients.com/) :
+-   [colorfavs](http://www.colorfavs.com/) :
 
 ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助设计师在线调试颜色组合，该网站把四个不同的颜色整合在一起，点击其中一个颜色后会跳出对应的颜色参数(HEX/RGB)，设计师可以将这些颜色应用于设计项目。
 
@@ -29,6 +35,7 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [igfonts](https://igfonts.io/) ：字体转成花样文字表情 😊
 -   [fontke](https://www.fontke.com/tool/fontface/) ：中文字体转换成网站字体下载
 -   [字蛛](http://font-spider.org/#install) ：字蛛 🕷️ 是一个中文字体压缩器
+-   [fontspace](https://www.fontspace.com/) ：fontspace
 
 ### icon
 
@@ -36,6 +43,11 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [cssicon](http://cssicon.space/#/)： 一个 css 实现图标样式
 -   [iconfont](https://www.iconfont.cn/) ：阿里巴巴矢量图标库
 -   [寻图标](https://icon.52112.com/) :最多样化的图标库
+-   [chuangzaoshi](http://chuangzaoshi.com/icon/) : 草莓图标库
+-   [iconstore](https://iconstore.co/) :
+-   [flaticon](https://www.flaticon.com/) :高质量图标素材
+-   [icons8](https://icons8.com/icons/new) :系统平台风格和 web 图标库
+-   [ikonate](https://ikonate.com/) : 可定制和使用的矢量图标库
 
 ### 占位图
 
@@ -57,6 +69,13 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [apidocjs](http://apidocjs.com/)：apidoc 是一个轻量级的在线 REST 接口文档生成系统，可以根据其特定的规则的代码注释来生成静态网页
 -   [hexo](https://hexo.io/zh-cn/docs/)：Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页
 -   [swagger](https://swagger.io/tools/)：API Tools for Individuals, Teams, and Enterprise
+-   [Markdown Nice](https://mdnice.com/)：支持微信公众号、知乎和稀土掘
+
+### 代码美化
+
+-   [codezen](http://codezen.rishimohan.me/)
+-   [codeimg](https://codeimg.io/)
+-   [carbon](https://carbon.now.sh/)
 
 ### editor
 
@@ -78,6 +97,8 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [magicCss](http://chokcoco.github.io/magicCss/html/index.html) 一款独特的 CSS3 动画特效包
 -   [spritejs](http://spritejs.org/demo/#/labels) 一款简单的 canvas 绘图框架
 -   [matrix](https://meyerweb.com/eric/tools/matrix/) ：css3 动画转换
+-   [cssdeck](https://cssdeck.com/) ： 在线 CSS 前端代码 Demo 样式效果
+-   [animista](https://animista.net/) ： 前端炫酷样式技能效果,各种各样的动画效果，提供在线的 CSS 代码
 
 ### 动画库
 
@@ -94,6 +115,10 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [codepen](https://codepen.io/) 一个在线的前端代码编辑运行的网站
 -   [obfuscator](https://obfuscator.io/) 前端代码混淆工具
 
+### svg
+
+-[snapsvg](http://snapsvg.io/about/) SVG 动效的 JS 库,各种炫酷的效果。 -[squoosh](https://squoosh.app/index.html) SVG
+
 ### XSS
 
 [XSS](https://jsxss.com/zh/index.html) 根据白名单过滤 HTML(防止 XSS 攻击)
@@ -105,6 +130,7 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 ### PDF
 
 -   [PDF24 Tools](https://tools.pdf24.org/zh/?utm_source=xinquji) 免费且易于使用的在线 PDF 工具
+-   [pdfpai](https://www.pdfpai.com/) 20 个好用的 PDF 在线工具，完全免费！
 -   [pdfmake](http://pdfmake.org/#/) Client/server side PDF printing in pure JavaScript
 -   [smallpdf](https://smallpdf.com/cn/unlock-pdf)支持 PDF 转 Word、PDF 转图片、PDF 转 Excel、PDF 转 PPT、PDF 拆分、PDF 合并以及 PDF 合并等服务
 
@@ -212,8 +238,26 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 ## 在线制作绘图
 
+-   [Cool Backgrounds](https://coolbackgrounds.io/red-background/) :背景图生成器 几何
+-   -[trianglify](https://trianglify.io/) :背景图生成器几何
 -   [凡科快图](https://kt.fkw.com/sheji.html#/m/create): 极简图片编辑工具
 -   [canva](https://www.canva.cn/): 精彩设计，随时随地。
+-   [removebg](https://www.remove.bg/zh): 抠图神器。
+-   [uupoop](https://www.uupoop.com/): 搞定设计，在线 ps
+-   [imgkr](https://imgkr.com/#upload) 图片上传保存
+
+## 高清图片素材库
+
+-   [hdwallpapers](https://www.hdwallpapers.net/)
+-   [splitshire](https://www.splitshire.com/)
+-   [magdeleine](https://magdeleine.co/)
+-   [unsplash](https://unsplash.com/)
+
+## 移动端设计参考
+
+-   [responsinator](http://www.responsinator.com/)
+-   [screensiz](http://screensiz.es/phone)
+-   [paintcodeapp](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
 
 ## 徽章
 

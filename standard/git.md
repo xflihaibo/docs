@@ -144,11 +144,11 @@ npm install --save-dev  cz-emoji-chinese
             ]
              "types": [
                     {
-          "name": "feat \t\t🌟  A new feature",
+          "name": "feat \t\t🌟  引入新特性",
           "value": ":star2:"
         },
         {
-          "name": "fix \t\t🐞  A bug fix",
+          "name": "fix \t\t🐞  修复 Bug",
           "value": ":beetle:"
         },
         {
@@ -164,11 +164,11 @@ npm install --save-dev  cz-emoji-chinese
           "value": ":pencil2:"
         },
         {
-          "name": "docs \t\t📚  Documentation change",
+          "name": "docs \t\t📚   写文档",
           "value": ":books:"
         },
         {
-          "name": "refactor \t🎨  Neither fixes a bug nor adds a feature",
+          "name": "refactor \t🎨  改进代码的结构/格式",
           "value": ":art:"
         },
         {
