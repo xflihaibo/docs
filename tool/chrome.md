@@ -72,6 +72,11 @@ await navigator.storage.estimate() // 占用数 和 空闲数 -->
 
 copy 方法在控制台里复制你想要的东西。
 
+##  复制控制台console.log打印的对象
+
+1. 在对象上右键选择  store as global varable
+2. 然后 再 copy(temp) 这样就复制成功了
+
 ```javascript
 
 location
