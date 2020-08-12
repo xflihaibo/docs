@@ -179,6 +179,12 @@ import {Consumer} from '../context.js';
 1.  useContext 接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值
 1.  useLayoutEffect： useEffect 相同，但它会在所有的 DOM 变更之后同步调用 effect
 
+## React v17.0
+
+1. React 17 的版本是非比寻常的，因为它没有添加任何面向开发人员的新功能。而主要侧重于「升级简化 React 本身
+1. 更改事件委托
+1. 更改事件委托
+
 ## react-router4
 
 1.  所有组件更改为从 react-router-dom 导入

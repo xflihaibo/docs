@@ -25,6 +25,27 @@ any：任何类型
 void：不需要返回值 function
 ```
 
+## Record
+
+1. ts 文档上对 Record 的介绍不多，但却经常用到，Record 是一个很好用的工具类型
+
+```typescript
+type person = {
+    prop1: string;
+    prop2: string;
+    prop3: string;
+};
+
+type someProps = Record<12 | keyof person, string>;
+
+let newPerson: someProps = {
+    prop1: '111',
+    prop2: '222',
+    prop3: '444',
+    12: 'asdad'
+};
+```
+
 ```typescript
 let a = 13; //默认number
 let a; // any
@@ -33,9 +54,9 @@ let a: string | number = 12; //string number 都可以
 let arr: number[] = [1, 2, 3]; //array 是number
 let arr: any[] = ['svb', 12, false]; //any
 
-let point: {x: number; y: number; z?: number};
-point = {x: 12, y: 30};
-point = {x: 12, y: 30, z: 99};
+let point: { x: number; y: number; z?: number };
+point = { x: 12, y: 30 };
+point = { x: 12, y: 30, z: 99 };
 ```
 
 ### 外部引用第三方库
@@ -128,7 +149,7 @@ object: function get() {
 }
 let {
     code: guname,
-    price: {price2}
+    price: { price2 }
 } = get();
 console.log(guname);
 console.log(price2);

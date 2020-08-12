@@ -1,24 +1,24 @@
 # egg
 
-plugin
+## plugin
 
-service
+## service
 
-controller
+## controller
 
-public
+## public
 
-config
+## config
 
-schedule：计划任务
+## schedule：计划任务
 
-国际化
+## i18n 国际化
 
 i18n={
 defaultLocal:'zh-CN'
 }
 
-扩展属性-
+### 扩展属性-
 
 npm i egg-scripts --save
 
