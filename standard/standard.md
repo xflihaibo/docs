@@ -152,6 +152,30 @@ index.html
 
 ## Javascript
 
+### 变量命名:
+
+为了方便维护，后缀加入类型缩写例如:
+
+```javascript
+
+let namestr="张三'；//string
+
+let agenum=12;//number
+
+let checkbol =true; //bool
+
+let nameArr=[]; //array
+
+let itemobj={   //object
+
+   name:'tony',
+
+  age:12
+
+};
+
+```
+
 缩进使用 tab(4 个空格)
 
 ```javascript
@@ -249,10 +273,10 @@ do {
 let nameStr = '张三',
     ageNum = 20,
     genderBol = true,
-    itemInfoObj = {name: '张三', ageNum: 20},
+    itemInfoObj = { name: '张三', ageNum: 20 },
     itemInfoArr = [
-        {name: '张三', ageNum: 20},
-        {name: '李四', ageNum: 10}
+        { name: '张三', ageNum: 20 },
+        { name: '李四', ageNum: 10 }
     ];
 ```
 
