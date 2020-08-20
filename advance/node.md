@@ -223,4 +223,8 @@ V8 老生代主要采用 Mark-Sweep 和 Mark- Compact 在使用 Scavenge 不合�
 
 ### 检测内存泄漏
 
-[node-inspector](https://github.com/node-inspector/node-inspector)
+1. [node-inspector](https://github.com/node-inspector/node-inspector)
+2. [Easy-Monitor](https://www.yuque.com/hyj1991/easy-monitor)
+3. [alinode](https://cn.aliyun.com/product/nodejs)
+4. [ wrk](https://github.com/wg/wrk)
+5. [ autocannon](https://github.com/mcollina/autocannon#readme)
