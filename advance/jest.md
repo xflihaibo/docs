@@ -93,9 +93,111 @@ Time:        2.357s
 Ran all test suites.
 ```
 
+#### 测试 peimise
+
+```bash
+test('返回结果{success:true}',()=>{
+    return except(fetchApi()).resoloves.toMatchObject({
+      data:{
+         success:true
+      }
+    })
+})
+
+test('返回结果404',()=>{
+    return except(fetchApi()).rejects.toThorw())
+})
+
+test('返回结果404',()=>{
+    except.assertions(1);
+    return except(fetchApi()).catch((e)=>{
+        except(e.toString()).toEqual('Error: request failed width status code 404')
+    })
+})
+
+test('返回结果404',async()=>{
+    except.assertions(1);//至少执行一次
+    try{
+      await fetchApi();
+    }catche(e){
+        except(e.toString()).toEqual('Error: request failed width status code 404')
+    }
+})
+
+test('返回结果404',async()=>{
+     let e=await fetchApi();
+     return except(e.toString()).toEqual('Error: request failed width status code 404')
+})
+
+
+
+```
+
+### done
+
+```bash
+import asyncfun from './asyncfun.js';
+
+test('asyncfun',()=>{
+    asyncfun((done)=>{
+      except(2).tobe(1)
+    done();
+    })
+})
+```
+
+#### advanceTimersByTime
+
+```bash
+import asyncfun from './asyncfun.js';
+jest.useFakeTimes();
+
+test('测试',()=>{
+    const func=jest.fu();
+    asyncfun(func);
+    jest.advanceTimersByTime(3000);
+    expect(fun).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(3000);
+    expect(fun).toHaveBeenCalledTimes(2);
+})
+```
+
+#### runOnlyPendingTimers
+
+```bash
+import asyncfun from './asyncfun.js';
+jest.useFakeTimes();
+
+test('测试',()=>{
+    const func=jest.fu();
+    asyncfun(func);
+    jest.runOnlyPendingTimers();
+    expect(fun).toHaveBeenCalledTimes(1);
+})
+```
+
+#### runCallBack
+
+```bash
+import asyncfun from './asyncfun.js';
+
+test('测试。',()=>{
+    const func=jest.fu();
+    asyncfun(func);
+    asyncfun(func);
+    asyncfun(func);
+    expect(fun.mock.calls.length).toBe(3);
+})
+```
+
 ### jest.config.js
 
 新建 jest.config.js 并添加配置项 module.exports = { 配置项 }
+执行 init 生成配置文件
+
+```shell
+npx jest --init
+```
 
 #### 配置项
 
@@ -151,9 +253,10 @@ coverageThreshold: { //测试覆盖率, 阈值不满足，就返回测试失败
 > - modulePaths ：测试路径
 > - transformIgnorePatterns： //测试过程不改变满足配置的文件
 
-### 配置
+#### 配置方式
 
 ```js
+// jest.config.js
 module.exports = {
   testMatch: ['<rootDir>/test/**/*.js'],
   testEnvironment: 'jsdom',
@@ -166,6 +269,7 @@ module.exports = {
 
 1.  分组（Test Group）：descripe(描述语,function)
 1.  测试用例（Test Case）：test(描述语,function)
+1.  测试用例（Test Case）：test.only(描述语,function) 仅仅执行当前测试用例
 1.  断言（Assert）：expect(运行需测试的方法并返回实际结果).toBe(预期结果)
 1.  .expect() :期望
     expect (2 + 2) 返回一个"期望"的对象
@@ -267,6 +371,25 @@ node debug --harmony .\node_modules\jest-cli\bin\jest.js --runInBand myView-test
 > - "-harmony"标志是为了让 Jest 正确地运行。
 > - ".\node_modules\jest-cli\bin\jest.js"就是 Jest 的入口。这个文件会在我调用"\node_modules.bin"里的"Jest"时被调用。
 > - "-runInBand"告诉 Jest 在当前的进程中运行所有测试，而不是再启动一个进程。Jest 默认就会启动多个进程并行的运行测试。如下为源码中关于这个选项的描述的片段（在.\node_modules\jest-cli\bin\jest.js 中）
+> - "--watchall"
+> - --bail 或： -b. 只要一有测试不通过，立马退出测试套件。
+> - --cache 是否使用缓存。 默认值为 true。 使用 --no-cache 来禁止缓存。 注意︰ 仅在遇到缓存相关的问题时禁用缓存。 一般来说，禁用缓存会令 Jest 运行至少慢两倍。
+> - --debug 显示出你 Jest 配置的调试信息
+> - --expand 别名︰ -e。使用该参数来对比完整的差异和错误，而非修复。
+> - --forceExit 强制 Jest 在所有测试运行完后退出。 对于一些由测试所生成但无法充分清理的资源来说，这是很有用的。 注意︰ 此功能是 escape-hatch。 如果 Jest 在测试运行最后没有退出，那就意味着外部资源还是被占用，又或是计时器还尚在你的代码中待令。 为了确保 Jest 可以完全关闭，建议你在每个测试后都关闭用到的外部资源。
+> - --lastCommit 将运行在上次提交文件更改后的所有测试。
+> - --showConfig 输出 Jest 配置，然后退出。
+> - --watchman 是否使用 watchman 进行文件抓取。默认值为 true。使用--no-watchman 来禁用。
+> - --watchAll 监视文件的更改并在任何更改时重新运行所有测试。若果你是想要重新运行仅基于已更改文件的测试，那么请使用 --watch 选项。
+> - --watch 监视文件更改，并重新运行与已更改的文件相关的测试。当文件发生更改时，如果你想要重新运行所有测试，可以使用 --watchAll 选项。
+> - --verbose 层次显示测试套件中每个测试的结果。
+> - --useStderr 转移所有输出到 stderr(标准错误输出).
+> - --updateSnapshot 或: -u. 在运行测试中使用这个参数来重新录制每个失败测试的快照。 还可以和测试套件模式或 --testNamePattern 一起使用，从而重新录制的快照。
+> - --silent 阻止所有测试通过控制台输出信息。
+> - --notify 激活测试结果通知。特别是当你不想专心致志等待 JavaScript 测试结果时。
+> - --onlyChanged 或: -o. 尝试确定根据当前存储库中哪些已经更改的文件来运行的测试。 只有在此刻 git/hg 存储库中运行测试，需要静态依赖关系图时有用（例如. 无动态要求）。
+> - --noStackTrace 禁止栈跟踪信息在测试结果输出中。
+> - --logHeapUsage 记录每个测试后的记录堆使用情况。 主要用来调试内存泄漏。 与 --runInBand 和 --expose-gc 一起使用.
 
     "index.test.js"就是我们想要 debug 的测试文件。像这样使用相对路径是没有问题的，因为 Jest 会把它转换为一段正则表达式。
 

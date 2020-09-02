@@ -109,6 +109,12 @@ CSS3 私有前缀自动补全插件，显然也很有用哇
 
 <!-- 偶尔出现乱码 -->
 
+### ctranslator-sublime3-plugin
+
+![一款中文翻译英文的插件](https://github.com/smallevilbeast/ctranslator-sublime3-plugin)
+Usage
+Use the keyboard shortcut CTRL + Alt + H ( COMMAND + Alt + H on Mac OS X ).
+
 ### CSS3
 
 CSS 3 支持对 css3 的支持插件
@@ -334,3 +340,7 @@ less 文件语法高亮插件
 ## local history
 
 本地文件版本记录
+
+## SyncedSideBar
+
+每次打开文件，侧边栏都会同步显示该文件所在目录树中的位置(如果打开的文件是目录树的子集，还能将目录树自动展开，真是爱之不已，挺有用的一款插件)。
