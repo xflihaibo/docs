@@ -73,8 +73,18 @@ window.preformance.memory 描述内存多少，是在 Chrome 中添加的一个�
 1.  performance.getEntries() 会获取页面加载资源和网络请求信息
 2.  performance.getEntriesByType('resource')// 获取资源加载列表
 3.  performance.now()是当前时间与 performance.timing.navigationStart 的时间差，以微秒（百万分之一秒）为单位的时间，与 Date.now()-performance.timing.navigationStart 的区别是不受系统程序执行阻塞的影响，因此更加精准。
-
 4.  performance.toJSON() ：它返回一个由 performance 对象各个属性组成的 JSON
+5.  PerformanceObserver ： 构造函数使用给定的观察者 callback 生成一个新的 PerformanceObserver 对象.当通过 observe() 方法注册的 条目类型 的 性能条目事件 被记录下来时,调用该观察者回调
+
+```javascript
+const observer = new PerformanceObserver(list => {
+    for (const entry of list.getEntries()) {
+        console.log(entry);
+    }
+});
+// Start observing the entry types you care about.
+observer.observe({ entryTypes: ['paint', 'longtask'] });
+```
 
 ![](./img/prefor/perfor04.png)
 
@@ -106,6 +116,16 @@ window.preformance.memory 描述内存多少，是在 Chrome 中添加的一个�
 1.  preformance(profiles 旧版)
 1.  性能魔方(第三方网站)
 
+###关键指标
+ttfp:返回的第一个字节
+fp:页面的反应，第一个像素点落地 background:#ddd;看的见
+fcp: 第一个有意义的内容 0-2s 之内
+fmp：有意义的绘制 （自定义的）
+DCL：
+lcp:0——2.5s。第一个绘制的最大内容
+longTask: 长任务时间
+tti:--3.8s. 可交互
+
 ### 性能优化
 
 1.  前端性能优化:小字为先， 埋点测速，
@@ -119,4 +139,20 @@ window.preformance.memory 描述内存多少，是在 Chrome 中添加的一个�
 9.  开启页面懒加载
 10. 缓存静态资源文件 localstrage
 
+### 性能优化调试指标
 
+#### webPageTest 本地服务
+
+```shell
+  本地部署 webPageTest 测试
+
+            docker
+                docker pull webpagetest/server
+                docker pull webpagetest/agent
+```
+
+#### lighthourse
+
+```shell
+npm install lighthourse  -g
+```

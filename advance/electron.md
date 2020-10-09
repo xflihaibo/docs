@@ -94,6 +94,29 @@ ipcRenderer.on('send-file', (event, data) => {
 });
 ```
 
+### 全局快捷键
+
+```shell
+
+globalshortcut.register('ctrl+e',()=>{
+  //do something
+})
+
+```
+
+### 网络监控
+
+```shell
+window.addEventListener('online',()=>{
+  console.log('在线')
+})
+
+window.addEventListener('offline',()=>{
+  console.log('断网了')
+})
+
+```
+
 ## 常用模块
 
 ### electron-store:本地持久化

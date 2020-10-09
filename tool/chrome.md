@@ -154,6 +154,14 @@ values(user) // ["zhangsan", 20]
 对于性能优化， 接口请求时必要的优化点之一，Waterfall 就可以帮助我们分析每个请求的请求瓶颈
 ![断点调试](./img/chrome08.png)
 
+##### 查看监控
+
+控制面板 => Network => filter图标 => is:running => 刷新监控的页面
+
+#####   过滤禁止加载的文件
+
+在 Commands 菜单中寻找    show request blocking 选项 过滤禁止加载的文件
+
 ##### 瀑布中的颜色处于请求的阶段
 
 1.  浅灰：查询中
