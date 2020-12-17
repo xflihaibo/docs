@@ -57,6 +57,13 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 
 -   [tinypng](https://tinypng.com/) 一个压缩 🗜️PNG 的神站 🐼
 -   [zhitu](https://zhitu.isux.us/)：智图为图片智能选择合适的图片格式压缩 🗜️,
+-   [Compressor](https://github.com/zetbaitsu/Compressor)：一个使用本地 canvas.toBlob API 进行图像有损压缩的 js 库
+-   [pica](http://nodeca.github.io/pica/demo/)：pica 一个在浏览器中调整图像大小，而不会出现像素失真，处理速度非常快的图片处理库
+-   [merge-images](https://github.com/lukechilds/merge-images)：一个将多张图片合并成一张图的 js 插件,
+-   [cropperjs](https://fengyuanchen.github.io/cropperjs/)：一款强大的图片裁切库, 支持灵活的图片裁切方式,
+-   [grade](https://benhowdle89.github.io/grade/)：一个基于图像中的前 2 种主要颜色生成互补渐变背景的库
+-   [fabricjs](http://fabricjs.com/)：一个基于 canvas 元素的图片编辑器
+-   [lena](https://github.com/davidsonfellipe/lena.js)：一个轻量级的可以给你图像加各种滤镜的 js 库
 
 ### markdown 文档
 
@@ -133,6 +140,8 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [pdfpai](https://www.pdfpai.com/) 20 个好用的 PDF 在线工具，完全免费！
 -   [pdfmake](http://pdfmake.org/#/) Client/server side PDF printing in pure JavaScript
 -   [smallpdf](https://smallpdf.com/cn/unlock-pdf)支持 PDF 转 Word、PDF 转图片、PDF 转 Excel、PDF 转 PPT、PDF 拆分、PDF 合并以及 PDF 合并等服务
+-   [xlsx2json](https://github.com/koalaylj/xlsx2json) 让 excel 支持复杂的 json 格式(对象，数组，数字，boolean，字符串)，将 xlsx 文件转成 json。
+-   [js-xlsx ](https://github.com/koalaylj/xlsx2json) 一个强大的解析和编写 excel 文件的库。
 
 ### 拼音
 
@@ -270,6 +279,14 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 ## UI 设计工具与设计资源
 
 -[No Design](https://nodesign.dev/) 网站上收集了许多十分便利的 UI 设计工具与设计资源
+
+## 拖拽
+
+-[sortablejs](https://github.com/SortableJS/sortablejs) 拖拽 js
+
+## 存储
+
+-[FileSaver](https://github.com/eligrey/FileSaver.js) 文件存储
 
 ## 抓包
 
