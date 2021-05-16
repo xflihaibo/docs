@@ -48,7 +48,7 @@ export default {
       });
       observer.observe({entryTypes: ['resource']});
     } else {
-      window.onload = function() {
+      window.onload = function () {
         let resourceData = performance.getEntriesByType('resource');
         let data = resourceData.map(_ => processData(_));
         cb(data);
@@ -74,7 +74,29 @@ performance.init(data => {
 });
 ```
 
-ajax 请求监控
+### ajax 请求监控
+
+#### fetch
+
+```js
+window.fetch = function () {
+  const debugFetchInfo = debugFetch.apply(window, arguments);
+  debugFetchInfo.then(res => {
+    console.log(res.status);
+    if (res.status > 399) {
+      let data = transformFetch(res, arguments);
+      debugRequest.handelUpload(debugConst.apiUrl.error, data);
+    }
+  });
+
+  return debugFetchInfo;
+};
+```
+
+#### ajax
+
+通过代理获取请求错误信息上报
+[ajax-hook](https://www.npmjs.com/package/ajax-hook)
 
 ## 前端异常监控
 
@@ -94,7 +116,7 @@ error 事件的事件处理程序。针对各种目标的不同类型的错误�
 !> promise 失败了不能通过 onerror .... 捕获 promise 错误
 
 ```javascript
-window.onerror = function(msg, url, lineNo, columnNo, error) {
+window.onerror = function (msg, url, lineNo, columnNo, error) {
   // 处理错误信息
 };
 ```
@@ -115,14 +137,14 @@ export default {
     // window.addEventListener('error',fn,true)
     window.addEventListener(
       'error',
-      function(evt) {
+      function (evt) {
         //捕获文件加载错误
         console.log('error', evt);
       },
       true
     );
 
-    window.onerror = function(message, source, lineno, colno, error) {
+    window.onerror = function (message, source, lineno, colno, error) {
       //捕获行内js执行错误
       console.dir(error);
       let info = {
@@ -141,6 +163,15 @@ export default {
     };
   }
 };
+```
+
+### primise
+
+unhandledrejection 继承自 PromiseRejectionEvent，而 PromiseRejectionEvent 又继承自 Event。因此 unhandledrejection
+含有 PromiseRejectionEvent 和 Event 的属性和方法。例子
+
+```js
+window.addEventListener('unhandledrejection', handelEvent, true);
 ```
 
 ##### try ...catch
