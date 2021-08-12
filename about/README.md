@@ -1,7 +1,7 @@
 # 关于我们
 
 <br />
-<img  src='./img/sfqry.PNG' width="600" alt="logo">
+<img  src='./img/logo.png' width="600" alt="logo">
 <br />
 <br />
 <div align="center">
