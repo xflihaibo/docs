@@ -96,12 +96,12 @@ moduel.exports.pitch=function(r1,r2,data){
 ### 手写 loader
 
 ```javascript
-module.exports = function(code) {
+module.exports = function (code) {
   //同步
   this.callback(null, code /*source-map*/);
   //异步
   var callback = this.callback;
-  someAsyncOperation(code, function(err, res) {
+  someAsyncOperation(code, function (err, res) {
     if (!err) {
       callback(null, res);
     }
@@ -418,8 +418,16 @@ module.exports = {
 }
 ```
 
+### webpack5 特性
+
+1. 构建速度优化 ,通过 cache 特性来将 webpack 工作缓存到硬盘中
+2. 代码体积的优化
+3. webpack 现在能够处理对嵌套模块的 tree shaking
+4. webpack 5 开始新增一个属性 output.ecmaVersion, 可以生成 ES5 和 ES6 / ES2015 代码
+5. Module Federation(模块联邦)
+
 <!-- 打包过大  --max_old_space_size=4096 ./node_modules/.bin/webpack
-> happypack thread-loader parellel-webpack:多核打包，加快 打包速度  
+> happypack thread-loader parellel-webpack:多核打包，加快 打包速度
 > 原理 nodejs 多线程模块 cluster
 > cache-laoder HardSourceWebpackPlugin 缓存 提升二次构建速度 -->
 <!-- ## plugin

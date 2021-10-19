@@ -114,15 +114,15 @@ var newIteminfo={
 Promise 是异步编程的一种解决方案，比传统的解决方案 callback 更加的优雅。它最早由社区提出和实现的，ES6 将其写进了语言标准，统一了用法，原生提供了 Promise 对象
 
 ```javascript
-let promise1 = new Promise(function(resolve, reject) {
+let promise1 = new Promise(function (resolve, reject) {
     setTimeout(resolve, 1000);
 });
 
 promise1
-    .then(function() {
+    .then(function () {
         console.log('hello world');
     })
-    .then(function() {
+    .then(function () {
         console.log('erroe');
     });
 ```
@@ -274,7 +274,7 @@ async function process(array) {
 一个 Promise 调用链要么成功到达最后一个.then()，要么失败触发.catch()。在某些情况下，你想要在无论 Promise 运行成功还是失败，运行相同的代码，
 
 ```javascript
-new Promise(function(resolve, reject) {
+new Promise(function (resolve, reject) {
     setTimeout(resolve, 1000);
 })
     .then(() => {})
@@ -394,3 +394,52 @@ console.log(description.trimStart()); // "Unlocks Secret Codes "
 const category = '  JavaScript ';
 console.log(category.trimEnd()); // "  JavaScript"
 ```
+
+## ES11
+
+### BigInt
+
+es11 为了解决大数问题，推出了新的数据类型 BigInt。这种数据类型可以进行大整数运算.
+
+```javascript
+let a = Bigint(122);
+let b = 123n;
+```
+
+!> BigInt 和普通的 Number 类型不能进行运算。
+
+### 链判断运算符（?.）
+
+```javascript
+const firstName = message?.body?.user?.firstName || 'default';
+const fooValue = myForm.querySelector('input[name=foo]')?.value;
+```
+
+### ?? (null,undifined) 判断运算符
+
+而空值合并运算符，是在左边的表达式为空值（null,undifined）时取右边的值
+
+```javascript
+const a = 0;
+const b = null;
+const c = undefined;
+const d = false;
+
+console.log(a || d); //flase
+console.log(a ?? b); //0
+console.log(b ?? c); //undefined
+```
+
+### matchAll
+
+matchAll 方法返回一个包含所有匹配正则表达式的结果的迭代器。使用 for...of 遍历或者使用 操作符 ... Array.from 将其转换成数组。
+
+### Dynamic import
+
+标准用法的 import 导入的模块是静态的，会使所有被导入的模块，在加载时就被编译（无法做到按需编译，降低首页加载速度）。有些场景中，你可能希望根据条件导入模块或者按需导入模块，这时你可以使用动态导入代替静态导入。
+
+!> 之前的 import 只能写在顶层作用域，不能写在函数内部，现在的动态 import 可以写在非顶层作用域内
+
+### Promise.allSettled
+
+Promise.allSettled 也是接收一个 Promise 数组作为参数，等所有的参数状态都完成的时候（不管是成功还是失败），回调就会触发。回调函数的参数是一个数组，数组的每个元素有两个属性，一个是 status，值为'rejected'或者'fullfilled'，对应表示这个 promise 是成功还是失败，另一个属性是 reason，表示 promise 的回调参数。
