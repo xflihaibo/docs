@@ -1,8 +1,8 @@
 # docker
 
--   Docker 是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括 VMs（虚拟机）、bare metal、OpenStack 集群和其他的基础应用平台。
+-   [Docker](https://www.docker.com/) 是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括 VMs（虚拟机）、bare metal、OpenStack 集群和其他的基础应用平台。
 
-###Docker 通常用于如下场景：
+### Docker 通常用于如下场景：
 
 1.  web 应用的自动化打包和发布；
 2.  自动化测试和持续集成、发布；
@@ -257,5 +257,8 @@ services:
 ```
 from daocloud.io/library/nginx:1.12.0-alpine
 copy
-
 ```
+
+# podman
+
+[Podman](https://podman.io/)  是一个开源的容器运行时项目，可在大多数  Linux  平台上使用。Podman  提供与  Docker  非常相似的功能。正如前面提到的那样，它不需要在你的系统上运行任何守护进程，并且它也可以在没有  root  权限的情况下运行。
