@@ -13,3 +13,5 @@
 -   [React](web/react.md)
 -   [Vue](web/vue.md)
 -   [Webpack](web/webpack.md)
+-   [Vite](web/vite.md)
+-   [Babel](web/babel.md)

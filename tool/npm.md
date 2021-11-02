@@ -19,6 +19,8 @@ npm config set init.version "0.1.0"
 npm cache clean -f 清除缓存
 ```
 
+?> npm config get cache 对于一个依赖包的同一版本进行本地化缓存，当代依赖包管理工具的一个常见设计
+
 让多个 npm script 串行
 
 ```bash
@@ -106,6 +108,15 @@ restart 脚本比较特殊，如果你设置了 restart 脚本则只会执行：
   },
 ```
 
+### npm 不同版本处理方式也不同，同一个项目，npm 版本最好保持一致
+
+1. npm v5.0.x 根据 package-lock.json 下载
+2. npm v5.1.0-npm v5.4.2 当 package.json
+   声明的依赖版本规范有符合的更新版本时，忽略 package-lock.json,按照 package.json 安装，并更新 package-lock.json
+3. npm v5.4.2 以上 ，当 package.json 声明的依赖版本规范与 package-lock.json 安装版本兼容时，则根据 package-lock.json 安装；如果不兼容，按照 package.json 安装，并更新 package-lock.json
+
+?> 每次安装资源时，根据 package-lock.json 中存储的 integrity、version、name 信息生成唯一的 key 设置默认 npm init 属性
+
 ##### npm script 运行时日志
 
 ##### 显示尽可能少的有用信息
@@ -190,7 +201,14 @@ npm init  -y
     "type": "git",
     "url": "git@github.com:****/**.git"
   },
+dependencies：{},//项目依赖
+devDependencies:{},//开发依赖
+peerDependencies:{},//同版本依赖
+bundledDependencies:{},//捆绑依赖 指定依赖包必须在dependencies或devDependencies声明过，否则npm pack阶段会进行报错
+optionalDependencies:{},//可选依赖
 ```
+
+?> npm 遵循 SemVer 版本规范
 
 登录 npm
 
@@ -209,6 +227,19 @@ npm init  -y
 ```bash
  npm unpublish 包名
 ```
+
+#### npm 配置作用优先级
+
+```json
+命令行设置 npm 设置=》env 环境变量设置 npm 配置=》项目级.npmrc =》用户级.npmrc =》全局级.npmrc=》npm 内置的.npmrc
+```
+
+#### 构建私有镜像
+
+1. nexus
+2. verdaccio
+3. Sinopia
+4. cnpm
 
 ## nvm
 

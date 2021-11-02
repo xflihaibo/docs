@@ -83,7 +83,7 @@ const observer = new PerformanceObserver(list => {
     }
 });
 // Start observing the entry types you care about.
-observer.observe({ entryTypes: ['paint', 'longtask'] });
+observer.observe({entryTypes: ['paint', 'longtask']});
 ```
 
 ![](./img/prefor/perfor04.png)
@@ -116,7 +116,8 @@ observer.observe({ entryTypes: ['paint', 'longtask'] });
 1.  preformance(profiles 旧版)
 1.  性能魔方(第三方网站)
 
-###关键指标
+### 关键指标
+
 ttfp:返回的第一个字节
 fp:页面的反应，第一个像素点落地 background:#ddd;看的见
 fcp: 第一个有意义的内容 0-2s 之内
@@ -156,3 +157,16 @@ tti:--3.8s. 可交互
 ```shell
 npm install lighthourse  -g
 ```
+
+## 性能守卫平台
+
+通过收集 FP、FCP、TTi、LCP、FMP 等参数，监控线上项目运行状态
+
+![chrome](./img/prefor/liucheng.png)
+
+### 影响不确定性因素
+
+1. 页面不确定性
+2. 用户侧网络情况
+3. 终端设备
+4. 页面服务

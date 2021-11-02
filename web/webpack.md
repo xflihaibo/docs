@@ -6,6 +6,12 @@
 
 [webpack](https://webpack.js.org/)是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
 
+### Webpack 编译方式
+
+1. 使用 module map,维护项目中的依赖关系
+2. 使用了包裹函数，对每个模块进行包裹
+3. 使用了一个“runtime”方法（wepackBundle）最终合成 bundle 内容
+
 ## 语法
 
 ```javascript
@@ -368,6 +374,18 @@ webpack-bundle-analyzer：自动帮你计算出各个模块在你的项目中的
 3.  使用字符串替代正则表达式
 4.  开启多线程打包
 5.  开启 tree shacking
+
+#### Tree Shaking 原理
+
+1. webpack 在编译分析阶段，将每一个模块放入 ModuleGraph 中维护
+2. 依靠 HarmonyExportSpecifierDependency 和 HarmonyImportSpecifierDependency 分别识别和处理 import 和 export
+3. 依靠 HarmonyExportSpecifierDependency 识别 used export 和 unused export
+
+#### Tree Shakingw 为什么要依赖 ESM 规范
+
+1. import 模块名只能是字符串常量
+2. import 一般只能在模块的最顶层出现
+3. import binding 是 immutable 的
 
 ### Webpack5 展望
 
