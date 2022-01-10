@@ -6,6 +6,8 @@
 
 Node.js 是一个能够在服务器端运行 JavaScript 的开放源代码、跨平台 JavaScript 运行环境。Node.js 由 Node.js 基金会持有和维护，并与 Linux 基金会有合作关系。Node.js 采用 Google 开发的 V8 运行代码，使用事件驱动、非阻塞和异步输入输出模型等技术来提高性能，可优化应用程序的传输量和规模。这些技术通常用于数据密集的即时应用程序。
 
+!> node 主要由 v8、I/O 模型(libuv)、 eventLoop (libuv),node bingdins(http,file,soket,system,etc)
+
 ### fs
 
 文件系统
@@ -99,11 +101,41 @@ os.homedir() 方法以字符串的形式返回当前用户的主目录
 2.  [supervisor](https://github.com/petruisfan/node-supervisor/)
 3.  [forever](https://github.com/nodejitsu/forever)
 
-```shall
+```shell
 npm install -g nodemon
 npm install -g supervisor
 npm install forever -g
 ```
+
+### IO 常见的操作
+
+TCP / UDP，标准输入输出，文件读写，DNS，管道（进程通信）
+
+### IO 模型
+
+同步和异步，阻塞和非阻塞，每个 I/O 都有它适合的场景
+
+同步阻塞 ：读写 ，问题，就是无法并发地执行 I/O 操作或者在 I/O 操作执行的同时执行 CPU 的计算
+
+同步非阻塞： 读写，如 while 循环轮询等待执行的操作，会造成不必要的 CPU 运算的浪费，因为此时 I/O 操作未完成，read 函数拿不到结果；如果使用 sleep/usleep 的方式强行让进程睡眠一段时间，又回造成 I/O 操作的返回不及。
+
+异步阻塞：设备以非阻塞方式打开，然后应用程序阻塞在 select 系统调用中，用它来监听可用的 I/O 操作，select 系统调用最大的好处是可以监听多个描述符，而且可以指定每个描述符要监听的事件：可读事件、可写事件和发生错误事件，select 系统调用的主要问题是效率不高
+
+<!-- 多线程非阻塞 I/O 有个弊端，就是当连接数达到很大的一个程度时，线程切换也是一笔不小的开销。 -->
+
+异步非阻塞：异步非阻塞 I/O 模型的读请求会立即返回，表明读操作成功启动。然后应用程序就可以在读操作完成之前做其他的事情。当读操作完成时，内核可以通过信号或者基于线程的回调函数来通知应用程序读取数据。单个进程可以并行执行多个 IO 请求是因为 CPU 的处理速度要远大于 I/O 的处理速度。 当一个或多个 I/O 请求在等待处理时，CPU 可以处理其他任务或者处理其他已完成的 I/O 请求。
+
+select： 模型的关键是使用一种有序的方式，对多个套接字进行统一管
+理与调度：缺点：单个进程能够监视的文件描述符的数量存在最大限制通常是 1024，当然可以更改数量，但由于 select 采用轮询的方式扫描文件描述符，文件描述符数量越多，性能越差；内核/用户空间内存拷贝问题，select 需要复制大量的句柄数据结构，产生巨大的开销；
+epoll：支持一个进程打开大数目的 socket 描述符，IO 效率不随 FD 数目增加而线性下降，使用 mmap 加速内核与用户空间的消息传递；
+iocp
+
+libuv:使用异步，事件驱动的编程方式，核心是提供 i/o 的事件循
+环和异步回调(libuv 使用 epoll 来构建 event-loop 的主体)
+libuv 的 API 包含有时间，非阻塞的网络，异步文件操作，子进程
+等等。
+
+<!-- 一个进程内同时执行多个 I/O 操作，分别是 select, poll, epoll（macos 上的替代品是 kqueue） 这几个阶段 -->
 
 ## 事件循环
 
@@ -221,6 +253,17 @@ V8 老生代主要采用 Mark-Sweep 和 Mark- Compact 在使用 Scavenge 不合�
 1.  无线设置属性和值
 1.  任何模块内的私有变量和方法均是永驻内存的
 
+### v8 调试常用参数
+
+-trace-opt-verbose：跟踪代码执行细节
+-trace-gc：跟踪 GC 执行细节
+-allow-natives-syntax:允许 V8 本身语法
+--print-ast：打印 AST
+--print-scopes :查看作用域
+--print-bytecode：查看解析器生成的字节码
+--trace-opt:查看那些代码被优化过
+--trace-deopt:查看那些代码被反优化过
+
 ### 检测内存泄漏
 
 1. [node-inspector](https://github.com/node-inspector/node-inspector)
@@ -228,3 +271,9 @@ V8 老生代主要采用 Mark-Sweep 和 Mark- Compact 在使用 Scavenge 不合�
 3. [alinode](https://cn.aliyun.com/product/nodejs)
 4. [ wrk](https://github.com/wg/wrk)
 5. [ autocannon](https://github.com/mcollina/autocannon#readme)
+
+ <!-- 
+ 沙箱：解决运行时冲突，虚拟机 （闭包）
+
+SystemJS webpack5 single-spa
+omi -->

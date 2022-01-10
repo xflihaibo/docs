@@ -185,6 +185,13 @@ import {Consumer} from '../context.js';
 1. 更改事件委托
 1. 更改事件委托
 
+### React v18.0
+
+1. useDeferredValue: 延迟更新某个不那么重要的部分 （热搜索）
+2. useTransition:用户想要知道 transition 的实时情况 如果 transition 未完成，isPending 值为 true,否则为 false.
+3. startTransition:startTransition 包裹的更新被当作非紧急事件来处理，如果有更紧急的更新，如点击或按键，则会被打断
+4. Concurrent: Concurrent 模式是一组 React 的新功能，可帮助应用保持响应，并根据用户的设备性能和网速进行适当的调整。 并不是一个新的概念，在 Fiber 诞生之初就被不停地提及
+
 ## react-router4
 
 1.  所有组件更改为从 react-router-dom 导入
