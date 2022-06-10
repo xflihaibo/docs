@@ -274,6 +274,7 @@
         }
 
         function getLocation(){
+             console.log('getLocation');
             dsBridge.call("getLocation", "",function(string){
                 console.log('getLocation',string)
                 alert(JSON.stringify(string))
