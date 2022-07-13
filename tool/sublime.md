@@ -230,6 +230,8 @@ JsPrettier 代码的风格进行自动格式化处理
     "auto_format_on_save": true,
     "auto_format_on_save_excludes": ["*/node_modules/*"],
     "custom_file_extensions": ["js", "jsx", "less", "css", "json"],
+    "prettier_cli_path": "/Users/xxx/.nvm/versions/node/v12.22.12/bin/prettier", // prettier 的调用地址 可以用 which prettier 查到
+    "node_path": "/Users/xxx/.nvm/versions/node/v12.22.12/bin/node",//是 node.js 的地址 可以用 which node 查到
     "prettier_options": {
         "bracketSpacing": false,
         "arrowParens": "avoid",
