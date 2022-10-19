@@ -133,13 +133,34 @@ git whatchanged file  显示某个文件的每个版本提交信息：提交日�
 git commit --amend 修改上次提交描述 本次提交并存到上次
 git commit  -v //提交时显示所有的diff
 git commit --amend -m 'meggahe' //使用新的commit 提交替换上次commit
-git reset --hard fdce8d 回到指定版本
-git reset HEAD a.txt 撤销暂存文件
-git reset --hard HEAD^ 回到上一版本
-git reset HEAD 取消本次修改在暂存区
-git reflog 查看提交历史log
 按 shift+Z+Z保存编辑并退出
 ```
+
+### 回退&撤销
+
+```shell
+撤销工作区操作
+git checkout : 撤销工作区操作
+git restore: 撤销工作区操作
+
+缓存区回到工作区
+git reset  changefile
+git restore --staged changefile
+
+缓存区回到初始区
+git checkout HEAD changefile
+
+本地仓库回到缓存区
+git reset --soft HEAD~1
+
+本地仓库回到工作区
+git reset HEAD~1
+
+本地仓库回到初始化
+git reset. --hard HEAD~1
+
+```
+
 
 ### 标签 tag
 
