@@ -2,5 +2,5 @@
 -   [前端汇总](/web/)
 -   [工具集合](/tool/)
 -   [进阶知识](/advance/)
--   [关于我们](/about/)
+-   [友情链接](/about/)
 -   [GitHub](https://github.com/xflihaibo/docs)

@@ -1,4 +1,4 @@
-## 零散工具收集
+## 常用网站收集
 
 <div align="center">
   <img src="./tool/img/tool.png" width="300" alt="logo" align="center">
@@ -164,9 +164,9 @@ ColorDrop 是一个提供设计开发上绝佳的色彩的来源站点，帮助�
 -   [bilibili](http://bilibili.github.io/flv.js/demo/) B 站播放器
 -   [vue-video](https://hilongjw.github.io/vue-video/) 基于 vue
 
-<!-- ### Email
+ ### Email
 
-[mailgun](https://www.mailgun.com/blog/transactional-html-email-templates) 整合Gmail与Mailgun实现免费域名邮 -->
+[mailgun](https://www.mailgun.com/blog/transactional-html-email-templates) 整合Gmail与Mailgun实现免费域名邮
 
 ### 网页导览
 
