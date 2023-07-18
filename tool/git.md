@@ -190,7 +190,7 @@ git stash pop 恢复并且删除暂存区
 git stash drop stash{0} 删除暂存区
 ```
 
-![](./img/gitwork.jpg)
+![](../img/gitwork.jpg)
 
 
 ### git cherry-pick
