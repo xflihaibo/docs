@@ -189,6 +189,8 @@ git stash apply stash{0} 回复第一个
 git stash pop 恢复并且删除暂存区
 git stash drop stash{0} 删除暂存区
 ```
+![](./img/gitwork.jpg)
+
 
 ### git cherry-pick
 
@@ -198,6 +200,8 @@ git cherry-pick 调减需合并的代码
 ```
 
 ![](./img/git02.png)
+
+
 
 ## Git 钩子函数
 
@@ -295,6 +299,7 @@ pre-commit 能够防止不规范代码被 commit，没有 husky 这么全面，�
     "run": "test"
   },
 ```
+
 
 ## Git 私有库搭建
 
