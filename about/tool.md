@@ -4,6 +4,12 @@
   <img src="./tool/img/tool.png" width="300" alt="logo" align="center">
 </div>
 
+
+### 自动化测试
+
+-   [eTest](https://alltheblue.github.io/docs/) :一个简单易用的集成测试工具
+
+
 ### 网站主题
 
 -   [colordrop](https://colordrop.io/) :在线颜色组合调试工具
