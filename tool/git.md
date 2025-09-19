@@ -32,6 +32,13 @@ git config --global alias.a add 添加别名 git add .
 git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.br branch
+
+## 常用配置
+git config --global alias.s status 
+git config --global alias.ck checkout
+git config --global alias.a add 
+git config --global alias.b branch 
+git config --global alias.p push 
 ```
 
 ### 拉取代码
