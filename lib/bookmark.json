@@ -4,15 +4,15 @@
       "title": "前端",
       "children": [
         {
-          "title": "标题-1",
+          "title": "Vue",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-2",
+          "title": "React",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-3",
+          "title": "typescript",
           "url": "https://www.baidu.com"
         }
       ]
@@ -21,15 +21,15 @@
       "title": "后端",
       "children": [
         {
-          "title": "标题-4",
+          "title": "mysql",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-5",
+          "title": "java",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-6",
+          "title": "other",
           "url": "https://www.baidu.com"
         }
       ]
@@ -38,19 +38,19 @@
       "title": "产品",
       "children": [
         {
-          "title": "标题-7",
+          "title": "设计原型文案",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-8",
+          "title": "A项目文案",
           "url": "https://www.baidu.com"
         },
         {
-          "title": "标题-9",
+          "title": "B项目飞书链接",
           "url": "https://www.baidu.com"
         }
       ]
     }
   ],
-  "companyImg": "https://img2.baidu.com/it/u=3422222422,2878222222&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+  "companyImg": "https://lf-code-agent.coze.cn/obj/x-ai-cn/page_image/98e721f6a96ac2be79ac3284f3df3de2.png"
 }
